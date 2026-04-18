@@ -1686,6 +1686,8 @@ function resetFusionAnim(){
 }
 drawFusionScene();
 
+const rtrCanvas=document.getElementById('reactorCanvas');
+const rtrCtx=rtrCanvas.getContext('2d');
 // =================== رسم برج التبريد ===================
 function drawCoolingTower(ctx,x,y,w,h){
     ctx.beginPath();

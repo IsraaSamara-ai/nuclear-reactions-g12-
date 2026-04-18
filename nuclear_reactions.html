@@ -1698,12 +1698,12 @@ function drawCoolingTower(ctx,x,y,w,h){
     ctx.fillStyle='rgba(40,60,80,0.6)';ctx.fill();
     ctx.strokeStyle='rgba(0,212,255,0.3)';ctx.lineWidth=1.5;ctx.stroke();
     // بخار
-    if(rtrAnim.power>10){
+    if(rtrAnim2.power>10){
         for(let i=0;i<3;i++){
             const sy=y-h-Math.sin(Date.now()*0.002+i)*10-i*8;
             const sx=x+Math.sin(Date.now()*0.003+i*2)*5;
             ctx.beginPath();ctx.arc(sx,sy,4+i*2,0,Math.PI*2);
-            ctx.fillStyle='rgba(200,220,255,'+(0.1+rtrAnim.power/300)+')';ctx.fill();
+            ctx.fillStyle='rgba(200,220,255,'+(0.1+rtrAnim2.power/300)+')';ctx.fill();
         }
     }
 }

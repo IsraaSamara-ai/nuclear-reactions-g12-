@@ -8,30 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{
---bg:#060b14;--bg2:#0c1220;--card:rgba(12,22,40,0.65);--glass:rgba(16,32,56,0.45);
---border:rgba(0,255,136,0.12);--accent:#00ff88;--accent2:#00d4ff;--accent3:#ff6b35;
---text:#e4e8f0;--muted:#7a8ba8;--glow:0 0 30px rgba(0,255,136,0.15);
---glow2:0 0 30px rgba(0,212,255,0.15);
-}
+:root{--bg:#060b14;--bg2:#0c1220;--glass:rgba(16,32,56,0.45);--border:rgba(0,255,136,0.12);--accent:#00ff88;--accent2:#00d4ff;--accent3:#ff6b35;--text:#e4e8f0;--muted:#7a8ba8}
 *{margin:0;padding:0;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg2)}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg2)}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
 body{font-family:'Cairo','Tajawal',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.8}
 .ltr{direction:ltr;text-align:left;display:inline-block}
 .glass{background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px;transition:all .4s}
-.glass:hover{border-color:rgba(0,255,136,0.3);box-shadow:var(--glow)}
+.glass:hover{border-color:rgba(0,255,136,0.3);box-shadow:0 0 30px rgba(0,255,136,0.15)}
 .glass-strong{background:rgba(8,18,36,0.8);backdrop-filter:blur(25px);border:1px solid rgba(0,255,136,0.18);border-radius:20px}
-.accent-text{color:var(--accent)}
-.accent2-text{color:var(--accent2)}
-.accent3-text{color:var(--accent3)}
+.accent-text{color:var(--accent)}.accent2-text{color:var(--accent2)}.accent3-text{color:var(--accent3)}
 .gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .btn{padding:10px 28px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;border:none;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
-.btn-primary{background:linear-gradient(135deg,var(--accent),#00cc6a);color:#060b14}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,0.3)}
-.btn-secondary{background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.25)}
-.btn-secondary:hover{background:rgba(0,255,136,0.2)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#00cc6a);color:#060b14}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,0.3)}
+.btn-secondary{background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.25)}.btn-secondary:hover{background:rgba(0,255,136,0.2)}
 .btn-danger{background:linear-gradient(135deg,#ff4444,#ff6b35);color:#fff}
 .section-title{font-size:2.2rem;font-weight:900;margin-bottom:.5rem}
 .formula-box{background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);border-radius:12px;padding:16px 24px;font-size:1.15rem;direction:ltr;text-align:center;margin:16px 0;font-weight:600;letter-spacing:.5px}
@@ -43,1063 +32,284 @@ canvas{border-radius:16px;display:block}
 .analogy-box{background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.2);border-radius:12px;padding:16px 20px;margin:12px 0}
 .analogy-box::before{content:'💡 تشبيه من الحياة:';display:block;color:var(--accent3);font-weight:700;margin-bottom:6px}
 .tag{display:inline-block;padding:3px 12px;border-radius:20px;font-size:.78rem;font-weight:600}
-.tag-green{background:rgba(0,255,136,0.12);color:var(--accent)}
-.tag-blue{background:rgba(0,212,255,0.12);color:var(--accent2)}
-.tag-orange{background:rgba(255,107,53,0.12);color:var(--accent3)}
+.tag-green{background:rgba(0,255,136,0.12);color:var(--accent)}.tag-blue{background:rgba(0,212,255,0.12);color:var(--accent2)}.tag-orange{background:rgba(255,107,53,0.12);color:var(--accent3)}
 .input-field{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:10px;padding:10px 16px;color:var(--text);font-family:inherit;font-size:.95rem;width:100%;transition:border-color .3s}
 .input-field:focus{outline:none;border-color:var(--accent)}
 .reactor-part{cursor:pointer;transition:all .3s;padding:10px 16px;border-radius:10px;border:1px solid transparent}
-.reactor-part:hover{background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.2)}
-.reactor-part.active{background:rgba(0,255,136,0.12);border-color:var(--accent)}
-.pulse{animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.reactor-part:hover{background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.2)}.reactor-part.active{background:rgba(0,255,136,0.12);border-color:var(--accent)}
 @keyframes glow-ring{0%,100%{box-shadow:0 0 20px rgba(0,255,136,0.2)}50%{box-shadow:0 0 40px rgba(0,255,136,0.4)}}
 @keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .animate-in{animation:slideUp .7s ease-out both}
-.perspective-container{perspective:1200px}
-.card-3d{transform-style:preserve-3d;transition:transform .5s}
-.card-3d:hover{transform:rotateY(-5deg) rotateX(3deg)}
+.perspective-container{perspective:1200px}.card-3d{transform-style:preserve-3d;transition:transform .5s}.card-3d:hover{transform:rotateY(-5deg) rotateX(3deg)}
 .hud-line{height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.3}
-.tab-btn{padding:10px 24px;border-radius:10px;cursor:pointer;transition:all .3s;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-weight:600;font-size:.9rem}
-.tab-btn.active{background:rgba(0,255,136,0.12);color:var(--accent);border-color:rgba(0,255,136,0.3)}
-.progress-bar{height:6px;background:rgba(0,255,136,0.1);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width 1s ease}
-.tooltip{position:relative}
-.tooltip::after{content:attr(data-tip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.9);color:var(--text);padding:6px 14px;border-radius:8px;font-size:.8rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s}
-.tooltip:hover::after{opacity:1}
+.progress-bar{height:6px;background:rgba(0,255,136,0.1);border-radius:3px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width 1s ease}
 .counter{font-size:2.5rem;font-weight:900;font-family:'Tajawal',monospace}
 #heroCanvas{position:absolute;inset:0;z-index:0}
-@media(max-width:768px){
-.section-title{font-size:1.6rem}
-.nav-sidebar{display:none!important}
-.main-content{margin-right:0!important}
-.formula-box{font-size:.95rem;padding:12px 16px}
-}
+@media(max-width:768px){.section-title{font-size:1.6rem}.formula-box{font-size:.95rem;padding:12px 16px}}
 </style>
 </head>
 <body>
 
-<!-- شريط التنقل العلوي -->
 <nav class="fixed top-0 left-0 right-0 z-50 glass-strong" style="border-radius:0;border-top:none;border-left:none;border-right:none">
 <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 <div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
-<i class="fas fa-atom text-lg" style="color:#060b14"></i>
-</div>
+<div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))"><i class="fas fa-atom text-lg" style="color:#060b14"></i></div>
 <span class="font-bold text-lg gradient-text">التفاعلات النووية</span>
 </div>
 <div class="hidden md:flex items-center gap-1 overflow-x-auto" id="topNav">
-<a class="nav-link active" onclick="scrollToSection('hero')">الرئيسية</a>
-<a class="nav-link" onclick="scrollToSection('reaction')">التفاعل النووي</a>
-<a class="nav-link" onclick="scrollToSection('energy')">حساب الطاقة</a>
-<a class="nav-link" onclick="scrollToSection('fission')">الانشطار</a>
-<a class="nav-link" onclick="scrollToSection('chain')">التفاعل المتسلسل</a>
-<a class="nav-link" onclick="scrollToSection('fusion')">الاندماج</a>
-<a class="nav-link" onclick="scrollToSection('reactor')">المفاعل النووي</a>
-<a class="nav-link" onclick="scrollToSection('apps')">التطبيقات</a>
-<a class="nav-link" onclick="scrollToSection('fusion-reactor')">المفاعل الاندماجي</a>
+<a class="nav-link active" onclick="scrollTo('hero')">الرئيسية</a>
+<a class="nav-link" onclick="scrollTo('reaction')">التفاعل النووي</a>
+<a class="nav-link" onclick="scrollTo('energy')">حساب الطاقة</a>
+<a class="nav-link" onclick="scrollTo('fission')">الانشطار</a>
+<a class="nav-link" onclick="scrollTo('chain')">التفاعل المتسلسل</a>
+<a class="nav-link" onclick="scrollTo('fusion')">الاندماج</a>
+<a class="nav-link" onclick="scrollTo('reactor')">المفاعل النووي</a>
+<a class="nav-link" onclick="scrollTo('apps')">التطبيقات</a>
+<a class="nav-link" onclick="scrollTo('fusionreactor')">المفاعل الاندماجي</a>
 </div>
-<button class="md:hidden btn-secondary btn text-sm" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
+<button class="md:hidden btn-secondary btn text-sm" onclick="document.getElementById('mobNav').classList.toggle('hidden')"><i class="fas fa-bars"></i></button>
 </div>
 </nav>
 
-<!-- القائمة الجانبية للجوال -->
-<div id="mobileNav" class="fixed inset-0 z-50 hidden" style="background:rgba(0,0,0,0.8)">
+<div id="mobNav" class="fixed inset-0 z-50 hidden" style="background:rgba(0,0,0,0.8)">
 <div class="glass-strong p-6 m-4 mt-20 rounded-2xl flex flex-col gap-3" style="max-width:300px;margin-left:auto">
-<a class="nav-link" onclick="scrollToSection('hero');toggleMobileNav()">الرئيسية</a>
-<a class="nav-link" onclick="scrollToSection('reaction');toggleMobileNav()">التفاعل النووي</a>
-<a class="nav-link" onclick="scrollToSection('energy');toggleMobileNav()">حساب الطاقة</a>
-<a class="nav-link" onclick="scrollToSection('fission');toggleMobileNav()">الانشطار</a>
-<a class="nav-link" onclick="scrollToSection('chain');toggleMobileNav()">التفاعل المتسلسل</a>
-<a class="nav-link" onclick="scrollToSection('fusion');toggleMobileNav()">الاندماج</a>
-<a class="nav-link" onclick="scrollToSection('reactor');toggleMobileNav()">المفاعل النووي</a>
-<a class="nav-link" onclick="scrollToSection('apps');toggleMobileNav()">التطبيقات</a>
-<a class="nav-link" onclick="scrollToSection('fusion-reactor');toggleMobileNav()">المفاعل الاندماجي</a>
+<a class="nav-link" onclick="scrollTo('hero');document.getElementById('mobNav').classList.add('hidden')">الرئيسية</a>
+<a class="nav-link" onclick="scrollTo('reaction');document.getElementById('mobNav').classList.add('hidden')">التفاعل النووي</a>
+<a class="nav-link" onclick="scrollTo('energy');document.getElementById('mobNav').classList.add('hidden')">حساب الطاقة</a>
+<a class="nav-link" onclick="scrollTo('fission');document.getElementById('mobNav').classList.add('hidden')">الانشطار</a>
+<a class="nav-link" onclick="scrollTo('chain');document.getElementById('mobNav').classList.add('hidden')">التفاعل المتسلسل</a>
+<a class="nav-link" onclick="scrollTo('fusion');document.getElementById('mobNav').classList.add('hidden')">الاندماج</a>
+<a class="nav-link" onclick="scrollTo('reactor');document.getElementById('mobNav').classList.add('hidden')">المفاعل النووي</a>
+<a class="nav-link" onclick="scrollTo('apps');document.getElementById('mobNav').classList.add('hidden')">التطبيقات</a>
+<a class="nav-link" onclick="scrollTo('fusionreactor');document.getElementById('mobNav').classList.add('hidden')">المفاعل الاندماجي</a>
 </div>
 </div>
 
-<!-- القسم الرئيسي - البطل -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 <canvas id="heroCanvas"></canvas>
 <div class="relative z-10 text-center px-4 max-w-4xl">
 <div class="tag tag-green mb-4">الفيزياء النووية - الصف الثاني عشر</div>
-<h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
-<span class="gradient-text">التفاعلات النووية</span><br>
-<span class="text-2xl md:text-3xl font-light accent2-text">Nuclear Reactions</span>
-</h1>
+<h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight"><span class="gradient-text">التفاعلات النووية</span><br><span class="text-2xl md:text-3xl font-light accent2-text">Nuclear Reactions</span></h1>
 <p class="text-lg md:text-xl mb-8" style="color:var(--muted)">رحلة تفاعلية مذهلة لفهم أعمق للطاقة النووية والانشطار والاندماج والمفاعلات النووية</p>
 <div class="flex flex-wrap gap-4 justify-center mb-8">
-<div class="glass px-5 py-3 text-center"><div class="counter accent-text" id="statSections">9</div><div class="text-sm" style="color:var(--muted)">أقسام تفاعلية</div></div>
-<div class="glass px-5 py-3 text-center"><div class="counter accent2-text" id="statAnimations">12+</div><div class="text-sm" style="color:var(--muted)">رسوم متحركة</div></div>
-<div class="glass px-5 py-3 text-center"><div class="counter accent3-text" id="statExamples">6</div><div class="text-sm" style="color:var(--muted)">أمثلة تفاعلية</div></div>
+<div class="glass px-5 py-3 text-center"><div class="counter accent-text">9</div><div class="text-sm" style="color:var(--muted)">أقسام تفاعلية</div></div>
+<div class="glass px-5 py-3 text-center"><div class="counter accent2-text">12+</div><div class="text-sm" style="color:var(--muted)">رسوم متحركة</div></div>
+<div class="glass px-5 py-3 text-center"><div class="counter accent3-text">6</div><div class="text-sm" style="color:var(--muted)">أمثلة تفاعلية</div></div>
 </div>
-<button class="btn btn-primary text-lg px-8 py-4" onclick="scrollToSection('reaction')">
-ابدأ الرحلة <i class="fas fa-arrow-left"></i>
-</button>
+<button class="btn btn-primary text-lg px-8 py-4" onclick="scrollTo('reaction')">ابدأ الرحلة <i class="fas fa-arrow-left"></i></button>
 <div class="hud-line mt-12"></div>
 <p class="mt-4 text-sm" style="color:var(--muted)">إعداد: <span class="accent-text font-bold">Israa Youssuf Samara</span></p>
 </div>
 </section>
 
-<!-- =================== القسم 1: التفاعل النووي =================== -->
 <section id="reaction" class="py-20 px-4">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12 animate-in">
-<div class="tag tag-green mb-3">الدرس الأول</div>
-<h2 class="section-title gradient-text">التفاعل النووي <span class="text-xl font-light accent2-text">Nuclear Reaction</span></h2>
-<div class="hud-line mx-auto" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12 animate-in"><div class="tag tag-green mb-3">الدرس الأول</div><h2 class="section-title gradient-text">التفاعل النووي <span class="text-xl font-light accent2-text">Nuclear Reaction</span></h2><div class="hud-line mx-auto" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
-<!-- المحتوى -->
 <div class="space-y-6">
-<div class="glass p-6 animate-in">
-<h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-bullseye ml-2"></i>ما هو التفاعل النووي؟</h3>
-<p>يحدث تفاعل نووي عند <strong>اصطدام نواتي ذرتين</strong>، أو اصطدام <strong>جسيم نووي</strong> (مثل البروتون أو النيوترون) بنواة ذرة أخرى، وقد ينتج من ذلك نواة جديدة أو أكثر.</p>
-<div class="analogy-box">
-تخيّل أنك ترمي كرة بيلاردو بقوة نحو مجموعة كرات مرتبة. عندما تصطدم الكرة بالكرات، تتشتت وتتحرك بطرق مختلفة. نفس الفكرة تنطبق على التفاعل النووي: جسيم يصطدم بنواة فينتج عن ذلك نوى وجسيمات جديدة.
+<div class="glass p-6 animate-in"><h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-bullseye ml-2"></i>ما هو التفاعل النووي؟</h3><p>يحدث تفاعل نووي عند <strong>اصطدام نواتي ذرتين</strong>، أو اصطدام <strong>جسيم نووي</strong> (مثل البروتون أو النيوترون) بنواة ذرة أخرى، وقد ينتج من ذلك نواة جديدة أو أكثر.</p><div class="analogy-box">تخيّل أنك ترمي كرة بيلاردو بقوة نحو مجموعة كرات مرتبة. عندما تصطدم الكرة بالكرات، تتشتت وتتحرك بطرق مختلفة. نفس الفكرة تنطبق على التفاعل النووي.</div></div>
+<div class="glass p-6 animate-in"><h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-list-check ml-2"></i>شروط حدوث التفاعل النووي</h3><div class="space-y-3"><div class="step-box" data-step="1"><strong>اقتراب كافٍ:</strong> يجب أن يقترب الجسيم من النواة مسافة كافية تبدأ عندها القوة النووية بالتأثير</div><div class="step-box" data-step="2"><strong>طاقة حركية كافية:</strong> للجسيمات المشحونة يجب أن تمتلك طاقة كافية للتغلب على قوة التنافر الكهربائي</div><div class="step-box" data-step="3"><strong>النيوترونات استثناء:</strong> لا تحتاج لطاقة عالية لأنها متعادلة كهربائياً</div></div></div>
+<div class="glass p-6 animate-in"><h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-flask ml-2"></i>المعادلة الرياضية</h3><div class="formula-box" style="font-size:1.3rem">a + X → Y* → b + Y</div><div class="grid grid-cols-2 gap-3 mt-4"><div class="glass p-3 text-center"><div class="font-bold accent-text">a</div><div class="text-sm" style="color:var(--muted)">القذيفة <span class="ltr">Projectile</span></div></div><div class="glass p-3 text-center"><div class="font-bold accent2-text">X</div><div class="text-sm" style="color:var(--muted)">النواة الهدف <span class="ltr">Target</span></div></div><div class="glass p-3 text-center"><div class="font-bold accent3-text">Y*</div><div class="text-sm" style="color:var(--muted)">النواة المركبة <span class="ltr">Compound Nucleus</span></div></div><div class="glass p-3 text-center"><div class="font-bold" style="color:#a78bfa">b + Y</div><div class="text-sm" style="color:var(--muted)">النواتج</div></div></div></div>
+<div class="glass p-6 animate-in"><h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-circle-nodes ml-2"></i>النواة الهدف والنواة المركبة</h3><p><strong class="accent2-text">النواة الهدف <span class="ltr">Target Nucleus</span>:</strong> هي النواة التي يتم قذفها بالجسيم.</p><p class="mt-2"><strong class="accent3-text">النواة المركبة <span class="ltr">Compound Nucleus</span>:</strong> هي النواة المؤقتة غير المستقرة التي تتكون عندما تمتص النواة الهدف القذيفة.</p><div class="formula-box mt-3"><span class="ltr" style="font-size:1.1rem">α + <sup>14</sup><sub>7</sub>N → <sup>18</sup><sub>9</sub>F* → <sup>17</sup><sub>8</sub>O + <sup>1</sup><sub>1</sub>p</span></div></div>
 </div>
-</div>
-
-<div class="glass p-6 animate-in">
-<h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-list-check ml-2"></i>شروط حدوث التفاعل النووي</h3>
-<div class="space-y-3">
-<div class="step-box" data-step="1">
-<strong>اقتراب كافٍ:</strong> يجب أن يقترب الجسيم من النواة مسافة كافية تبدأ عندها القوة النووية بالتأثير
-</div>
-<div class="step-box" data-step="2">
-<strong>طاقة حركية كافية:</strong> للجسيمات المشحونة (ألفا، بروتون) يجب أن تمتلك طاقة حركية كافية للتغلب على قوة التنافر الكهربائي
-</div>
-<div class="step-box" data-step="3">
-<strong>النيوترونات استثناء:</strong> لا تحتاج النيوترونات لطاقة عالية لأنها متعادلة كهربائياً ولا تتأثر بقوة التنافر
-</div>
-</div>
-</div>
-
-<div class="glass p-6 animate-in">
-<h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-flask ml-2"></i>المعادلة الرياضية</h3>
-<div class="formula-box" style="font-size:1.3rem">
-a + X → Y* → b + Y
-</div>
-<div class="grid grid-cols-2 gap-3 mt-4">
-<div class="glass p-3 text-center">
-<div class="font-bold accent-text">a</div>
-<div class="text-sm" style="color:var(--muted)">القذيفة <span class="ltr">Projectile</span></div>
-</div>
-<div class="glass p-3 text-center">
-<div class="font-bold accent2-text">X</div>
-<div class="text-sm" style="color:var(--muted)">النواة الهدف <span class="ltr">Target</span></div>
-</div>
-<div class="glass p-3 text-center">
-<div class="font-bold accent3-text">Y*</div>
-<div class="text-sm" style="color:var(--muted)">النواة المركبة <span class="ltr">Compound Nucleus</span></div>
-</div>
-<div class="glass p-3 text-center">
-<div class="font-bold" style="color:#a78bfa">b + Y</div>
-<div class="text-sm" style="color:var(--muted)">النواتج</div>
-</div>
-</div>
-</div>
-
-<div class="glass p-6 animate-in">
-<h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-circle-nodes ml-2"></i>النواة الهدف والنواة المركبة</h3>
-<p><strong class="accent2-text">النواة الهدف <span class="ltr">Target Nucleus</span>:</strong> هي النواة التي يتم قذفها بالجسيم، مثل نواة النيتروجين <span class="ltr">N-14</span> في تجربة رذرفورد.</p>
-<p class="mt-2"><strong class="accent3-text">النواة المركبة <span class="ltr">Compound Nucleus</span>:</strong> هي النواة المؤقتة غير المستقرة التي تتكون عندما تمتص النواة الهدف القذيفة، ولا تلبث أن تضمحل لتعطي نوًى وجسيمات.</p>
-<div class="formula-box mt-3">
-<span class="ltr" style="font-size:1.1rem">α + <sup>14</sup><sub>7</sub>N → <sup>18</sup><sub>9</sub>F* → <sup>17</sup><sub>8</sub>O + <sup>1</sup><sub>1</sub>p</span>
-</div>
-</div>
-</div>
-
-<!-- الرسم المتحرك -->
 <div class="space-y-6">
-<div class="glass p-6 animate-in">
-<h3 class="text-lg font-bold mb-4 accent-text"><i class="fas fa-play-circle ml-2"></i>محاكاة التفاعل النووي</h3>
-<canvas id="reactionCanvas" width="500" height="400" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4">
-<button class="btn btn-primary flex-1" onclick="startReactionAnim()"><i class="fas fa-play"></i> تشغيل</button>
-<button class="btn btn-secondary flex-1" onclick="resetReactionAnim()"><i class="fas fa-redo"></i> إعادة</button>
-</div>
-<div class="mt-3 text-sm" style="color:var(--muted)" id="reactionStatus">
-اضغط "تشغيل" لمشاهدة اصطدام جسيم ألفا بنواة النيتروجين
-</div>
-</div>
-
-<div class="glass p-6 animate-in">
-<h3 class="text-lg font-bold mb-3"><i class="fas fa-question-circle ml-2 accent2-text"></i>ماذا ينتج عن التفاعل؟</h3>
-<p>يختلف الناتج حسب نوع التفاعل:</p>
-<div class="space-y-2 mt-3">
-<div class="flex items-start gap-2">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<span>نواة جديدة مختلفة عن النواة الأصلية</span>
-</div>
-<div class="flex items-start gap-2">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<span>جسيمات واحدة أو أكثر (بروتونات، نيوترونات، جسيمات ألفا...)</span>
-</div>
-<div class="flex items-start gap-2">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<span>طاقة قد تُمتص أو تُتحرر (تُحسب بمعادلة Q)</span>
-</div>
-<div class="flex items-start gap-2">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<span>أشعة جاما في بعض الحالات</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6 animate-in"><h3 class="text-lg font-bold mb-4 accent-text"><i class="fas fa-play-circle ml-2"></i>محاكاة التفاعل النووي</h3><canvas id="reactionCanvas" width="500" height="400" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4"><button class="btn btn-primary flex-1" onclick="startReaction()"><i class="fas fa-play"></i> تشغيل</button><button class="btn btn-secondary flex-1" onclick="resetReaction()"><i class="fas fa-redo"></i> إعادة</button></div><div class="mt-3 text-sm" style="color:var(--muted)" id="reactionMsg">اضغط "تشغيل" لمشاهدة اصطدام جسيم ألفا بنواة النيتروجين</div></div>
+<div class="glass p-6 animate-in"><h3 class="text-lg font-bold mb-3"><i class="fas fa-question-circle ml-2 accent2-text"></i>ماذا ينتج عن التفاعل؟</h3><div class="space-y-2 mt-3"><div class="flex items-start gap-2"><i class="fas fa-check-circle accent-text mt-1"></i><span>نواة جديدة مختلفة عن النواة الأصلية</span></div><div class="flex items-start gap-2"><i class="fas fa-check-circle accent-text mt-1"></i><span>جسيمات واحدة أو أكثر</span></div><div class="flex items-start gap-2"><i class="fas fa-check-circle accent-text mt-1"></i><span>طاقة قد تُمتص أو تُتحرر</span></div><div class="flex items-start gap-2"><i class="fas fa-check-circle accent-text mt-1"></i><span>أشعة جاما في بعض الحالات</span></div></div></div>
+</div></div></div>
 </section>
 
-<!-- =================== القسم 2: حساب الطاقة =================== -->
 <section id="energy" class="py-20 px-4" style="background:linear-gradient(180deg,transparent,rgba(0,255,136,0.02),transparent)">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-blue mb-3">الدرس الثاني</div>
-<h2 class="section-title gradient-text">حساب الطاقة في التفاعلات النووية</h2>
-<p class="accent2-text text-lg">Energy Calculation in Nuclear Reactions</p>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-blue mb-3">الدرس الثاني</div><h2 class="section-title gradient-text">حساب الطاقة في التفاعلات النووية</h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-4 accent-text"><i class="fas fa-calculator ml-2"></i>التسلسل التراكمي لحساب الطاقة</h3>
-<div class="space-y-4">
-<div class="step-box" data-step="1">
-<strong>اكتب معادلة التفاعل:</strong> حدد جميع الجسيمات والنوى الداخلة والخارجة
+<div class="glass p-6"><h3 class="text-xl font-bold mb-4 accent-text"><i class="fas fa-calculator ml-2"></i>التسلسل التراكمي لحساب الطاقة</h3><div class="space-y-4"><div class="step-box" data-step="1"><strong>اكتب معادلة التفاعل</strong></div><div class="step-box" data-step="2"><strong>جدول الكتل:</strong> اكتب كتلة كل جسيم بوحدة <span class="ltr">amu</span></div><div class="step-box" data-step="3"><strong>مجموع كتل الداخلة:</strong><br><span class="ltr formula-box mt-2" style="font-size:.95rem">m_input = m_a + m_X</span></div><div class="step-box" data-step="4"><strong>مجموع كتل الخارجة:</strong><br><span class="ltr formula-box mt-2" style="font-size:.95rem">m_output = m_b + m_Y</span></div><div class="step-box" data-step="5"><strong>فرق الكتلة:</strong><br><span class="ltr formula-box mt-2" style="font-size:.95rem">Δm = m_input - m_output</span></div><div class="step-box" data-step="6"><strong>اضرب في عامل التحويل:</strong><br><span class="ltr formula-box mt-2" style="font-size:.95rem">Q = Δm × 931.5 MeV</span></div><div class="step-box" data-step="7"><strong>حدد نوع التفاعل:</strong><br><span class="tag tag-green">Q > 0 → مُنتج للطاقة <span class="ltr">Exoergic</span></span><br><span class="tag tag-orange">Q < 0 → ماص للطاقة <span class="ltr">Endoergic</span></span></div></div></div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-3 accent2-text"><i class="fas fa-ruler ml-2"></i>وحدة القياس</h3><p>الطاقة: <strong class="accent-text">مليون إلكترون فولت <span class="ltr">(MeV)</span></strong></p><p class="mt-2">الكتل: <strong class="accent2-text">وحدة الكتلة الذرية <span class="ltr">(amu)</span></strong></p><div class="formula-box mt-3"><span class="ltr">1 amu = 931.5 MeV</span></div><div class="analogy-box">تخيّل أنك تحوّل العملات: 1 دولار = 931.5 ريال. نحوّل فرق الكتلة إلى طاقة بالضرب في 931.5</div></div>
 </div>
-<div class="step-box" data-step="2">
-<strong>جدول الكتل:</strong> اكتب كتلة كل جسيم ونواة بوحدة <span class="ltr">amu</span> من جداول الكتل الذرية
-</div>
-<div class="step-box" data-step="3">
-<strong>احسب مجموع كتل المواد الداخلة:</strong><br>
-<span class="ltr formula-box mt-2" style="font-size:.95rem">m_input = m_a + m_X</span>
-</div>
-<div class="step-box" data-step="4">
-<strong>احسب مجموع كتل المواد الخارجة:</strong><br>
-<span class="ltr formula-box mt-2" style="font-size:.95rem">m_output = m_b + m_Y</span>
-</div>
-<div class="step-box" data-step="5">
-<strong>احسب فرق الكتلة (عجز الكتلة):</strong><br>
-<span class="ltr formula-box mt-2" style="font-size:.95rem">Δm = m_input - m_output</span>
-</div>
-<div class="step-box" data-step="6">
-<strong>اضرب في عامل التحويل:</strong><br>
-<span class="ltr formula-box mt-2" style="font-size:.95rem">Q = Δm × 931.5 MeV</span>
-</div>
-<div class="step-box" data-step="7">
-<strong>حدد نوع التفاعل:</strong><br>
-<span class="tag tag-green">Q > 0 → تفاعل مُنتج للطاقة <span class="ltr">Exoergic</span></span><br>
-<span class="tag tag-orange">Q < 0 → تفاعل ماص للطاقة <span class="ltr">Endoergic</span></span>
-</div>
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-3 accent2-text"><i class="fas fa-ruler ml-2"></i>وحدة القياس</h3>
-<p>الطاقة تُحسب بوحدة <strong class="accent-text">مليون إلكترون فولت <span class="ltr">(MeV)</span></strong></p>
-<p class="mt-2">الكتل تُكتب بوحدة <strong class="accent2-text">وحدة الكتلة الذرية <span class="ltr">(amu)</span></strong></p>
-<div class="formula-box mt-3">
-<span class="ltr">1 amu = 931.5 MeV</span>
-</div>
-<div class="analogy-box">
-تخيّل أنك تحوّل العملات: إذا كان لديك 1 دولار وكل دولار يساوي 931.5 ريالاً، فكم ريالاً لديك؟ نفس الفكرة: نحوّل فرق الكتلة (بالـ amu) إلى طاقة (بالـ MeV) بالضرب في 931.5
-</div>
-</div>
-</div>
-
-<!-- الحاسبة التفاعلية -->
 <div class="space-y-6">
-<div class="glass-strong p-6" style="animation:glow-ring 3s infinite">
-<h3 class="text-xl font-bold mb-4 accent3-text"><i class="fas fa-wand-magic-sparkles ml-2"></i>حاسبة الطاقة التفاعلية</h3>
-<p class="text-sm mb-4" style="color:var(--muted)">أدخل الكتل واحسب الطاقة بنفسك!</p>
-<div class="space-y-3">
-<div class="grid grid-cols-2 gap-3">
-<div>
-<label class="text-sm font-bold">كتلة القذيفة (a) <span class="ltr">amu</span></label>
-<input type="number" step="0.0001" id="calcMa" class="input-field mt-1" placeholder="مثال: 1.0087" value="1.0087">
-</div>
-<div>
-<label class="text-sm font-bold">كتلة النواة الهدف (X) <span class="ltr">amu</span></label>
-<input type="number" step="0.0001" id="calcMX" class="input-field mt-1" placeholder="مثال: 10.0103" value="10.0103">
-</div>
-</div>
-<div class="hud-line"></div>
-<div class="grid grid-cols-2 gap-3">
-<div>
-<label class="text-sm font-bold">كتلة الجسيم الناتج (b) <span class="ltr">amu</span></label>
-<input type="number" step="0.0001" id="calcMb" class="input-field mt-1" placeholder="مثال: 4.0015" value="4.0015">
-</div>
-<div>
-<label class="text-sm font-bold">كتلة النواة الناتجة (Y) <span class="ltr">amu</span></label>
-<input type="number" step="0.0001" id="calcMY" class="input-field mt-1" placeholder="مثال: 7.0144" value="7.0144">
-</div>
-</div>
-<button class="btn btn-primary w-full mt-3" onclick="calculateQ()"><i class="fas fa-calculator"></i> احسب الطاقة</button>
-</div>
-<div id="calcResult" class="mt-4 hidden">
-<div class="glass p-4 space-y-2">
-<div class="flex justify-between"><span>مجموع كتل الداخلة:</span><strong class="ltr" id="resMin"></strong></div>
-<div class="flex justify-between"><span>مجموع كتل الخارجة:</span><strong class="ltr" id="resMout"></strong></div>
-<div class="flex justify-between"><span>فرق الكتلة (Δm):</span><strong class="ltr" id="resDm"></strong></div>
-<div class="hud-line"></div>
-<div class="flex justify-between text-lg"><span>الطاقة (Q):</span><strong class="accent-text ltr" id="resQ"></strong></div>
-<div class="text-center mt-2" id="resType"></div>
-</div>
-</div>
-</div>
-
-<!-- مثال محلول -->
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-3 accent-text"><i class="fas fa-pencil ml-2"></i>مثال تفاعلي محلول</h3>
-<div class="formula-box">
-<span class="ltr"><sup>1</sup><sub>0</sub>n + <sup>10</sup><sub>5</sub>B → <sup>7</sup><sub>3</sub>Li + <sup>4</sup><sub>2</sub>He</span>
-</div>
-<div class="mt-4">
-<table class="w-full text-sm">
-<thead><tr class="border-b" style="border-color:var(--border)">
-<th class="p-2 text-right">الجسيم/النواة</th>
-<th class="p-2" style="color:var(--accent)"><span class="ltr"><sup>1</sup><sub>0</sub>n</span></th>
-<th class="p-2" style="color:var(--accent)"><span class="ltr"><sup>10</sup><sub>5</sub>B</span></th>
-<th class="p-2" style="color:var(--accent3)"><span class="ltr"><sup>7</sup><sub>3</sub>Li</span></th>
-<th class="p-2" style="color:var(--accent3)"><span class="ltr"><sup>4</sup><sub>2</sub>He</span></th>
-</tr></thead>
-<tbody><tr class="border-b" style="border-color:var(--border)">
-<td class="p-2">الكتلة <span class="ltr">amu</span></td>
-<td class="p-2 ltr">1.0087</td>
-<td class="p-2 ltr">10.0103</td>
-<td class="p-2 ltr">7.0144</td>
-<td class="p-2 ltr">4.0015</td>
-</tr></tbody>
-</table>
-</div>
-<div class="space-y-2 mt-4">
-<div class="step-box" data-step="1">
-<span class="ltr">m_input = 1.0087 + 10.0103 = 11.0190 amu</span>
-</div>
-<div class="step-box" data-step="2">
-<span class="ltr">m_output = 7.0144 + 4.0015 = 11.0159 amu</span>
-</div>
-<div class="step-box" data-step="3">
-<span class="ltr">Δm = 11.0190 - 11.0159 = 0.0031 amu</span>
-</div>
-<div class="step-box" data-step="4">
-<span class="ltr">Q = 0.0031 × 931.5 = <strong class="accent-text">2.88 MeV</strong></span>
-</div>
-</div>
-<div class="mt-3 p-3 rounded-lg" style="background:rgba(0,255,136,0.08)">
-<span class="tag tag-green">Q > 0</span> التفاعل <strong>مُنتج للطاقة</strong> لأن كتلة المواد الداخلة أكبر من كتلة المواد الخارجة، والفرق تحوّل لطاقة
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="glass-strong p-6" style="animation:glow-ring 3s infinite"><h3 class="text-xl font-bold mb-4 accent3-text"><i class="fas fa-wand-magic-sparkles ml-2"></i>حاسبة الطاقة التفاعلية</h3><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-sm font-bold">كتلة القذيفة (a) <span class="ltr">amu</span></label><input type="number" step="0.0001" id="calcMa" class="input-field mt-1" value="1.0087"></div><div><label class="text-sm font-bold">كتلة النواة الهدف (X) <span class="ltr">amu</span></label><input type="number" step="0.0001" id="calcMX" class="input-field mt-1" value="10.0103"></div></div><div class="hud-line"></div><div class="grid grid-cols-2 gap-3"><div><label class="text-sm font-bold">كتلة الجسيم الناتج (b) <span class="ltr">amu</span></label><input type="number" step="0.0001" id="calcMb" class="input-field mt-1" value="4.0015"></div><div><label class="text-sm font-bold">كتلة النواة الناتجة (Y) <span class="ltr">amu</span></label><input type="number" step="0.0001" id="calcMY" class="input-field mt-1" value="7.0144"></div></div><button class="btn btn-primary w-full mt-3" onclick="calcQ()"><i class="fas fa-calculator"></i> احسب الطاقة</button></div><div id="calcResult" class="mt-4 hidden"></div></div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-3 accent-text"><i class="fas fa-pencil ml-2"></i>مثال تفاعلي محلول</h3><div class="formula-box"><span class="ltr"><sup>1</sup><sub>0</sub>n + <sup>10</sup><sub>5</sub>B → <sup>7</sup><sub>3</sub>Li + <sup>4</sup><sub>2</sub>He</span></div><div class="mt-4"><table class="w-full text-sm"><thead><tr class="border-b" style="border-color:var(--border)"><th class="p-2 text-right">الجسيم</th><th class="p-2" style="color:var(--accent)"><span class="ltr"><sup>1</sup><sub>0</sub>n</span></th><th class="p-2" style="color:var(--accent)"><span class="ltr"><sup>10</sup><sub>5</sub>B</span></th><th class="p-2" style="color:var(--accent3)"><span class="ltr"><sup>7</sup><sub>3</sub>Li</span></th><th class="p-2" style="color:var(--accent3)"><span class="ltr"><sup>4</sup><sub>2</sub>He</span></th></tr></thead><tbody><tr class="border-b" style="border-color:var(--border)"><td class="p-2">الكتلة <span class="ltr">amu</span></td><td class="p-2 ltr">1.0087</td><td class="p-2 ltr">10.0103</td><td class="p-2 ltr">7.0144</td><td class="p-2 ltr">4.0015</td></tr></tbody></table></div><div class="space-y-2 mt-4"><div class="step-box" data-step="1"><span class="ltr">m_in = 1.0087 + 10.0103 = 11.0190 amu</span></div><div class="step-box" data-step="2"><span class="ltr">m_out = 7.0144 + 4.0015 = 11.0159 amu</span></div><div class="step-box" data-step="3"><span class="ltr">Δm = 11.0190 - 11.0159 = 0.0031 amu</span></div><div class="step-box" data-step="4"><span class="ltr">Q = 0.0031 × 931.5 = <strong class="accent-text">2.88 MeV</strong></span></div></div><div class="mt-3 p-3 rounded-lg" style="background:rgba(0,255,136,0.08)"><span class="tag tag-green">Q > 0</span> التفاعل <strong>مُنتج للطاقة</strong></div></div>
+</div></div></div>
 </section>
 
-<!-- =================== القسم 3: الانشطار النووي =================== -->
 <section id="fission" class="py-20 px-4">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-orange mb-3">الدرس الثالث</div>
-<h2 class="section-title gradient-text">الانشطار النووي <span class="text-xl font-light accent3-text">Nuclear Fission</span></h2>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-orange mb-3">الدرس الثالث</div><h2 class="section-title gradient-text">الانشطار النووي <span class="text-xl font-light accent3-text">Nuclear Fission</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-burst ml-2"></i>ما هو الانشطار النووي؟</h3>
-<p>الانشطار النووي هو <strong>انقسام نواة ثقيلة</strong> لنواتين أو أكثر أصغر في الكتلة، عند قذفها بنيوترون بطيء.</p>
-<div class="analogy-box">
-تخيّل كرة كبيرة من العجين (النواة الثقيلة) وترمي عليها حصاة صغيرة (النيوترون). الكرة تتشقق وتنقسم إلى كرتين أصغر مع إطلاق طاقة وقطع صغيرة تطير في كل اتجاه (النيوترونات المنبعثة).
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-burst ml-2"></i>ما هو الانشطار النووي؟</h3><p>انقسام <strong>نواة ثقيلة</strong> لنواتين أو أكثر أصغر، عند قذفها بنيوترون بطيء.</p><div class="analogy-box">تخيّل كرة عجين كبيرة وترمي عليها حصاة. تتشقق وتنقسم لكرتين مع إطلاق طاقة وقطع تطير في كل اتجاه!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-superscript ml-2"></i>المعادلة النووية</h3><div class="formula-box" style="font-size:1.2rem"><span class="ltr"><sup>1</sup><sub>0</sub>n + <sup>235</sup><sub>92</sub>U → <sup>236</sup><sub>92</sub>U* → <sup>141</sup><sub>56</sub>Ba + <sup>92</sup><sub>36</sub>Kr + 3<sup>1</sup><sub>0</sub>n</span></div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-bolt ml-2"></i>الطاقة الناتجة</h3><div class="grid grid-cols-2 gap-4"><div class="glass p-4 text-center"><div class="counter accent-text">200</div><div class="text-sm" style="color:var(--muted)">MeV لكل نواة U-235</div></div><div class="glass p-4 text-center"><div class="counter accent2-text">3.2×10<sup>11</sup></div><div class="text-sm" style="color:var(--muted)">J من 1 kg</div></div></div><div class="analogy-box mt-3">تكفي لتزويد <strong>45,000 منزل</strong> طاقة كهربائية لمدة شهر!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-stairs ml-2"></i>تسلسل حساب الطاقة</h3><div class="space-y-3"><div class="step-box" data-step="1"><strong>اكتب المعادلة</strong> وحدد النوى والجسيمات</div><div class="step-box" data-step="2"><strong>استرجع الكتل</strong> من جدول الكتل بوحدة <span class="ltr">amu</span></div><div class="step-box" data-step="3"><strong>اجمع كتل الداخلة:</strong> <span class="ltr formula-box mt-1" style="font-size:.9rem">m_in = m(n) + m(U-235)</span></div><div class="step-box" data-step="4"><strong>اجمع كتل الخارجة:</strong> <span class="ltr formula-box mt-1" style="font-size:.9rem">m_out = m(Ba) + m(Kr) + 3m(n)</span></div><div class="step-box" data-step="5"><strong>عجز الكتلة:</strong> <span class="ltr formula-box mt-1" style="font-size:.9rem">Δm = m_in - m_out</span></div><div class="step-box" data-step="6"><strong>قانون أينشتاين:</strong> <span class="formula-box mt-1" style="font-size:1rem">E = Δm × c² → Q = Δm × 931.5 MeV</span></div></div></div>
 </div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-superscript ml-2"></i>المعادلة النووية للانشطار</h3>
-<div class="formula-box" style="font-size:1.2rem">
-<span class="ltr"><sup>1</sup><sub>0</sub>n + <sup>235</sup><sub>92</sub>U → <sup>236</sup><sub>92</sub>U* → <sup>141</sup><sub>56</sub>Ba + <sup>92</sup><sub>36</sub>Kr + 3<sup>1</sup><sub>0</sub>n</span>
-</div>
-<div class="mt-3 text-sm" style="color:var(--muted)">
-<span class="ltr"><sup>236</sup><sub>92</sub>U*</span> تمثّل النواة المركبة المثارة في هذا التفاعل
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-bolt ml-2"></i>الطاقة الناتجة</h3>
-<div class="grid grid-cols-2 gap-4">
-<div class="glass p-4 text-center">
-<div class="counter accent-text">200</div>
-<div class="text-sm" style="color:var(--muted)">MeV لكل نواة <span class="ltr">U-235</span></div>
-</div>
-<div class="glass p-4 text-center">
-<div class="counter accent2-text">3.2×10<sup>11</sup></div>
-<div class="text-sm" style="color:var(--muted)">J من انشطار 1 kg</div>
-</div>
-</div>
-<div class="analogy-box mt-3">
-هذه الطاقة تكفي لتزويد نحو <strong>45,000 منزل</strong> طاقة كهربائية لمدة شهر! تخيّل أن كيلوغراماً واحداً من اليورانيوم يُنتج طاقة تعادل حرق ملايين الكيلوغرامات من الفحم.
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-stairs ml-2"></i>التسلسل المرتب لحساب الطاقة</h3>
-<div class="space-y-3">
-<div class="step-box" data-step="1">
-<strong>اذكر معادلة الانشطار</strong> وحدد جميع النوى والجسيمات
-</div>
-<div class="step-box" data-step="2">
-<strong>استرجع كتل النوى</strong> من جدول الكتل الذرية بوحدة <span class="ltr">amu</span>
-</div>
-<div class="step-box" data-step="3">
-<strong>احسب مجموع كتل المواد الداخلة:</strong><br>
-<span class="ltr formula-box mt-1" style="font-size:.9rem">m_in = m(n) + m(U-235)</span>
-</div>
-<div class="step-box" data-step="4">
-<strong>احسب مجموع كتل المواد الخارجة:</strong><br>
-<span class="ltr formula-box mt-1" style="font-size:.9rem">m_out = m(Ba-141) + m(Kr-92) + 3×m(n)</span>
-</div>
-<div class="step-box" data-step="5">
-<strong>احسب عجز الكتلة:</strong><br>
-<span class="ltr formula-box mt-1" style="font-size:.9rem">Δm = m_in - m_out</span>
-</div>
-<div class="step-box" data-step="6">
-<strong>استخدم قانون أينشتاين:</strong><br>
-<span class="formula-box mt-1" style="font-size:1.1rem">E = Δm × c²</span>
-<p class="text-sm mt-2" style="color:var(--muted)">حيث <span class="ltr">c</span> سرعة الضوء. عملياً نستخدم العلاقة المبسطة:</p>
-<span class="ltr formula-box mt-2" style="font-size:1rem;color:var(--accent)">Q = Δm × 931.5 MeV</span>
-<p class="text-sm mt-2" style="color:var(--muted)">هذه العلاقة ناتجة من: <span class="ltr">1 amu × c² = 931.5 MeV</span></p>
-</div>
-</div>
-</div>
-</div>
-
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-4 accent3-text"><i class="fas fa-play-circle ml-2"></i>محاكاة الانشطار النووي</h3>
-<canvas id="fissionCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4">
-<button class="btn btn-danger flex-1" onclick="startFissionAnim()"><i class="fas fa-explosion"></i> انشطار!</button>
-<button class="btn btn-secondary flex-1" onclick="resetFissionAnim()"><i class="fas fa-redo"></i> إعادة</button>
-</div>
-<div id="fissionStatus" class="mt-3 text-sm" style="color:var(--muted)">
-اضغط "انشطار!" لمشاهدة انشطار نواة اليورانيوم-235
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-3"><i class="fas fa-table ml-2 accent2-text"></i>جدول طاقة الربط النووية</h3>
-<table class="w-full text-sm">
-<thead><tr class="border-b" style="border-color:var(--border)">
-<th class="p-2 text-right">النواة</th>
-<th class="p-2 text-right">BE/A <span class="ltr">(MeV)</span></th>
-</tr></thead>
-<tbody>
-<tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>235</sup><sub>92</sub>U</td><td class="p-2 accent3-text">7.5909</td></tr>
-<tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>141</sup><sub>56</sub>Ba</td><td class="p-2 accent-text">8.3261</td></tr>
-<tr><td class="p-2 ltr"><sup>92</sup><sub>36</sub>Kr</td><td class="p-2 accent2-text">8.5127</td></tr>
-</tbody>
-</table>
-<p class="text-sm mt-3" style="color:var(--muted)">النوى الناتجة تمتلك طاقة ربط لكل نيوكليون <strong>أكبر</strong> من النواة المنشطرة → هذا يعني أنها <strong>أكثر استقراراً</strong> والفرق يتحول لطاقة</p>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-4 accent3-text"><i class="fas fa-play-circle ml-2"></i>محاكاة الانشطار النووي</h3><canvas id="fissionCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4"><button class="btn btn-danger flex-1" onclick="startFission()"><i class="fas fa-explosion"></i> انشطار!</button><button class="btn btn-secondary flex-1" onclick="resetFission()"><i class="fas fa-redo"></i> إعادة</button></div><div id="fissionMsg" class="mt-3 text-sm" style="color:var(--muted)">اضغط "انشطار!" لمشاهدة انشطار نواة U-235</div></div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-3"><i class="fas fa-table ml-2 accent2-text"></i>جدول طاقة الربط</h3><table class="w-full text-sm"><thead><tr class="border-b" style="border-color:var(--border)"><th class="p-2 text-right">النواة</th><th class="p-2">BE/A (MeV)</th></tr></thead><tbody><tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>235</sup><sub>92</sub>U</td><td class="p-2 accent3-text">7.5909</td></tr><tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>141</sup><sub>56</sub>Ba</td><td class="p-2 accent-text">8.3261</td></tr><tr><td class="p-2 ltr"><sup>92</sup><sub>36</sub>Kr</td><td class="p-2 accent2-text">8.5127</td></tr></tbody></table></div>
+</div></div></div>
 </section>
 
-<!-- =================== القسم 4: التفاعل المتسلسل =================== -->
 <section id="chain" class="py-20 px-4" style="background:linear-gradient(180deg,transparent,rgba(255,107,53,0.02),transparent)">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-orange mb-3">الدرس الرابع</div>
-<h2 class="section-title gradient-text">التفاعل المتسلسل <span class="text-xl font-light accent3-text">Chain Reaction</span></h2>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-orange mb-3">الدرس الرابع</div><h2 class="section-title gradient-text">التفاعل المتسلسل <span class="text-xl font-light accent3-text">Chain Reaction</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-link ml-2"></i>ما هو التفاعل المتسلسل؟</h3>
-<p>عند انشطار نواة <span class="ltr">U-235</span> ينتج <strong>3 نيوترونات</strong>. هذه النيوترونات قد تسقط على 3 نوى أخرى فتنشطر وتنتج 9 نيوترونات، ثم 27، وهكذا بشكل متتابع ومتسارع.</p>
-<div class="analogy-box">
-تخيّل صفوفاً من الدومينو. عندما تسقط القطعة الأولى، تسقط الثانية التي تُسقط الثالثتين، وهكذا... رد الفعل يتضاعف حتى ينتج انفجاراً هائلاً!
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent3-text"><i class="fas fa-link ml-2"></i>ما هو التفاعل المتسلسل؟</h3><p>انشطار نواة U-235 ينتج 3 نيوترونات → تشطر 3 نوى → تنتج 9 نيوترونات → 27 → وهكذا متسارعاً.</p><div class="analogy-box">تخيّل صفوف الدومينو: قطعة تسقط الثانية التي تُسقط الثالثتين، رد الفعل يتضاعف!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-flask-vial ml-2"></i>تخصيب اليورانيوم <span class="ltr">Uranium Enrichment</span></h3><div class="space-y-2 mt-3"><div class="flex items-center gap-3"><div class="progress-bar flex-1"><div class="progress-fill" style="width:99.27%"></div></div><span class="text-sm ltr">U-238: 99.27%</span></div><div class="flex items-center gap-3"><div class="progress-bar flex-1"><div class="progress-fill" style="width:0.71%"></div></div><span class="text-sm ltr">U-235: 0.71%</span></div></div><p class="mt-3">نسبة U-235 قليلة جداً. يجب <strong>معالجة اليورانيوم لزيادة النسبة</strong> = تخصيب اليورانيوم.</p><div class="analogy-box">مثل تصفية القهوة: تزيل الشوائب وتزيد نسبة البن الجيد!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-weight-hanging ml-2"></i>الكتلة الحرجة <span class="ltr">Critical Mass</span></h3><p><strong>الحد الأدنى من كتلة الوقود</strong> لاستمرار التفاعل المتسلسل.</p><ul class="mt-3 space-y-2"><li><i class="fas fa-arrow-left accent-text ml-2"></i>أقل من الحرجة → يتوقف</li><li><i class="fas fa-arrow-left accent2-text ml-2"></i>تساوي الحرجة → ثابت</li><li><i class="fas fa-arrow-left accent3-text ml-2"></i>أكبر من الحرجة → يتسارع خطيراً</li></ul><div class="analogy-box">نار المخيم: خشب قليل = تطفي. كمية مناسبة = تستمر. كومة ضخمة = انفجار!</div></div>
 </div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-flask-vial ml-2"></i>تخصيب اليورانيوم <span class="ltr">Uranium Enrichment</span></h3>
-<p>اليورانيوم الخام يحتوي:</p>
-<div class="space-y-2 mt-3">
-<div class="flex items-center gap-3">
-<div class="progress-bar flex-1"><div class="progress-fill" style="width:99.27%"></div></div>
-<span class="text-sm ltr">U-238: 99.27%</span>
-</div>
-<div class="flex items-center gap-3">
-<div class="progress-bar flex-1"><div class="progress-fill" style="width:0.71%"></div></div>
-<span class="text-sm ltr">U-235: 0.71%</span>
-</div>
-</div>
-<p class="mt-3">نسبة <span class="ltr">U-235</span> قليلة جداً ولا تكفي للتفاعل المتسلسل. لذا يتم <strong>معالجة اليورانيوم الخام لزيادة نسبة U-235</strong> وتُسمى هذه العملية <strong class="accent-text">تخصيب اليورانيوم</strong>.</p>
-<div class="analogy-box">
-تخيّل أنك تصنع قهوة والبن الخام يحتوي 0.71% فقط من البن المطلوب. يجب أن تُخلّص البن من الشوائب وتزيد نسبة البن الجيد لتتمكن من عمل قهوة قوية!
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-weight-hanging ml-2"></i>الكتلة الحرجة <span class="ltr">Critical Mass</span></h3>
-<p>هي <strong>الحد الأدنى من كتلة الوقود النووي</strong> التي تضمن استمرار حدوث التفاعل المتسلسل.</p>
-<ul class="mt-3 space-y-2">
-<li><i class="fas fa-arrow-left accent-text ml-2"></i>إذا كانت الكتلة <strong>أقل من الحرجة</strong>: النيوترونات تهرب دون إحداث اشطار كافية → التفاعل يتوقف</li>
-<li><i class="fas fa-arrow-left accent2-text ml-2"></i>إذا كانت الكتلة <strong>تساوي الحرجة</strong>: التفاعل يستمر بمعدل ثابت</li>
-<li><i class="fas fa-arrow-left accent3-text ml-2"></i>إذا كانت الكتلة <strong>أكبر من الحرجة</strong>: التفاعل يتسارع بشكل خطير</li>
-</ul>
-<div class="analogy-box">
-تخيّل نار المخيم: إذا وضعت قطعة خشب صغيرة جداً تطفأ. إذا وضعت كمية مناسبة تستمر النار. إذا وضعت كومة ضخمة تنفجر!
-</div>
-</div>
-</div>
-
-<!-- محاكاة التفاعل المتسلسل -->
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-4 accent3-text"><i class="fas fa-play-circle ml-2"></i>محاكاة التفاعل المتسلسل</h3>
-<canvas id="chainCanvas" width="500" height="500" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4 flex-wrap">
-<button class="btn btn-danger flex-1" onclick="startChainAnim()"><i class="fas fa-explosion"></i> بدء التفاعل</button>
-<button class="btn btn-secondary flex-1" onclick="resetChainAnim()"><i class="fas fa-redo"></i> إعادة</button>
-</div>
-<div class="grid grid-cols-3 gap-3 mt-4">
-<div class="glass p-3 text-center">
-<div class="text-2xl font-black accent-text" id="chainGen">0</div>
-<div class="text-xs" style="color:var(--muted)">الجيل</div>
-</div>
-<div class="glass p-3 text-center">
-<div class="text-2xl font-black accent2-text" id="chainCount">0</div>
-<div class="text-xs" style="color:var(--muted)">عدد الاشطارات</div>
-</div>
-<div class="glass p-3 text-center">
-<div class="text-2xl font-black accent3-text" id="chainNeutrons">0</div>
-<div class="text-xs" style="color:var(--muted)">النيوترونات</div>
-</div>
-</div>
-<div id="chainStatus" class="mt-3 text-sm" style="color:var(--muted)">
-اضغط "بدء التفاعل" لمشاهدة التفاعل المتسلسل يتضاعف
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-4 accent3-text"><i class="fas fa-play-circle ml-2"></i>محاكاة التفاعل المتسلسل</h3><canvas id="chainCanvas" width="500" height="500" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4 flex-wrap"><button class="btn btn-danger flex-1" onclick="startChain()"><i class="fas fa-explosion"></i> بدء</button><button class="btn btn-secondary flex-1" onclick="resetChain()"><i class="fas fa-redo"></i> إعادة</button></div><div class="grid grid-cols-3 gap-3 mt-4"><div class="glass p-3 text-center"><div class="text-2xl font-black accent-text" id="chainGen">0</div><div class="text-xs" style="color:var(--muted)">الجيل</div></div><div class="glass p-3 text-center"><div class="text-2xl font-black accent2-text" id="chainCnt">0</div><div class="text-xs" style="color:var(--muted)">الاشطارات</div></div><div class="glass p-3 text-center"><div class="text-2xl font-black accent3-text" id="chainNeu">0</div><div class="text-xs" style="color:var(--muted)">النيوترونات</div></div></div><div id="chainMsg" class="mt-3 text-sm" style="color:var(--muted)">اضغط "بدء" لمشاهدة التفاعل المتسلسل</div></div>
+</div></div></div>
 </section>
 
-<!-- =================== القسم 5: الاندماج النووي =================== -->
 <section id="fusion" class="py-20 px-4">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-blue mb-3">الدرس الخامس</div>
-<h2 class="section-title gradient-text">الاندماج النووي <span class="text-xl font-light accent2-text">Nuclear Fusion</span></h2>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-blue mb-3">الدرس الخامس</div><h2 class="section-title gradient-text">الاندماج النووي <span class="text-xl font-light accent2-text">Nuclear Fusion</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-circle-plus ml-2"></i>ما هو الاندماج النووي؟</h3>
-<p>تفاعل تندمج فيه <strong>نواتان خفيفتان</strong> لتكوين نواة أكبر، تكون كتلتها أقل من مجموع كتلتَي النواتين المندمجتين، ولها طاقة ربط لكل نيوكليون أكبر.</p>
-<div class="analogy-box">
-تخيّل كرتين صغيرتين من المعجون (نواتان خفيفتان) تضغطهما بكل قوتك حتى تلتصقا وتصبحا كرة واحدة (نواة أكبر). أثناء الضغط الشديد يطير بعض المعجون (يُفقد كتلة) ويُتحول لطاقة هائلة!
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-circle-plus ml-2"></i>ما هو الاندماج النووي؟</h3><p>تفاعل تندمج فيه <strong>نواتان خفيفتان</strong> لتكوين نواة أكبر، كتلتها أقل من مجموع الكتلتين، وطاقة ربطها أكبر.</p><div class="analogy-box">كرتان صغيرتان من المعجون تضغطهما بقوة حتى تلتصقا. أثناء الضغط يطير بعض المعجون (كتلة تتحول لطاقة)!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-temperature-high ml-2"></i>أهمية الحرارة العالية</h3><p>لماذا نحتاج ~<strong class="accent3-text">10<sup>8</sup> K</strong>؟</p><div class="space-y-3 mt-3"><div class="step-box" data-step="1">النواتان تحملان <strong>شحنة موجبة</strong> → تتنافر</div><div class="step-box" data-step="2">الحرارة العالية تمنح <strong>طاقة حركية هائلة</strong></div><div class="step-box" data-step="3">تتغلب على <strong>التنافر الكهربائي</strong></div><div class="step-box" data-step="4"><strong>القوة النووية</strong> تبدأ وتدمج النوى</div></div><div class="analogy-box">مغناطيسان متنافران: دفعهما ببطء يرتدان. أطلقهما بسرعة صاروخية يلتحقان!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-flask ml-2"></i>أمثلة على الاندماج</h3><div class="space-y-3"><div class="glass p-3"><div class="text-sm font-bold accent-text mb-1">ديوتيريوم + تريتيوم:</div><div class="formula-box" style="font-size:1.1rem"><span class="ltr"><sup>2</sup><sub>1</sub>H + <sup>3</sup><sub>1</sub>H → <sup>4</sup><sub>2</sub>He + <sup>1</sup><sub>0</sub>n &nbsp; Q = 17.6 MeV</span></div></div><div class="glass p-3"><div class="text-sm font-bold accent2-text mb-1">بروتون + بروتون:</div><div class="formula-box" style="font-size:1rem"><span class="ltr"><sup>1</sup><sub>1</sub>H + <sup>1</sup><sub>1</sub>H → <sup>2</sup><sub>1</sub>H + <sup>0</sup><sub>1</sub>e<sup>+</sup> + ν</span></div></div><div class="glass p-3"><div class="text-sm font-bold accent3-text mb-1">ديوتيريوم + بروتون:</div><div class="formula-box" style="font-size:1rem"><span class="ltr"><sup>1</sup><sub>1</sub>H + <sup>2</sup><sub>1</sub>H → <sup>3</sup><sub>2</sub>He + γ</span></div></div></div><p class="mt-3 text-sm" style="color:var(--muted)"><i class="fas fa-sun accent3-text ml-1"></i> مصدر طاقة <strong>الشمس والنجوم</strong>!</p></div>
 </div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-temperature-high ml-2"></i>أهمية درجة الحرارة العالية</h3>
-<p>لماذا نحتاج درجات حرارة عالية جداً (نحو <strong class="accent3-text">10<sup>8</sup> K</strong>)؟</p>
-<div class="space-y-3 mt-3">
-<div class="step-box" data-step="1">
-النواتان خفيفتان تحملان <strong>شحنة موجبة</strong> → تتنافر كهربائياً
-</div>
-<div class="step-box" data-step="2">
-درجة الحرارة العالية تمنح النوى <strong>طاقة حركية هائلة</strong>
-</div>
-<div class="step-box" data-step="3">
-هذه الطاقة تمكّنها من <strong>التغلب على قوة التنافر الكهربائي</strong>
-</div>
-<div class="step-box" data-step="4">
-عند اقتراب كافٍ تبدأ <strong>القوة النووية</strong> (القوية) بالتأثير وتدمج النوى
-</div>
-</div>
-<div class="analogy-box">
-تخيّل مغناطيسين متقابلين بنفس القطب (يتنافران). لو دفعتهما بيدك ببطء سيرتدان. لكن لو أطلقتهما بسرعة صاروخية سيتجاوزان التنافر ويلتصقان! الحرارة العالية = السرعة الصاروخية.
-</div>
-<p class="mt-3 text-sm" style="color:var(--muted)">لذلك تُسمى هذه التفاعلات <strong class="accent2-text">التفاعلات النووية الحرارية <span class="ltr">Thermonuclear Fusion</span></strong></p>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-flask ml-2"></i>أمثلة على تفاعلات الاندماج</h3>
-<div class="space-y-3">
-<div class="glass p-3">
-<div class="text-sm font-bold accent-text mb-1">الاندماج ديوتيريوم - تريتيوم (الأكثر أهمية):</div>
-<div class="formula-box" style="font-size:1.1rem">
-<span class="ltr"><sup>2</sup><sub>1</sub>H + <sup>3</sup><sub>1</sub>H → <sup>4</sup><sub>2</sub>He + <sup>1</sup><sub>0</sub>n &nbsp; Q = 17.6 MeV</span>
-</div>
-</div>
-<div class="glass p-3">
-<div class="text-sm font-bold accent2-text mb-1">اندماج بروتون - بروتون:</div>
-<div class="formula-box" style="font-size:1rem">
-<span class="ltr"><sup>1</sup><sub>1</sub>H + <sup>1</sup><sub>1</sub>H → <sup>2</sup><sub>1</sub>H + <sup>0</sup><sub>1</sub>e<sup>+</sup> + ν</span>
-</div>
-</div>
-<div class="glass p-3">
-<div class="text-sm font-bold accent3-text mb-1">اندماج ديوتيريوم - بروتون:</div>
-<div class="formula-box" style="font-size:1rem">
-<span class="ltr"><sup>1</sup><sub>1</sub>H + <sup>2</sup><sub>1</sub>H → <sup>3</sup><sub>2</sub>He + γ</span>
-</div>
-</div>
-</div>
-<p class="mt-3 text-sm" style="color:var(--muted)"><i class="fas fa-sun accent3-text ml-1"></i> هذه التفاعلات هي مصدر طاقة <strong>الشمس والنجوم</strong>!</p>
-</div>
-</div>
-
-<!-- محاكاة الاندماج -->
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-4 accent2-text"><i class="fas fa-play-circle ml-2"></i>محاكاة الاندماج النووي ثلاثي الأبعاد</h3>
-<canvas id="fusionCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4">
-<button class="btn btn-primary flex-1" onclick="startFusionAnim()"><i class="fas fa-sun"></i> اندماج!</button>
-<button class="btn btn-secondary flex-1" onclick="resetFusionAnim()"><i class="fas fa-redo"></i> إعادة</button>
-</div>
-<div class="mt-3">
-<label class="text-sm font-bold">درجة الحرارة:</label>
-<input type="range" id="fusionTemp" min="1" max="100" value="70" class="w-full mt-1" oninput="updateFusionTemp(this.value)">
-<div class="flex justify-between text-xs" style="color:var(--muted)">
-<span>منخفضة</span>
-<span class="accent-text ltr" id="fusionTempVal">7.0×10<sup>7</sup> K</span>
-<span>عالية جداً</span>
-</div>
-</div>
-<div id="fusionStatus" class="mt-3 text-sm" style="color:var(--muted)">
-اضغط "اندماج!" مع ضبط الحرارة لمشاهدة الاندماج
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-3"><i class="fas fa-table ml-2 accent2-text"></i>جدول طاقة الربط (للاندماج)</h3>
-<table class="w-full text-sm">
-<thead><tr class="border-b" style="border-color:var(--border)">
-<th class="p-2 text-right">النواة</th>
-<th class="p-2 text-right">BE/A <span class="ltr">(MeV)</span></th>
-</tr></thead>
-<tbody>
-<tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>2</sup><sub>1</sub>H (ديوتيريوم)</td><td class="p-2 accent3-text">1.11</td></tr>
-<tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>3</sup><sub>1</sub>H (تريتيوم)</td><td class="p-2 accent3-text">2.83</td></tr>
-<tr><td class="p-2 ltr"><sup>4</sup><sub>2</sub>He (هيليوم)</td><td class="p-2 accent-text">7.07</td></tr>
-</tbody>
-</table>
-<p class="text-sm mt-3" style="color:var(--muted)">طاقة ربط <span class="ltr">He-4</span> (7.07) أكبر بكثير من <span class="ltr">H-2</span> (1.11) و <span class="ltr">H-3</span> (2.83) → النواة الناتجة أكثر استقراراً → يتحرر فرق كبير من الطاقة</p>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-4 accent2-text"><i class="fas fa-play-circle ml-2"></i>محاكاة الاندماج النووي</h3><canvas id="fusionCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4"><button class="btn btn-primary flex-1" onclick="startFusion()"><i class="fas fa-sun"></i> اندماج!</button><button class="btn btn-secondary flex-1" onclick="resetFusion()"><i class="fas fa-redo"></i> إعادة</button></div><div class="mt-3"><label class="text-sm font-bold">درجة الحرارة:</label><input type="range" id="fusionTemp" min="1" max="100" value="70" class="w-full mt-1" oninput="document.getElementById('fusionTempVal').innerHTML=(this.value/100*1.5e8).toExponential(1)+' K'"><div class="flex justify-between text-xs" style="color:var(--muted)"><span>منخفضة</span><span class="accent-text ltr" id="fusionTempVal">1.1×10<sup>8</sup> K</span><span>عالية جداً</span></div></div><div id="fusionMsg" class="mt-3 text-sm" style="color:var(--muted)">اضغط "اندماج!" مع ضبط الحرارة</div></div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-3"><i class="fas fa-table ml-2 accent2-text"></i>جدول طاقة الربط</h3><table class="w-full text-sm"><thead><tr class="border-b" style="border-color:var(--border)"><th class="p-2 text-right">النواة</th><th class="p-2">BE/A (MeV)</th></tr></thead><tbody><tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>2</sup><sub>1</sub>H</td><td class="p-2 accent3-text">1.11</td></tr><tr class="border-b" style="border-color:var(--border)"><td class="p-2 ltr"><sup>3</sup><sub>1</sub>H</td><td class="p-2 accent3-text">2.83</td></tr><tr><td class="p-2 ltr"><sup>4</sup><sub>2</sub>He</td><td class="p-2 accent-text">7.07</td></tr></tbody></table></div>
+</div></div></div>
 </section>
 
-<!-- =================== القسم 6: المفاعل النووي =================== -->
 <section id="reactor" class="py-20 px-4" style="background:linear-gradient(180deg,transparent,rgba(0,212,255,0.02),transparent)">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-blue mb-3">الدرس السادس</div>
-<h2 class="section-title gradient-text">المفاعل النووي <span class="text-xl font-light accent2-text">Nuclear Reactor</span></h2>
-<p class="accent2-text">مفاعل الماء المضغوط <span class="ltr">Pressurized Water Reactor (PWR)</span></p>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-blue mb-3">الدرس السادس</div><h2 class="section-title gradient-text">المفاعل النووي <span class="text-xl font-light accent2-text">Nuclear Reactor (PWR)</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-5 gap-8">
-<!-- أجزاء المفاعل -->
 <div class="lg:col-span-2 space-y-4">
-<h3 class="text-lg font-bold accent-text mb-2"><i class="fas fa-puzzle-piece ml-2"></i>أجزاء المفاعل النووي</h3>
-<p class="text-sm mb-4" style="color:var(--muted)">اضغط على كل جزء لمعرفة تفاصيله</p>
-<div class="reactor-part" onclick="showPart(0)">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(255,107,53,0.15)"><i class="fas fa-fire accent3-text"></i></div>
-<div><strong>الوقود النووي <span class="ltr text-sm" style="color:var(--muted)">Nuclear Fuel</span></strong></div>
+<h3 class="text-lg font-bold accent-text mb-2"><i class="fas fa-puzzle-piece ml-2"></i>أجزاء المفاعل</h3>
+<p class="text-sm mb-4" style="color:var(--muted)">اضغط على كل جزء</p>
+<div class="reactor-part" onclick="showPart(0)"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(255,107,53,0.15)"><i class="fas fa-fire accent3-text"></i></div><div><strong>الوقود النووي <span class="ltr text-sm" style="color:var(--muted)">Nuclear Fuel</span></strong></div></div></div>
+<div class="reactor-part" onclick="showPart(1)"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,255,136,0.15)"><i class="fas fa-sliders accent-text"></i></div><div><strong>قضبان التحكم <span class="ltr text-sm" style="color:var(--muted)">Control Rods</span></strong></div></div></div>
+<div class="reactor-part" onclick="showPart(2)"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,212,255,0.15)"><i class="fas fa-water accent2-text"></i></div><div><strong>المُهدّئة <span class="ltr text-sm" style="color:var(--muted)">Moderators</span></strong></div></div></div>
+<div class="reactor-part" onclick="showPart(3)"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(167,139,250,0.15)"><i class="fas fa-snowflake" style="color:#a78bfa"></i></div><div><strong>نظام التبريد <span class="ltr text-sm" style="color:var(--muted)">Cooling System</span></strong></div></div></div>
+<div class="reactor-part" onclick="showPart(4)"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(255,214,0,0.15)"><i class="fas fa-cloud" style="color:#ffd600"></i></div><div><strong>مولّد البخار <span class="ltr text-sm" style="color:var(--muted)">Steam Generator</span></strong></div></div></div>
+<div id="partDetail" class="glass p-4 mt-4 hidden"><div id="partDetailContent"></div></div>
 </div>
-</div>
-<div class="reactor-part" onclick="showPart(1)">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,255,136,0.15)"><i class="fas fa-sliders accent-text"></i></div>
-<div><strong>قضبان التحكم <span class="ltr text-sm" style="color:var(--muted)">Control Rods</span></strong></div>
-</div>
-</div>
-<div class="reactor-part" onclick="showPart(2)">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,212,255,0.15)"><i class="fas fa-water accent2-text"></i></div>
-<div><strong>المُهدّئة <span class="ltr text-sm" style="color:var(--muted)">Moderators</span></strong></div>
-</div>
-</div>
-<div class="reactor-part" onclick="showPart(3)">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(167,139,250,0.15)"><i class="fas fa-snowflake" style="color:#a78bfa"></i></div>
-<div><strong>نظام التبريد <span class="ltr text-sm" style="color:var(--muted)">Cooling System</span></strong></div>
-</div>
-</div>
-<div class="reactor-part" onclick="showPart(4)">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(255,214,0,0.15)"><i class="fas fa-cloud" style="color:#ffd600"></i></div>
-<div><strong>مولّد البخار <span class="ltr text-sm" style="color:var(--muted)">Steam Generator</span></strong></div>
-</div>
-</div>
-<div id="partDetail" class="glass p-4 mt-4 hidden">
-<div id="partDetailContent"></div>
-</div>
-</div>
-
-<!-- رسم المفاعل -->
 <div class="lg:col-span-3">
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-4 accent2-text"><i class="fas fa-diagram-project ml-2"></i>مخطط مفاعل الماء المضغوط (PWR)</h3>
-<canvas id="reactorCanvas" width="600" height="500" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4 flex-wrap">
-<button class="btn btn-primary" onclick="startReactorAnim()"><i class="fas fa-play"></i> تشغيل المفاعل</button>
-<button class="btn btn-secondary" onclick="resetReactorAnim()"><i class="fas fa-redo"></i> إعادة</button>
-<button class="btn btn-danger" onclick="toggleControlRods()"><i class="fas fa-arrow-down"></i> إدخال/إخراج قضبان التحكم</button>
-</div>
-<div class="mt-3">
-<label class="text-sm font-bold">قوة المفاعل:</label>
-<div class="progress-bar mt-1"><div class="progress-fill" id="reactorPower" style="width:0%"></div></div>
-<div class="text-sm mt-1" style="color:var(--muted)"><span id="reactorPowerVal">0</span>%</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- مبدأ عمل محطة الطاقة -->
-<div class="mt-12">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-4 accent-text"><i class="fas fa-industry ml-2"></i>مبدأ عمل محطة الطاقة النووية (PWR) - تسلسل تفاعلي</h3>
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="glass p-4 text-center card-3d perspective-container">
-<div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,#ff6b35,#ff4444)">
-<i class="fas fa-fire text-2xl text-white"></i>
-</div>
-<h4 class="font-bold accent3-text">1. الانشطار</h4>
-<p class="text-sm mt-2" style="color:var(--muted)">يحدث الانشطار في قلب المفاعل ويُنتج طاقة حرارية هائلة تُسخّن الماء المضغوط</p>
-</div>
-<div class="glass p-4 text-center card-3d perspective-container">
-<div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent2),#0088cc)">
-<i class="fas fa-arrows-rotate text-2xl text-white"></i>
-</div>
-<h4 class="font-bold accent2-text">2. نقل الحرارة</h4>
-<p class="text-sm mt-2" style="color:var(--muted)">الماء الساخن المضغوط ينتقل إلى مولّد البخار ويُسخّن ماءً آخر ليتحول لبخار</p>
-</div>
-<div class="glass p-4 text-center card-3d perspective-container">
-<div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),#00aa55)">
-<i class="fas fa-fan text-2xl text-white"></i>
-</div>
-<h4 class="font-bold accent-text">3. التوربين</h4>
-<p class="text-sm mt-2" style="color:var(--muted)">البخار يدور التوربين المتصل بمولّد كهربائي فينتج تياراً كهربائياً</p>
-</div>
-<div class="glass p-4 text-center card-3d perspective-container">
-<div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd600,#ff9500)">
-<i class="fas fa-bolt text-2xl text-white"></i>
-</div>
-<h4 class="font-bold" style="color:#ffd600">4. الكهرباء</h4>
-<p class="text-sm mt-2" style="color:var(--muted)">الطاقة الكهربائية تُنقل عبر خطوط النقل إلى المنازل والمصانع</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-4 accent2-text"><i class="fas fa-diagram-project ml-2"></i>مخطط مفاعل الماء المضغوط</h3><canvas id="reactorCanvas" width="600" height="500" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4 flex-wrap"><button class="btn btn-primary" onclick="startReactor()"><i class="fas fa-play"></i> تشغيل</button><button class="btn btn-secondary" onclick="resetReactor()"><i class="fas fa-redo"></i> إعادة</button><button class="btn btn-danger" onclick="toggleRods()"><i class="fas fa-arrow-down"></i> قضبان التحكم</button></div><div class="mt-3"><label class="text-sm font-bold">قوة المفاعل:</label><div class="progress-bar mt-1"><div class="progress-fill" id="reactorPower" style="width:0%"></div></div><div class="text-sm mt-1" style="color:var(--muted)"><span id="reactorPowerVal">0</span>%</div></div></div>
+</div></div>
+<div class="mt-12"><div class="glass p-6"><h3 class="text-xl font-bold mb-4 accent-text"><i class="fas fa-industry ml-2"></i>مبدأ عمل محطة الطاقة النووية</h3><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"><div class="glass p-4 text-center card-3d perspective-container"><div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,#ff6b35,#ff4444)"><i class="fas fa-fire text-2xl text-white"></i></div><h4 class="font-bold accent3-text">1. الانشطار</h4><p class="text-sm mt-2" style="color:var(--muted)">طاقة حرارية هائلة تُسخّن الماء المضغوط</p></div><div class="glass p-4 text-center card-3d perspective-container"><div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent2),#0088cc)"><i class="fas fa-arrows-rotate text-2xl text-white"></i></div><h4 class="font-bold accent2-text">2. نقل الحرارة</h4><p class="text-sm mt-2" style="color:var(--muted)">الماء الساخن يُسخّن ماءً آخر ليتحول لبخار</p></div><div class="glass p-4 text-center card-3d perspective-container"><div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),#00aa55)"><i class="fas fa-fan text-2xl text-white"></i></div><h4 class="font-bold accent-text">3. التوربين</h4><p class="text-sm mt-2" style="color:var(--muted)">البخار يدور التوربين المتصل بالمولّد</p></div><div class="glass p-4 text-center card-3d perspective-container"><div class="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd600,#ff9500)"><i class="fas fa-bolt text-2xl text-white"></i></div><h4 class="font-bold" style="color:#ffd600">4. الكهرباء</h4><p class="text-sm mt-2" style="color:var(--muted)">تُنقل عبر خطوط النقل للمنازل والمصانع</p></div></div></div></div>
+</div></div>
 </section>
 
-<!-- =================== القسم 7: التطبيقات =================== -->
 <section id="apps" class="py-20 px-4">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag tag-green mb-3">الدرس السابع</div>
-<h2 class="section-title gradient-text">تطبيقات الفيزياء النووية <span class="text-xl font-light accent-text">Applications</span></h2>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag tag-green mb-3">الدرس السابع</div><h2 class="section-title gradient-text">تطبيقات الفيزياء النووية <span class="text-xl font-light accent-text">Applications</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#00ff88,#00aa55)">
-<i class="fas fa-magnifying-glass text-2xl" style="color:#060b14"></i>
-</div>
-<h3 class="text-lg font-bold accent-text">التعقّب <span class="ltr text-sm" style="color:var(--muted)">Tracing</span></h3>
-<p class="text-sm mt-2" style="color:var(--muted)">حقن نظائر مشعّة في الجسم للكشف عن خلل وظيفي في الأعضاء.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل وضع GPS صغير على سيارة لتتبع حركتها. النظير المشع يُتبّع مساره في الجسم!
-</div>
-<p class="text-sm mt-2"><strong>مثال:</strong> اليود المشع <span class="ltr">I-131</span> يُشخّص خلل الغدة الدرقية</p>
-</div>
-
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#ff6b35,#ff4444)">
-<i class="fas fa-radiation text-2xl text-white"></i>
-</div>
-<h3 class="text-lg font-bold accent3-text">العلاج بالإشعاع <span class="ltr text-sm" style="color:var(--muted)">Radiotherapy</span></h3>
-<p class="text-sm mt-2" style="color:var(--muted)">قتل الخلايا السرطانية باستخدام إشعاعات موجهة بدقة.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل استخدام مجهر ضوئي مركّز لحرق نقطة صغيرة دقيقة دون إتلاف ما حولها!
-</div>
-<p class="text-sm mt-2"><strong>طريقتان:</strong> حقن مادة مشعة مباشرة في الورم، أو توجيه حزمة إشعاع من الخارج</p>
-</div>
-
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent2),#0088cc)">
-<i class="fas fa-microscope text-2xl text-white"></i>
-</div>
-<h3 class="text-lg font-bold accent2-text">تحليل المواد <span class="ltr text-sm" style="color:var(--muted)">Materials Analysis</span></h3>
-<p class="text-sm mt-2" style="color:var(--muted)">تحديد العناصر المُكوّنة لعينة بقذفها بالنيوترونات وتحليل الإشعاعات الصادرة.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل قراءة الباركود! كل عنصر يُصدر إشعاعات مميزة "باركود خاص به" نتعرف من خلالها عليه.
-</div>
-</div>
-
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd600,#ff9500)">
-<i class="fas fa-apple-whole text-2xl" style="color:#060b14"></i>
-</div>
-<h3 class="text-lg font-bold" style="color:#ffd600">حفظ الأغذية <span class="ltr text-sm" style="color:var(--muted)">Food Preserving</span></h3>
-<p class="text-sm mt-2" style="color:var(--muted)">تعريض المواد الغذائية لأشعة جاما أو إلكترونات عالية الطاقة لقتل البكتيريا.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل تعقيم أدوات الجراحة بالحرارة لكن هنا نستخدم الإشعاع بدلاً من الحرارة!
-</div>
-</div>
-
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">
-<i class="fas fa-rocket text-2xl text-white"></i>
-</div>
-<h3 class="text-lg font-bold" style="color:#a78bfa">استكشاف الفضاء</h3>
-<p class="text-sm mt-2" style="color:var(--muted)">تزويد المركبات الفضائية بالطاقة النووية (البلوتونيوم) لاستكشاف النظام الشمسي.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل بطارية لا تنفد لسنوات! مركبة فوياجر 1 أُطلقت عام 1977 وما زالت ترسل بيانات حتى اليوم.
-</div>
-</div>
-
-<div class="glass p-6 card-3d perspective-container animate-in">
-<div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#f472b6,#ec4899)">
-<i class="fas fa-pipe-section text-2xl text-white"></i>
-</div>
-<h3 class="text-lg font-bold" style="color:#f472b6">مراقبة التدفّق</h3>
-<p class="text-sm mt-2" style="color:var(--muted)">مراقبة تدفّق السوائل والغازات في الأنابيب لتحديد أماكن التسرّب.</p>
-<div class="analogy-box mt-3" style="font-size:.85rem">
-مثل صب ملوّن في الماء لمشاهدة مساره. النظائر المشعة تكشف أين يتسرّب السائل!
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#00ff88,#00aa55)"><i class="fas fa-magnifying-glass text-2xl" style="color:#060b14"></i></div><h3 class="text-lg font-bold accent-text">التعقّب <span class="ltr text-sm" style="color:var(--muted)">Tracing</span></h3><p class="text-sm mt-2" style="color:var(--muted)">حقن نظائر مشعّة للكشف عن خلل وظيفي في الأعضاء.</p><div class="analogy-box mt-3" style="font-size:.85rem">مثل GPS صغير على سيارة لتتبع مسارها!</div><p class="text-sm mt-2"><strong>مثال:</strong> اليود المشع I-131 لخلل الغدة الدرقية</p></div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#ff6b35,#ff4444)"><i class="fas fa-radiation text-2xl text-white"></i></div><h3 class="text-lg font-bold accent3-text">العلاج بالإشعاع <span class="ltr text-sm" style="color:var(--muted)">Radiotherapy</span></h3><p class="text-sm mt-2" style="color:var(--muted)">قتل الخلايا السرطانية بإشعاعات موجهة بدقة.</p><div class="analogy-box mt-3" style="font-size:.85rem">مثل مجهر ضوئي مركّز يحرق نقطة دقيقة دون إتلاف ما حولها!</div></div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent2),#0088cc)"><i class="fas fa-microscope text-2xl text-white"></i></div><h3 class="text-lg font-bold accent2-text">تحليل المواد <span class="ltr text-sm" style="color:var(--muted)">Materials Analysis</span></h3><p class="text-sm mt-2" style="color:var(--muted)">تحديد العناصر بقذف العينة بالنيوترونات وتحليل الإشعاعات.</p><div class="analogy-box mt-3" style="font-size:.85rem">مثل قراءة الباركود! كل عنصر له إشعاع مميز.</div></div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd600,#ff9500)"><i class="fas fa-apple-whole text-2xl" style="color:#060b14"></i></div><h3 class="text-lg font-bold" style="color:#ffd600">حفظ الأغذية <span class="ltr text-sm" style="color:var(--muted)">Food Preserving</span></h3><p class="text-sm mt-2" style="color:var(--muted)">أشعة جاما أو إلكترونات عالية الطاقة لقتل البكتيريا.</p><div class="analogy-box mt-3" style="font-size:.85rem">مثل تعقيم أدوات الجراحة بالإشعاع بدل الحرارة!</div></div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)"><i class="fas fa-rocket text-2xl text-white"></i></div><h3 class="text-lg font-bold" style="color:#a78bfa">استكشاف الفضاء</h3><p class="text-sm mt-2" style="color:var(--muted)">تزويد المركبات الفضائية بالطاقة النووية (البلوتونيوم).</p><div class="analogy-box mt-3" style="font-size:.85rem">بطارية لا تنفد! فوياجر 1 أُطلقت 1977 وما زالت ترسل بيانات!</div></div>
+<div class="glass p-6 card-3d perspective-container animate-in"><div class="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><i class="fas fa-droplet text-2xl text-white"></i></div><h3 class="text-lg font-bold" style="color:#f472b6">مراقبة التدفّق</h3><p class="text-sm mt-2" style="color:var(--muted)">مراقبة سوائل وأنابيب لتحديد أماكن التسرّب.</p><div class="analogy-box mt-3" style="font-size:.85rem">مثل صب ملوّن في الماء لمشاهدة مساره!</div></div>
+</div></div>
 </section>
 
-<!-- =================== القسم 8: المفاعل الاندماجي =================== -->
-<section id="fusion-reactor" class="py-20 px-4" style="background:linear-gradient(180deg,transparent,rgba(167,139,250,0.02),transparent)">
+<section id="fusionreactor" class="py-20 px-4" style="background:linear-gradient(180deg,transparent,rgba(167,139,250,0.02),transparent)">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-12">
-<div class="tag" style="background:rgba(167,139,250,0.12);color:#a78bfa">الدرس الثامن</div>
-<h2 class="section-title gradient-text mt-3">المفاعل النووي الاندماجي <span class="text-xl font-light" style="color:#a78bfa">Fusion Reactor</span></h2>
-<div class="hud-line mx-auto mt-3" style="max-width:200px"></div>
-</div>
-
+<div class="text-center mb-12"><div class="tag" style="background:rgba(167,139,250,0.12);color:#a78bfa">الدرس الثامن</div><h2 class="section-title gradient-text mt-3">المفاعل الاندماجي <span class="text-xl font-light" style="color:#a78bfa">Fusion Reactor</span></h2><div class="hud-line mx-auto mt-3" style="max-width:200px"></div></div>
 <div class="grid lg:grid-cols-2 gap-8">
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-atom ml-2"></i>المفاعل الاندماجي (توكاماك)</h3>
-<p>يُعدّ المفاعل الاندماجي حلم العلماء لتسخير طاقة الاندماج النووي بشكل مُتحكم به. الجهاز الأشهر هو <strong class="accent-text">توكاماك <span class="ltr">Tokamak</span></strong> الذي يحفظ البلازمما داخل مجال مغناطيسي.</p>
-<div class="analogy-box">
-تخيّل أنك تحاول حبس شمس مصغّرة في صندوق! المستحيل بمواد عادية لأن أي مادة ستتبخر. الحل: نحبسها بـ"جدار غير مرئي" من المجال المغناطيسي!
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3" style="color:#a78bfa"><i class="fas fa-atom ml-2"></i>التوكاماك <span class="ltr">Tokamak</span></h3><p>جهاز يحفظ البلازما داخل <strong>مجال مغناطيسي</strong> لتحقيق اندماج مُتحكم به.</p><div class="analogy-box">تحبس شمس مصغّرة في صندوق بـ"جدار غير مرئي" مغناطيسي!</div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-check-double ml-2"></i>المزايا</h3><div class="space-y-3"><div class="flex items-start gap-3"><i class="fas fa-check-circle accent-text mt-1"></i><div><strong>وقود متوافر:</strong> الديتيريوم في المحيطات بكميات كبيرة</div></div><div class="flex items-start gap-3"><i class="fas fa-check-circle accent-text mt-1"></i><div><strong>طاقة أكبر</strong> من الانشطار</div></div><div class="flex items-start gap-3"><i class="fas fa-check-circle accent-text mt-1"></i><div><strong>نفايات أقل</strong> وغير مشعّة خطيرة</div></div><div class="flex items-start gap-3"><i class="fas fa-check-circle accent-text mt-1"></i><div><strong>أقل خطورة:</strong> لا خطر انفجار أو انصهار</div></div><div class="flex items-start gap-3"><i class="fas fa-check-circle accent-text mt-1"></i><div><strong>لا تخصيب:</strong> نقل وقود الاندماج أبسط بكثير</div></div></div></div>
+<div class="glass p-6"><h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-triangle-exclamation ml-2"></i>التحديات</h3><div class="space-y-3"><div class="flex items-start gap-3"><i class="fas fa-exclamation-circle accent3-text mt-1"></i><div><strong>الحرارة:</strong> ~10<sup>8</sup> K أعلى من مركز الشمس!</div></div><div class="flex items-start gap-3"><i class="fas fa-exclamation-circle accent3-text mt-1"></i><div><strong>الضغط:</strong> الحفاظ على كثافة عالية للأيونات</div></div><div class="flex items-start gap-3"><i class="fas fa-exclamation-circle accent3-text mt-1"></i><div><strong>التريتيوم:</strong> مشعّ ويُنتج صناعياً</div></div><div class="flex items-start gap-3"><i class="fas fa-exclamation-circle accent3-text mt-1"></i><div><strong>الاستمرارية:</strong> تحدٍّ تقني كبير</div></div></div></div>
 </div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent-text"><i class="fas fa-check-double ml-2"></i>مزايا المفاعل الاندماجي</h3>
-<div class="space-y-3">
-<div class="flex items-start gap-3">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<div><strong>وقود متوافر:</strong> الديتيريوم متوفر بكميات كبيرة في المحيطات وغير مكلّف</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<div><strong>طاقة أكبر:</strong> يُنتج طاقة أكبر مقارنة بتفاعلات الانشطار</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<div><strong>نفايات أقل:</strong> منتجات ثانوية مشعّة قليلة نسبياً</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<div><strong>أقل خطورة:</strong> لا يوجد خطر انفجار أو انصهار كالمفاعلات الانشطارية</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-check-circle accent-text mt-1"></i>
-<div><strong>لا حاجة لتخصيب:</strong> إجراءات نقل وقود الاندماج أبسط بكثير من اليورانيوم المخصّب</div>
-</div>
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-xl font-bold mb-3 accent2-text"><i class="fas fa-triangle-exclamation ml-2"></i>التحديات</h3>
-<div class="space-y-3">
-<div class="flex items-start gap-3">
-<i class="fas fa-exclamation-circle accent3-text mt-1"></i>
-<div><strong>درجة الحرارة:</strong> تحتاج نحو <span class="ltr">10<sup>8</sup> K</span> - أعلى من حرارة مركز الشمس!</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-exclamation-circle accent3-text mt-1"></i>
-<div><strong>الضغط والكثافة:</strong> يجب التأثير بضغط كبير مع الحفاظ على كثافة عالية للأيونات</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-exclamation-circle accent3-text mt-1"></i>
-<div><strong>التريتيوم:</strong> مشعّ ولا يوجد طبيعياً بكميات كبيرة، يجب إنتاجه صناعياً</div>
-</div>
-<div class="flex items-start gap-3">
-<i class="fas fa-exclamation-circle accent3-text mt-1"></i>
-<div><strong>الاستمرارية:</strong> تحقيق الاندماج لفترات طويلة ومستدامة تحدٍّ تقني كبير</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- رسم التوكاماك -->
 <div class="space-y-6">
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-4" style="color:#a78bfa"><i class="fas fa-play-circle ml-2"></i>محاكاة التوكاماك ثلاثية الأبعاد</h3>
-<canvas id="tokamakCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas>
-<div class="flex gap-3 mt-4">
-<button class="btn btn-primary" onclick="startTokamakAnim()"><i class="fas fa-play"></i> تشغيل</button>
-<button class="btn btn-secondary" onclick="resetTokamakAnim()"><i class="fas fa-redo"></i> إعادة</button>
-</div>
-<div id="tokamakStatus" class="mt-3 text-sm" style="color:var(--muted)">
-اضغط "تشغيل" لرؤية البلازما داخل التوكاماك
-</div>
-</div>
-
-<div class="glass p-6">
-<h3 class="text-lg font-bold mb-3"><i class="fas fa-sun ml-2 accent3-text"></i>دورة البروتون-بروتون في الشمس</h3>
-<p class="text-sm" style="color:var(--muted)">تُنتج النجوم طاقتها من اندماج نووي يحدث عند درجة حرارة وكثافة عالية جداً عبر دورة تُسمى <strong class="accent-text">دورة البروتون-بروتون</strong>:</p>
-<div class="formula-box mt-3">
-<span class="ltr">4<sup>1</sup><sub>1</sub>H → <sup>4</sup><sub>2</sub>He + 2<sup>0</sup><sub>1</sub>e<sup>+</sup> + 2ν + 26.7 MeV</span>
-</div>
-<p class="text-sm mt-3" style="color:var(--muted)">أربعة بروتونات تندمج لتكوين نواة هيليوم مع تحرر طاقة هائلة!</p>
-</div>
-</div>
-</div>
-</div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-4" style="color:#a78bfa"><i class="fas fa-play-circle ml-2"></i>محاكاة التوكاماك</h3><canvas id="tokamakCanvas" width="500" height="450" class="w-full" style="background:#050a12"></canvas><div class="flex gap-3 mt-4"><button class="btn btn-primary" onclick="startTokamak()"><i class="fas fa-play"></i> تشغيل</button><button class="btn btn-secondary" onclick="resetTokamak()"><i class="fas fa-redo"></i> إعادة</button></div><div id="tokamakMsg" class="mt-3 text-sm" style="color:var(--muted)">اضغط "تشغيل" لرؤية البلازما</div></div>
+<div class="glass p-6"><h3 class="text-lg font-bold mb-3"><i class="fas fa-sun ml-2 accent3-text"></i>دورة البروتون-بروتون</h3><p class="text-sm" style="color:var(--muted)">مصدر طاقة النجوم عبر اندماج نووي:</p><div class="formula-box mt-3"><span class="ltr">4<sup>1</sup><sub>1</sub>H → <sup>4</sup><sub>2</sub>He + 2<sup>0</sup><sub>1</sub>e<sup>+</sup> + 2ν + 26.7 MeV</span></div><p class="text-sm mt-3" style="color:var(--muted)">أربعة بروتونات → نواة هيليوم + طاقة هائلة!</p></div>
+</div></div></div>
 </section>
 
-<!-- التذييل -->
 <footer class="py-12 px-4" style="background:var(--bg2)">
 <div class="hud-line max-w-6xl mx-auto mb-8"></div>
 <div class="max-w-6xl mx-auto text-center">
-<div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
-<i class="fas fa-atom text-3xl" style="color:#060b14"></i>
-</div>
+<div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))"><i class="fas fa-atom text-3xl" style="color:#060b14"></i></div>
 <h3 class="text-xl font-bold gradient-text mb-2">التفاعلات النووية التفاعلية</h3>
-<p class="text-sm mb-4" style="color:var(--muted)">تطبيق تعليمي تفاعلي لفهم التفاعلات النووية</p>
-<p class="font-bold accent-text text-lg">إعداد: Israa Youssuf Samara</p>
+<p class="font-bold accent-text text-lg mt-4">إعداد: Israa Youssuf Samara</p>
 <div class="hud-line max-w-xs mx-auto mt-6 mb-4"></div>
-<p class="text-xs" style="color:var(--muted)">الفيزياء النووية - الصف الثاني عشر - جميع الحقوق محفوظة</p>
+<p class="text-xs" style="color:var(--muted)">الفيزياء النووية - الصف الثاني عشر</p>
 </div>
 </footer>
 
 <script>
-// =================== نظام الأصوات ===================
-const AudioCtx = window.AudioContext || window.webkitAudioContext;
-let audioCtx;
-function ensureAudio(){if(!audioCtx) audioCtx = new AudioCtx(); return audioCtx;}
-function playClick(){try{const c=ensureAudio(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=800;o.type='sine';g.gain.setValueAtTime(0.1,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.1);o.start();o.stop(c.currentTime+0.1);}catch(e){}}
-function playSuccess(){try{const c=ensureAudio();[523,659,784].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(0.08,c.currentTime+i*0.12);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+i*0.12+0.3);o.start(c.currentTime+i*0.12);o.stop(c.currentTime+i*0.12+0.3);});}catch(e){}}
-function playExplosion(){try{const c=ensureAudio(),b=c.createBuffer(1,c.sampleRate*0.5,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*0.15));const s=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=400;s.buffer=b;s.connect(f);f.connect(g);g.connect(c.destination);g.gain.setValueAtTime(0.3,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.5);s.start();}catch(e){}}
-function playWhoosh(){try{const c=ensureAudio(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sawtooth';o.frequency.setValueAtTime(100,c.currentTime);o.frequency.exponentialRampToValueAtTime(2000,c.currentTime+0.3);g.gain.setValueAtTime(0.05,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.4);o.start();o.stop(c.currentTime+0.4);}catch(e){}}
+// ===== أصوات =====
+var AC=window.AudioContext||window.webkitAudioContext,ac;
+function snd(f,d,t,v){try{if(!ac)ac=new AC();var o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=f;o.type=t||'sine';g.gain.setValueAtTime(v||0.1,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+(d||0.1));o.start();o.stop(ac.currentTime+(d||0.1));}catch(e){}}
+function clickSnd(){snd(800,0.1);}
+function okSnd(){snd(523,0.3);setTimeout(function(){snd(659,0.3)},120);setTimeout(function(){snd(784,0.3)},240);}
+function boomSnd(){try{if(!ac)ac=new AC();var b=ac.createBuffer(1,ac.sampleRate*0.5,ac.sampleRate),d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(ac.sampleRate*0.15));var s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();f.type='lowpass';f.frequency.value=400;s.buffer=b;s.connect(f);f.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(0.3,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.5);s.start();}catch(e){}}
+function whooshSnd(){try{if(!ac)ac=new AC();var o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sawtooth';o.frequency.setValueAtTime(100,ac.currentTime);o.frequency.exponentialRampToValueAtTime(2000,ac.currentTime+0.3);g.gain.setValueAtTime(0.05,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.4);o.start();o.stop(ac.currentTime+0.4);}catch(e){}}
 
-// =================== التنقل ===================
-function scrollToSection(id){playClick();document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('hidden');playClick();}
-const sections=['hero','reaction','energy','fission','chain','fusion','reactor','apps','fusion-reactor'];
-window.addEventListener('scroll',()=>{let cur='hero';sections.forEach(s=>{const el=document.getElementById(s);if(el&&el.offsetTop-200<=window.scrollY) cur=s;});document.querySelectorAll('#topNav .nav-link').forEach((l,i)=>{l.classList.toggle('active',sections[i]===cur);});});
+// ===== تنقل =====
+function scrollTo(id){clickSnd();document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+var secs=['hero','reaction','energy','fission','chain','fusion','reactor','apps','fusionreactor'];
+window.addEventListener('scroll',function(){var c='hero';secs.forEach(function(s){var e=document.getElementById(s);if(e&&e.offsetTop-200<=window.scrollY)c=s;});document.querySelectorAll('#topNav .nav-link').forEach(function(l,i){l.classList.toggle('active',secs[i]===c);});});
 
-// =================== حاسبة Q ===================
-function calculateQ(){playClick();const ma=parseFloat(document.getElementById('calcMa').value),mx=parseFloat(document.getElementById('calcMX').value),mb=parseFloat(document.getElementById('calcMb').value),my=parseFloat(document.getElementById('calcMY').value);if(isNaN(ma)||isNaN(mx)||isNaN(mb)||isNaN(my)){document.getElementById('calcResult').classList.remove('hidden');document.getElementById('calcResult').innerHTML='<div class="p-3 rounded-lg text-center" style="background:rgba(255,68,68,0.1);color:#ff6b6b">يرجى إدخال جميع القيم بشكل صحيح</div>';return;}const min=ma+mx,mout=mb+my,dm=min-mout,Q=dm*931.5;document.getElementById('calcResult').classList.remove('hidden');document.getElementById('resMin').textContent=min.toFixed(4)+' amu';document.getElementById('resMout').textContent=mout.toFixed(4)+' amu';document.getElementById('resDm').textContent=dm.toFixed(4)+' amu';document.getElementById('resQ').textContent=Math.abs(Q).toFixed(2)+' MeV';if(Q>0){document.getElementById('resType').innerHTML='<span class="tag tag-green">Q > 0 → تفاعل مُنتج للطاقة (Exoergic)</span><p class="text-sm mt-2" style="color:var(--muted)">الكتلة الداخلة أكبر → الفرق تحوّل لطاقة مُتحررة</p>';}else if(Q<0){document.getElementById('resType').innerHTML='<span class="tag tag-orange">Q < 0 → تفاعل ماص للطاقة (Endoergic)</span><p class="text-sm mt-2" style="color:var(--muted)">الكتلة الخارجة أكبر → تحتاج طاقة خارجية للتفاعل</p>';}else{document.getElementById('resType').innerHTML='<span class="tag tag-blue">Q = 0 → لا طاقة مُتحررة ولا مُمتصة</span>';}playSuccess();}
+// ===== حاسبة Q =====
+function calcQ(){clickSnd();var ma=parseFloat(document.getElementById('calcMa').value),mx=parseFloat(document.getElementById('calcMX').value),mb=parseFloat(document.getElementById('calcMb').value),my=parseFloat(document.getElementById('calcMY').value);if(isNaN(ma)||isNaN(mx)||isNaN(mb)||isNaN(my)){document.getElementById('calcResult').classList.remove('hidden');document.getElementById('calcResult').innerHTML='<div class="p-3 rounded-lg text-center" style="background:rgba(255,68,68,0.1);color:#ff6b6b">أدخل جميع القيم</div>';return;}var mi=ma+mx,mo=mb+my,dm=mi-mo,Q=dm*931.5,r=document.getElementById('calcResult');r.classList.remove('hidden');r.innerHTML='<div class="glass p-4 space-y-2"><div class="flex justify-between"><span>كتل الداخلة:</span><strong class="ltr">'+mi.toFixed(4)+' amu</strong></div><div class="flex justify-between"><span>كتل الخارجة:</span><strong class="ltr">'+mo.toFixed(4)+' amu</strong></div><div class="flex justify-between"><span>فرق الكتلة:</span><strong class="ltr">'+dm.toFixed(4)+' amu</strong></div><div class="hud-line"></div><div class="flex justify-between text-lg"><span>الطاقة Q:</span><strong class="accent-text ltr">'+Math.abs(Q).toFixed(2)+' MeV</strong></div><div class="text-center mt-2">'+(Q>0?'<span class="tag tag-green">Q>0 مُنتج للطاقة</span>':'<span class="tag tag-orange">Q<0 ماص للطاقة</span>')+'</div></div>';okSnd();}
 
-// =================== أجزاء المفاعل ===================
-const partsData=[{title:'الوقود النووي',color:'var(--accent3)',icon:'fa-fire',text:'مادة تكون الغالب على النووي الوقود المخصب اليورانيوم وهي أقراص توضع فوق بعضها في أنابيب طويلة لتشكيل قضبان الوقود النووي. اليورانيوم المخصب يحتوي نسبة أعلى من U-235 القابل للانشطار.'},{title:'قضبان التحكم',color:'var(--accent)',icon:'fa-sliders',text:'تُصنع من مواد ذات قدرة عالية على امتصاص النيوترونات مثل الكادميوم-113 والبورون-10. عند إدخالها بين حزم الوقود تمتص نيوترونات مما يُبطئ التفاعل المتسلسل. سحبها يزيد سرعة التفاعل.'},{title:'المُهدّئة',color:'var(--accent2)',icon:'fa-water',text:'مواد كتلية صغيرة مثل الماء العادي، الماء الثقيل، والغرافيت. وظيفتها إبطاء النيوترونات السريعة الناتجة من الانشطار لتصبح نيوترونات بطيئة قادرة على إحداث انشطارات جديدة.'},{title:'نظام التبريد',color:'#a78bfa',icon:'fa-snowflake',text:'تُستخدم أبراج التبريد لتزويد المفاعل والمكثف بالماء البارد باستمرار. الماء المضغوط الساخن يخرج من قلب المفاعل ويُبرّد ثم يُعاد دورانه في حلقة مغلقة.'},{title:'مولّد البخار',color:'#ffd600',icon:'fa-cloud',text:'يُحوّل الماء الساخن المضغوط القادم من قلب المفاعل إلى بخار الماء. البخار يُستخدم في تدوير توربينات متصلة بمولّدات كهربائية لتوليد الطاقة الكهربائية.'}];
-function showPart(idx){playClick();const p=partsData[idx];document.querySelectorAll('.reactor-part').forEach((el,i)=>el.classList.toggle('active',i===idx));const d=document.getElementById('partDetail');d.classList.remove('hidden');document.getElementById('partDetailContent').innerHTML='<h4 class="font-bold mb-2" style="color:'+p.color+'"><i class="fas '+p.icon+' ml-2"></i>'+p.title+'</h4><p class="text-sm" style="color:var(--muted)">'+p.text+'</p>';}
+// ===== أجزاء المفاعل =====
+var PD=[{t:'الوقود النووي',c:'var(--accent3)',i:'fa-fire',x:'أقراص من اليورانيوم المخصب توضع في أنابيب لتشكيل قضبان الوقود. تحتوي نسبة أعلى من U-235 القابل للانشطار.'},{t:'قضبان التحكم',c:'var(--accent)',i:'fa-sliders',x:'من الكادميوم-113 والبورون-10. تمتص نيوترونات فتُبطئ التفاعل. سحبها يزيد سرعة التفاعل.'},{t:'المُهدّئة',c:'var(--accent2)',i:'fa-water',x:'ماء عادي أو ثقيل أو غرافيت. تُبطئ النيوترونات السريعة لتصبح بطيئة قادرة على إحداث انشطارات جديدة.'},{t:'نظام التبريد',c:'#a78bfa',i:'fa-snowflake',x:'أبراج تبريد تزود المفاعل والمكثف بالماء البارد باستمرار في حلقة مغلقة.'},{t:'مولّد البخار',c:'#ffd600',i:'fa-cloud',x:'يُحوّل الماء الساخن المضغوط من قلب المفاعل إلى بخار يُدوّر التوربينات لتوليد الكهرباء.'}];
+function showPart(i){clickSnd();var p=PD[i];document.querySelectorAll('.reactor-part').forEach(function(e,j){e.classList.toggle('active',j===i);});document.getElementById('partDetail').classList.remove('hidden');document.getElementById('partDetailContent').innerHTML='<h4 class="font-bold mb-2" style="color:'+p.c+'"><i class="fas '+p.i+' ml-2"></i>'+p.t+'</h4><p class="text-sm" style="color:var(--muted)">'+p.x+'</p>';}
 
-// =================== رسوم البطل ===================
-const heroCanvas=document.getElementById('heroCanvas');
-const hCtx=heroCanvas.getContext('2d');
-let heroParticles=[];
-function resizeHero(){heroCanvas.width=window.innerWidth;heroCanvas.height=window.innerHeight;}
-resizeHero();window.addEventListener('resize',resizeHero);
-for(let i=0;i<80;i++){heroParticles.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,color:Math.random()>0.5?'rgba(0,255,136,':'rgba(0,212,255,',alpha:Math.random()*0.5+0.2});}
-function drawHero(){hCtx.clearRect(0,0,heroCanvas.width,heroCanvas.height);heroParticles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=heroCanvas.width;if(p.x>heroCanvas.width)p.x=0;if(p.y<0)p.y=heroCanvas.height;if(p.y>heroCanvas.height)p.y=0;hCtx.beginPath();hCtx.arc(p.x,p.y,p.r,0,Math.PI*2);hCtx.fillStyle=p.color+p.alpha+')';hCtx.fill();});for(let i=0;i<heroParticles.length;i++){for(let j=i+1;j<heroParticles.length;j++){const dx=heroParticles[i].x-heroParticles[j].x,dy=heroParticles[i].y-heroParticles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){hCtx.beginPath();hCtx.moveTo(heroParticles[i].x,heroParticles[i].y);hCtx.lineTo(heroParticles[j].x,heroParticles[j].y);hCtx.strokeStyle='rgba(0,255,136,'+(0.08*(1-d/120))+')';hCtx.stroke();}}}requestAnimationFrame(drawHero);}
-drawHero();
+// ===== جسيمات البطل =====
+var hc=document.getElementById('heroCanvas'),hx=hc.getContext('2d'),hp=[];
+function rh(){hc.width=window.innerWidth;hc.height=window.innerHeight;}rh();window.addEventListener('resize',rh);
+for(var i=0;i<80;i++)hp.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,c:Math.random()>0.5?'0,255,136':'0,212,255',a:Math.random()*0.5+0.2});
+function dh(){hx.clearRect(0,0,hc.width,hc.height);hp.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=hc.width;if(p.x>hc.width)p.x=0;if(p.y<0)p.y=hc.height;if(p.y>hc.height)p.y=0;hx.beginPath();hx.arc(p.x,p.y,p.r,0,Math.PI*2);hx.fillStyle='rgba('+p.c+','+p.a+')';hx.fill();});for(var i=0;i<hp.length;i++)for(var j=i+1;j<hp.length;j++){var dx=hp[i].x-hp[j].x,dy=hp[i].y-hp[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){hx.beginPath();hx.moveTo(hp[i].x,hp[i].y);hx.lineTo(hp[j].x,hp[j].y);hx.strokeStyle='rgba(0,255,136,'+(0.08*(1-d/120))+')';hx.stroke();}}requestAnimationFrame(dh);}dh();
 
-// =================== رسم النواة ===================
-function drawNucleus(ctx,x,y,r,color,label,num,excited){const grad=ctx.createRadialGradient(x,y,r*0.5,x,y,r*1.5);grad.addColorStop(0,color.length>7?color:'rgba(255,255,255,0.3)');grad.addColorStop(1,'rgba(0,0,0,0)');ctx.beginPath();ctx.arc(x,y,r*1.5,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);const g2=ctx.createRadialGradient(x-r*0.3,y-r*0.3,r*0.1,x,y,r);g2.addColorStop(0,'rgba(255,255,255,0.3)');g2.addColorStop(1,color);ctx.fillStyle=g2;ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();for(let i=0;i<Math.min(num,8);i++){const a=(i/num)*Math.PI*2,nr=r*0.5,nx=x+Math.cos(a)*nr,ny=y+Math.sin(a)*nr;ctx.beginPath();ctx.arc(nx,ny,r*0.18,0,Math.PI*2);ctx.fillStyle=i%2===0?'rgba(255,100,100,0.7)':'rgba(100,150,255,0.7)';ctx.fill();}ctx.fillStyle='#fff';ctx.font='bold 12px Cairo';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(label,x,y);if(excited){ctx.strokeStyle='rgba(255,255,0,0.5)';ctx.lineWidth=1;ctx.setLineDash([3,3]);ctx.beginPath();ctx.arc(x,y,r+8+Math.sin(Date.now()*0.01)*3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([];}}
+// ===== رسم نواة =====
+function dn(c,x,y,r,col,lbl,n,exc){var g=c.createRadialGradient(x,y,r*0.3,x,y,r*1.5);g.addColorStop(0,'rgba(255,255,255,0.2)');g.addColorStop(1,'rgba(0,0,0,0)');c.beginPath();c.arc(x,y,r*1.5,0,Math.PI*2);c.fillStyle=g;c.fill();c.beginPath();c.arc(x,y,r,0,Math.PI*2);var g2=c.createRadialGradient(x-r*0.3,y-r*0.3,r*0.1,x,y,r);g2.addColorStop(0,'rgba(255,255,255,0.3)');g2.addColorStop(1,col);c.fillStyle=g2;c.fill();c.strokeStyle=col;c.lineWidth=2;c.stroke();for(var i=0;i<Math.min(n,8);i++){var a=(i/n)*Math.PI*2;c.beginPath();c.arc(x+Math.cos(a)*r*0.5,y+Math.sin(a)*r*0.5,r*0.18,0,Math.PI*2);c.fillStyle=i%2===0?'rgba(255,100,100,0.7)':'rgba(100,150,255,0.7)';c.fill();}c.fillStyle='#fff';c.font='bold 12px Cairo';c.textAlign='center';c.textBaseline='middle';c.fillText(lbl,x,y);if(exc){c.strokeStyle='rgba(255,255,0,0.5)';c.lineWidth=1;c.setLineDash([3,3]);c.beginPath();c.arc(x,y,r+8+Math.sin(Date.now()*0.01)*3,0,Math.PI*2);c.stroke();c.setLineDash([]);}}
 
-// =================== محاكاة التفاعل النووي ===================
-const rCanvas=document.getElementById('reactionCanvas');
-const rCtx=rCanvas.getContext('2d');
-let rAnim={phase:0,t:0,running:false};
-function drawReactionScene(){const W=rCanvas.width,H=rCanvas.height;rCtx.clearRect(0,0,W,H);rCtx.strokeStyle='rgba(0,255,136,0.04)';for(let x=0;x<W;x+=30){rCtx.beginPath();rCtx.moveTo(x,0);rCtx.lineTo(x,H);rCtx.stroke();}for(let y=0;y<H;y+=30){rCtx.beginPath();rCtx.moveTo(0,y);rCtx.lineTo(W,y);rCtx.stroke();}const cx=W/2,cy=H/2;if(rAnim.phase===0){const ax=W-80,ay=cy;drawNucleus(rCtx,ax,ay,15,'#ff6b35','α',4);drawNucleus(rCtx,cx,cy,35,'#00d4ff','N-14',7);rCtx.strokeStyle='rgba(255,107,53,0.5)';rCtx.lineWidth=2;rCtx.setLineDash([5,5]);rCtx.beginPath();rCtx.moveTo(ax-25,ay);rCtx.lineTo(cx+45,cy);rCtx.stroke();rCtx.setLineDash([]);rCtx.fillStyle='#ff6b35';rCtx.font='bold 14px Cairo';rCtx.textAlign='center';rCtx.fillText('القذيفة (α)',ax,ay+35);rCtx.fillStyle='#00d4ff';rCtx.fillText('النواة الهدف (N-14)',cx,cy+55);}else if(rAnim.phase===1){const progress=Math.min(rAnim.t/60,1),eased=progress<0.5?2*progress*progress:1-Math.pow(-2*progress+2,2)/2,ax=W-80-(W-80-cx-35)*eased;drawNucleus(rCtx,ax,cy,15,'#ff6b35','α',4);drawNucleus(rCtx,cx,cy,35,'#00d4ff','N-14',7);if(progress>=1){rAnim.phase=2;rAnim.t=0;playWhoosh();}}else if(rAnim.phase===2){const flash=Math.max(0,1-rAnim.t/30);if(flash>0){rCtx.beginPath();rCtx.arc(cx,cy,50+flash*40,0,Math.PI*2);rCtx.fillStyle='rgba(255,255,255,'+flash*0.3+')';rCtx.fill();}const wobble=Math.sin(rAnim.t*0.5)*3;drawNucleus(rCtx,cx+wobble,cy,40,'#ffd600','F-18*',9,true);rCtx.fillStyle='#ffd600';rCtx.font='bold 14px Cairo';rCtx.textAlign='center';rCtx.fillText('النواة المركبة (F-18*)',cx,cy+65);if(rAnim.t>80){rAnim.phase=3;rAnim.t=0;playExplosion();}}else if(rAnim.phase===3){const progress=Math.min(rAnim.t/80,1),eased=progress<0.5?2*progress*progress:1-Math.pow(-2*progress+2,2)/2,px=cx+eased*120,ox=cx-eased*30,flash=Math.max(0,1-rAnim.t/20);if(flash>0){rCtx.beginPath();rCtx.arc(cx,cy,60*flash,0,Math.PI*2);rCtx.fillStyle='rgba(0,255,136,'+flash*0.4+')';rCtx.fill();}drawNucleus(rCtx,ox,cy,35,'#00ff88','O-17',8);drawNucleus(rCtx,px,cy-10,12,'#ff6b35','p',1);rCtx.fillStyle='#00ff88';rCtx.font='bold 14px Cairo';rCtx.textAlign='center';rCtx.fillText('النواة الناتجة (O-17)',ox,cy+55);rCtx.fillStyle='#ff6b35';rCtx.fillText('البروتون',px,cy+30);rCtx.fillStyle='rgba(255,255,255,0.8)';rCtx.font='bold 13px Cairo';rCtx.fillText('α + N-14 → F-18* → O-17 + p',cx,35);if(rAnim.t>100){rAnim.running=false;document.getElementById('reactionStatus').innerHTML='<span class="accent-text font-bold">اكتمل التفاعل!</span> القذيفة (α) اصطدمت بالنواة الهدف (N-14) → تكوّنت النواة المركبة (F-18*) → اضمحلت لتنتج نواة أكسجين (O-17) وبروتون';playSuccess();}}if(rAnim.running){rAnim.t++;requestAnimationFrame(drawReactionScene);}}
-function startReactionAnim(){rAnim={phase:1,t:0,running:true};playClick();document.getElementById('reactionStatus').textContent='القذيفة تتحرك نحو النواة الهدف...';drawReactionScene();}
-function resetReactionAnim(){rAnim={phase:0,t:0,running:false};document.getElementById('reactionStatus').textContent='اضغط "تشغيل" لمشاهدة اصطدام جسيم ألفا بنواة النيتروجين';drawReactionScene();}
-drawReactionScene();
+// ===== التفاعل النووي =====
+var rc=document.getElementById('reactionCanvas'),rx=rc.getContext('2d'),ra={p:0,t:0,on:false};
+function drRe(){var W=rc.width,H=rc.height;rx.clearRect(0,0,W,H);rx.strokeStyle='rgba(0,255,136,0.04)';for(var x=0;x<W;x+=30){rx.beginPath();rx.moveTo(x,0);rx.lineTo(x,H);rx.stroke();}for(var y=0;y<H;y+=30){rx.beginPath();rx.moveTo(0,y);rx.lineTo(W,y);rx.stroke();}var cx=W/2,cy=H/2;if(ra.p===0){dn(rx,W-80,cy,15,'#ff6b35','a',4);dn(rx,cx,cy,35,'#00d4ff','N-14',7);rx.strokeStyle='rgba(255,107,53,0.5)';rx.lineWidth=2;rx.setLineDash([5,5]);rx.beginPath();rx.moveTo(W-105,cy);rx.lineTo(cx+45,cy);rx.stroke();rx.setLineDash([]);rx.fillStyle='#ff6b35';rx.font='bold 14px Cairo';rx.textAlign='center';rx.fillText('القذيفة',W-80,cy+35);rx.fillStyle='#00d4ff';rx.fillText('النواة الهدف (N-14)',cx,cy+55);}else if(ra.p===1){var pr=Math.min(ra.t/60,1),e=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2;dn(rx,W-80-(W-80-cx-35)*e,cy,15,'#ff6b35','a',4);dn(rx,cx,cy,35,'#00d4ff','N-14',7);if(pr>=1){ra.p=2;ra.t=0;whooshSnd();}}else if(ra.p===2){var fl=Math.max(0,1-ra.t/30);if(fl>0){rx.beginPath();rx.arc(cx,cy,50+fl*40,0,Math.PI*2);rx.fillStyle='rgba(255,255,255,'+fl*0.3+')';rx.fill();}dn(rx,cx+Math.sin(ra.t*0.5)*3,cy,40,'#ffd600','F-18*',9,true);rx.fillStyle='#ffd600';rx.font='bold 14px Cairo';rx.textAlign='center';rx.fillText('النواة المركبة (F-18*)',cx,cy+65);if(ra.t>80){ra.p=3;ra.t=0;boomSnd();}}else if(ra.p===3){var pr=Math.min(ra.t/80,1),e=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2,fl=Math.max(0,1-ra.t/20);if(fl>0){rx.beginPath();rx.arc(cx,cy,60*fl,0,Math.PI*2);rx.fillStyle='rgba(0,255,136,'+fl*0.4+')';rx.fill();}dn(rx,cx-e*30,cy,35,'#00ff88','O-17',8);dn(rx,cx+e*120,cy-10,12,'#ff6b35','p',1);rx.fillStyle='#00ff88';rx.font='bold 14px Cairo';rx.textAlign='center';rx.fillText('O-17',cx-e*30,cy+55);rx.fillStyle='#ff6b35';rx.fillText('p',cx+e*120,cy+30);rx.fillStyle='rgba(255,255,255,0.8)';rx.font='bold 13px Cairo';rx.fillText('a + N-14 → F-18* → O-17 + p',cx,35);if(ra.t>100){ra.on=false;document.getElementById('reactionMsg').innerHTML='<span class="accent-text font-bold">اكتمل التفاعل!</span>';okSnd();}}if(ra.on){ra.t++;requestAnimationFrame(drRe);}}
+function startReaction(){ra={p:1,t:0,on:true};clickSnd();document.getElementById('reactionMsg').textContent='القذيفة تتحرك...';drRe();}
+function resetReaction(){ra={p:0,t:0,on:false};document.getElementById('reactionMsg').textContent='اضغط "تشغيل"';drRe();}
+drRe();
 
-// =================== محاكاة الانشطار ===================
-const fCanvas=document.getElementById('fissionCanvas');
-const fCtx=fCanvas.getContext('2d');
-let fAnim={phase:0,t:0,running:false,fragments:[],neutrons:[]};
-function drawFissionScene(){const W=fCanvas.width,H=fCanvas.height;fCtx.clearRect(0,0,W,H);fCtx.strokeStyle='rgba(255,107,53,0.04)';for(let x=0;x<W;x+=30){fCtx.beginPath();fCtx.moveTo(x,0);fCtx.lineTo(x,H);fCtx.stroke();}for(let y=0;y<H;y+=30){fCtx.beginPath();fCtx.moveTo(0,y);fCtx.lineTo(W,y);fCtx.stroke();}const cx=W/2,cy=H/2;if(fAnim.phase===0){drawNucleus(fCtx,cx,cy,50,'#ff6b35','U-235',12);const nx=W-60;drawNucleus(fCtx,nx,cy,10,'#00d4ff','n',1);fCtx.strokeStyle='rgba(0,212,255,0.4)';fCtx.lineWidth=2;fCtx.setLineDash([5,5]);fCtx.beginPath();fCtx.moveTo(nx-15,cy);fCtx.lineTo(cx+55,cy);fCtx.stroke();fCtx.setLineDash([]);fCtx.fillStyle='#00d4ff';fCtx.font='bold 12px Cairo';fCtx.textAlign='center';fCtx.fillText('نيوترون بطيء',nx,cy+28);fCtx.fillStyle='#ff6b35';fCtx.fillText('U-235',cx,cy+70);}else if(fAnim.phase===1){const p=Math.min(fAnim.t/50,1),e=p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2,nx=W-60-(W-60-cx-55)*e;drawNucleus(fCtx,nx,cy,10,'#00d4ff','n',1);drawNucleus(fCtx,cx,cy,50,'#ff6b35','U-235',12);if(p>=1){fAnim.phase=2;fAnim.t=0;playWhoosh();}}else if(fAnim.phase===2){const stretch=1+Math.sin(fAnim.t*0.2)*0.15;fCtx.save();fCtx.translate(cx,cy);fCtx.scale(stretch,1/stretch);drawNucleus(fCtx,0,0,50,'#ffd600','U-236*',12,true);fCtx.restore();fCtx.fillStyle='#ffd600';fCtx.font='bold 13px Cairo';fCtx.textAlign='center';fCtx.fillText('النواة المركبة المثارة (U-236*)',cx,cy+75);if(fAnim.t>70){fAnim.phase=3;fAnim.t=0;playExplosion();fAnim.fragments=[{x:cx,y:cy,vx:-2,vy:-0.5,r:32,color:'#00ff88',label:'Ba-141',num:8},{x:cx,y:cy,vx:2,vy:0.5,r:25,color:'#00d4ff',label:'Kr-92',num:6}];fAnim.neutrons=[{x:cx,y:cy,vx:0,vy:-3,r:6},{x:cx,y:cy,vx:-2.5,vy:2,r:6},{x:cx,y:cy,vx:2.5,vy:-2,r:6}];}}else if(fAnim.phase===3){const flash=Math.max(0,1-fAnim.t/25);if(flash>0){fCtx.beginPath();fCtx.arc(cx,cy,80*flash,0,Math.PI*2);fCtx.fillStyle='rgba(255,200,50,'+flash*0.5+')';fCtx.fill();for(let i=0;i<12;i++){const a=(i/12)*Math.PI*2;fCtx.beginPath();fCtx.moveTo(cx,cy);fCtx.lineTo(cx+Math.cos(a)*100*flash,cy+Math.sin(a)*100*flash);fCtx.strokeStyle='rgba(255,255,100,'+flash*0.5+')';fCtx.lineWidth=2;fCtx.stroke();}}fAnim.fragments.forEach(f=>{f.x+=f.vx;f.y+=f.vy;drawNucleus(fCtx,f.x,f.y,f.r,f.color,f.label,f.num);});fAnim.neutrons.forEach(n=>{n.x+=n.vx;n.y+=n.vy;fCtx.beginPath();fCtx.arc(n.x,n.y,n.r,0,Math.PI*2);fCtx.fillStyle='#00d4ff';fCtx.fill();fCtx.strokeStyle='rgba(0,212,255,0.5)';fCtx.lineWidth=1;fCtx.stroke();});fCtx.fillStyle='rgba(255,255,255,0.9)';fCtx.font='bold 12px Cairo';fCtx.textAlign='center';fCtx.fillText('n + U-235 → U-236* → Ba-141 + Kr-92 + 3n + 200 MeV',cx,30);fCtx.fillStyle='#00ff88';fCtx.fillText('Ba-141',fAnim.fragments[0].x,fAnim.fragments[0].y+fAnim.fragments[0].r+18);fCtx.fillStyle='#00d4ff';fCtx.fillText('Kr-92',fAnim.fragments[1].x,fAnim.fragments[1].y+fAnim.fragments[1].r+18);fCtx.fillStyle='#ffd600';fCtx.font='bold 16px Cairo';fCtx.fillText('E = 200 MeV',cx,H-30);if(fAnim.t>120){fAnim.running=false;document.getElementById('fissionStatus').innerHTML='<span class="accent3-text font-bold">اكتمل الانشطار!</span> نواة U-235 انشطرت إلى Ba-141 و Kr-92 مع إطلاق 3 نيوترونات وطاقة 200 MeV';playSuccess();}}if(fAnim.running){fAnim.t++;requestAnimationFrame(drawFissionScene);}}
-function startFissionAnim(){fAnim={phase:1,t:0,running:true,fragments:[],neutrons:[]};playClick();document.getElementById('fissionStatus').textContent='النيوترون يتجه نحو U-235...';drawFissionScene();}
-function resetFissionAnim(){fAnim={phase:0,t:0,running:false,fragments:[],neutrons:[]};document.getElementById('fissionStatus').textContent='اضغط "انشطار!" لمشاهدة انشطار نواة اليورانيوم-235';drawFissionScene();}
-drawFissionScene();
+// ===== الانشطار =====
+var fc=document.getElementById('fissionCanvas'),fx=fc.getContext('2d'),fa={p:0,t:0,on:false,fr:[],ne:[]};
+function drFi(){var W=fc.width,H=fc.height;fx.clearRect(0,0,W,H);fx.strokeStyle='rgba(255,107,53,0.04)';for(var x=0;x<W;x+=30){fx.beginPath();fx.moveTo(x,0);fx.lineTo(x,H);fx.stroke();}for(var y=0;y<H;y+=30){fx.beginPath();fx.moveTo(0,y);fx.lineTo(W,y);fx.stroke();}var cx=W/2,cy=H/2;if(fa.p===0){dn(fx,cx,cy,50,'#ff6b35','U-235',12);dn(fx,W-60,cy,10,'#00d4ff','n',1);fx.strokeStyle='rgba(0,212,255,0.4)';fx.lineWidth=2;fx.setLineDash([5,5]);fx.beginPath();fx.moveTo(W-75,cy);fx.lineTo(cx+55,cy);fx.stroke();fx.setLineDash([]);fx.fillStyle='#00d4ff';fx.font='bold 12px Cairo';fx.textAlign='center';fx.fillText('نيوترون',W-60,cy+28);fx.fillStyle='#ff6b35';fx.fillText('U-235',cx,cy+70);}else if(fa.p===1){var pr=Math.min(fa.t/50,1),e=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2;dn(fx,W-60-(W-60-cx-55)*e,cy,10,'#00d4ff','n',1);dn(fx,cx,cy,50,'#ff6b35','U-235',12);if(pr>=1){fa.p=2;fa.t=0;whooshSnd();}}else if(fa.p===2){var st=1+Math.sin(fa.t*0.2)*0.15;fx.save();fx.translate(cx,cy);fx.scale(st,1/st);dn(fx,0,0,50,'#ffd600','U-236*',12,true);fx.restore();fx.fillStyle='#ffd600';fx.font='bold 13px Cairo';fx.textAlign='center';fx.fillText('النواة المركبة المثارة',cx,cy+75);if(fa.t>70){fa.p=3;fa.t=0;boomSnd();fa.fr=[{x:cx,y:cy,vx:-2,vy:-0.5,r:32,c:'#00ff88',l:'Ba-141',n:8},{x:cx,y:cy,vx:2,vy:0.5,r:25,c:'#00d4ff',l:'Kr-92',n:6}];fa.ne=[{x:cx,y:cy,vx:0,vy:-3,r:6},{x:cx,y:cy,vx:-2.5,vy:2,r:6},{x:cx,y:cy,vx:2.5,vy:-2,r:6}];}}else if(fa.p===3){var fl=Math.max(0,1-fa.t/25);if(fl>0){fx.beginPath();fx.arc(cx,cy,80*fl,0,Math.PI*2);fx.fillStyle='rgba(255,200,50,'+fl*0.5+')';fx.fill();for(var i=0;i<12;i++){var a=(i/12)*Math.PI*2;fx.beginPath();fx.moveTo(cx,cy);fx.lineTo(cx+Math.cos(a)*100*fl,cy+Math.sin(a)*100*fl);fx.strokeStyle='rgba(255,255,100,'+fl*0.5+')';fx.lineWidth=2;fx.stroke();}}fa.fr.forEach(function(f){f.x+=f.vx;f.y+=f.vy;dn(fx,f.x,f.y,f.r,f.c,f.l,f.n);});fa.ne.forEach(function(n){n.x+=n.vx;n.y+=n.vy;fx.beginPath();fx.arc(n.x,n.y,n.r,0,Math.PI*2);fx.fillStyle='#00d4ff';fx.fill();});fx.fillStyle='rgba(255,255,255,0.9)';fx.font='bold 12px Cairo';fx.textAlign='center';fx.fillText('n + U-235 → Ba + Kr + 3n + 200 MeV',cx,30);fx.fillStyle='#ffd600';fx.font='bold 16px Cairo';fx.fillText('E = 200 MeV',cx,H-30);if(fa.t>120){fa.on=false;document.getElementById('fissionMsg').innerHTML='<span class="accent3-text font-bold">اكتمل الانشطار!</span> 3 نيوترونات + 200 MeV';okSnd();}}if(fa.on){fa.t++;requestAnimationFrame(drFi);}}
+function startFission(){fa={p:1,t:0,on:true,fr:[],ne:[]};clickSnd();document.getElementById('fissionMsg').textContent='النيوترون يتجه...';drFi();}
+function resetFission(){fa={p:0,t:0,on:false,fr:[],ne:[]};document.getElementById('fissionMsg').textContent='اضغط "انشطار!"';drFi();}
+drFi();
 
-// =================== محاكاة التفاعل المتسلسل ===================
-const cCanvas=document.getElementById('chainCanvas');
-const cCtx=cCanvas.getContext('2d');
-let cAnim={running:false,nodes:[],generation:0,maxGen:4};
-function resetChainAnim(){cAnim={running:false,nodes:[],generation:0,maxGen:4};document.getElementById('chainGen').textContent='0';document.getElementById('chainCount').textContent='0';document.getElementById('chainNeutrons').textContent='0';document.getElementById('chainStatus').textContent='اضغط "بدء التفاعل" لمشاهدة التفاعل المتسلسل يتضاعف';drawChainScene();}
-function drawChainScene(){const W=cCanvas.width,H=cCanvas.height;cCtx.clearRect(0,0,W,H);cAnim.nodes.forEach(n=>{n.t=(n.t||0)+1;if(n.type==='nucleus'){cCtx.beginPath();cCtx.arc(n.x,n.y,n.r,0,Math.PI*2);cCtx.fillStyle='rgba(255,120,60,0.8)';cCtx.fill();cCtx.strokeStyle='rgba(255,107,53,0.5)';cCtx.lineWidth=1;cCtx.stroke();}else if(n.type==='fission'){const flash=Math.max(0,n.t/15);cCtx.beginPath();cCtx.arc(n.x,n.y,n.r*2*flash,0,Math.PI*2);cCtx.fillStyle='rgba(255,200,50,'+flash*0.4+')';cCtx.fill();const off=n.t*1.5;cCtx.beginPath();cCtx.arc(n.x-off,n.y-5,n.r*0.6,0,Math.PI*2);cCtx.fillStyle='#00ff88';cCtx.fill();cCtx.beginPath();cCtx.arc(n.x+off,n.y+5,n.r*0.45,0,Math.PI*2);cCtx.fillStyle='#00d4ff';cCtx.fill();}else if(n.type==='neutron'){n.x+=n.vx;n.y+=n.vy;cCtx.beginPath();cCtx.arc(n.x,n.y,4,0,Math.PI*2);cCtx.fillStyle='#00d4ff';cCtx.fill();cCtx.beginPath();cCtx.moveTo(n.x,n.y);cCtx.lineTo(n.x-n.vx*5,n.y-n.vy*5);cCtx.strokeStyle='rgba(0,212,255,0.3)';cCtx.lineWidth=2;cCtx.stroke();}});document.getElementById('chainCount').textContent=cAnim.nodes.filter(n=>n.type==='fission').length;document.getElementById('chainNeutrons').textContent=cAnim.nodes.filter(n=>n.type==='neutron').length;if(cAnim.running){const oldN=cAnim.nodes.filter(n=>n.type==='neutron'&&n.t>30);if(oldN.length>0&&cAnim.generation<cAnim.maxGen){cAnim.generation++;document.getElementById('chainGen').textContent=cAnim.generation;cAnim.nodes=cAnim.nodes.filter(n=>n.type!=='neutron');oldN.forEach(on=>{cAnim.nodes.push({x:on.x,y:on.y,r:15,type:'fission',t:0});for(let i=0;i<3;i++){const a=Math.random()*Math.PI*2,sp=1.5+Math.random(),nx=on.x+Math.cos(a)*30,ny=on.y+Math.sin(a)*30;if(nx>20&&nx<W-20&&ny>20&&ny<H-20) cAnim.nodes.push({x:nx,y:ny,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,type:'neutron',t:0});}});if(cAnim.generation===1) playExplosion();if(cAnim.generation===cAnim.maxGen){setTimeout(()=>{cAnim.running=false;document.getElementById('chainStatus').innerHTML='<span class="accent3-text font-bold">التفاعل المتسلسل!</span> من نيوترون واحد إلى '+cAnim.maxGen+' أجيال متضاعفة!';playSuccess();},2000);}}requestAnimationFrame(drawChainScene);}}
-function startChainAnim(){playClick();const W=cCanvas.width,H=cCanvas.height;cAnim={running:true,nodes:[],generation:0,maxGen:4};document.getElementById('chainGen').textContent='0';document.getElementById('chainCount').textContent='0';document.getElementById('chainNeutrons').textContent='0';document.getElementById('chainStatus').textContent='النيوترون الأول يتحرك...';cAnim.nodes.push({x:W/2,y:H/2,r:20,type:'nucleus',t:0});cAnim.nodes.push({x:W/2+100,y:H/2,vx:-2,vy:0,type:'neutron',t:0});setTimeout(()=>{if(!cAnim.running) return;cAnim.nodes=cAnim.nodes.filter(n=>n.type!=='neutron'&&n.type!=='nucleus');cAnim.nodes.push({x:W/2,y:H/2,r:20,type:'fission',t:0});cAnim.generation=1;document.getElementById('chainGen').textContent='1';for(let i=0;i<3;i++){const a=(i/3)*Math.PI*2-Math.PI/2;cAnim.nodes.push({x:W/2+Math.cos(a)*25,y:H/2+Math.sin(a)*25,vx:Math.cos(a)*2,vy:Math.sin(a)*2,type:'neutron',t:0});}playExplosion();drawChainScene();},800);drawChainScene();}
-resetChainAnim();
+// ===== التفاعل المتسلسل =====
+var cc=document.getElementById('chainCanvas'),cx2=cc.getContext('2d'),ca={on:false,nodes:[],gen:0,max:4};
+function resetChain(){ca={on:false,nodes:[],gen:0,max:4};document.getElementById('chainGen').textContent='0';document.getElementById('chainCnt').textContent='0';document.getElementById('chainNeu').textContent='0';document.getElementById('chainMsg').textContent='اضغط "بدء"';drCh();}
+function drCh(){var W=cc.width,H=cc.height;cx2.clearRect(0,0,W,H);ca.nodes.forEach(function(n){n.t=(n.t||0)+1;if(n.tp==='nuc'){cx2.beginPath();cx2.arc(n.x,n.y,n.r,0,Math.PI*2);cx2.fillStyle='rgba(255,120,60,0.8)';cx2.fill();}else if(n.tp==='fis'){var fl=Math.max(0,n.t/15);cx2.beginPath();cx2.arc(n.x,n.y,n.r*2*fl,0,Math.PI*2);cx2.fillStyle='rgba(255,200,50,'+fl*0.4+')';cx2.fill();cx2.beginPath();cx2.arc(n.x-n.t*1.5,n.y-5,n.r*0.6,0,Math.PI*2);cx2.fillStyle='#00ff88';cx2.fill();cx2.beginPath();cx2.arc(n.x+n.t*1.5,n.y+5,n.r*0.45,0,Math.PI*2);cx2.fillStyle='#00d4ff';cx2.fill();}else if(n.tp==='neu'){n.x+=n.vx;n.y+=n.vy;cx2.beginPath();cx2.arc(n.x,n.y,4,0,Math.PI*2);cx2.fillStyle='#00d4ff';cx2.fill();}});document.getElementById('chainCnt').textContent=ca.nodes.filter(function(n){return n.tp==='fis';}).length;document.getElementById('chainNeu').textContent=ca.nodes.filter(function(n){return n.tp==='neu';}).length;if(ca.on){var old=ca.nodes.filter(function(n){return n.tp==='neu'&&n.t>30;});if(old.length>0&&ca.gen<ca.max){ca.gen++;document.getElementById('chainGen').textContent=ca.gen;ca.nodes=ca.nodes.filter(function(n){return n.tp!=='neu';});old.forEach(function(o){ca.nodes.push({x:o.x,y:o.y,r:15,tp:'fis',t:0});for(var i=0;i<3;i++){var a=Math.random()*Math.PI*2,s=1.5+Math.random(),nx=o.x+Math.cos(a)*30,ny=o.y+Math.sin(a)*30;if(nx>20&&nx<W-20&&ny>20&&ny<H-20)ca.nodes.push({x:nx,y:ny,vx:Math.cos(a)*s,vy:Math.sin(a)*s,tp:'neu',t:0});}});if(ca.gen===1)boomSnd();if(ca.gen===ca.max)setTimeout(function(){ca.on=false;document.getElementById('chainMsg').innerHTML='<span class="accent3-text font-bold">التفاعل المتسلسل!</span> 4 أجيال متضاعفة!';okSnd();},2000);}requestAnimationFrame(drCh);}}
+function startChain(){clickSnd();var W=cc.width,H=cc.height;ca={on:true,nodes:[],gen:0,max:4};document.getElementById('chainGen').textContent='0';document.getElementById('chainCnt').textContent='0';document.getElementById('chainNeu').textContent='0';document.getElementById('chainMsg').textContent='النيوترون يتحرك...';ca.nodes.push({x:W/2,y:H/2,r:20,tp:'nuc',t:0});ca.nodes.push({x:W/2+100,y:H/2,vx:-2,vy:0,tp:'neu',t:0});setTimeout(function(){if(!ca.on)return;ca.nodes=ca.nodes.filter(function(n){return n.tp!=='neu'&&n.tp!=='nuc';});ca.nodes.push({x:W/2,y:H/2,r:20,tp:'fis',t:0});ca.gen=1;document.getElementById('chainGen').textContent='1';for(var i=0;i<3;i++){var a=(i/3)*Math.PI*2-Math.PI/2;ca.nodes.push({x:W/2+Math.cos(a)*25,y:H/2+Math.sin(a)*25,vx:Math.cos(a)*2,vy:Math.sin(a)*2,tp:'neu',t:0});}boomSnd();drCh();},800);drCh();}
+resetChain();
 
-// =================== محاكاة الاندماج ===================
-const fuCanvas=document.getElementById('fusionCanvas');
-const fuCtx=fuCanvas.getContext('2d');
-let fuAnim={phase:0,t:0,running:false,temp:70};
-function updateFusionTemp(v){fuAnim.temp=parseInt(v);document.getElementById('fusionTempVal').innerHTML=(v/100*1.5e8).toExponential(1)+' K';}
-function drawTempIndicator(ctx,W,H,temp){const bx=20,by=H-60,bw=120,bh=12;ctx.fillStyle='rgba(0,0,0,0.4)';ctx.fillRect(bx-2,by-2,bw+4,bh+4);const grad=ctx.createLinearGradient(bx,0,bx+bw,0);grad.addColorStop(0,'#0066ff');grad.addColorStop(0.5,'#ff6b35');grad.addColorStop(1,'#ff0000');ctx.fillStyle=grad;ctx.fillRect(bx,by,bw*(temp/100),bh);ctx.fillStyle='#fff';ctx.font='10px Cairo';ctx.textAlign='center';ctx.fillText('الحرارة',bx+bw/2,by-8);}
-function drawFusionScene(){const W=fuCanvas.width,H=fuCanvas.height;fuCtx.clearRect(0,0,W,H);for(let i=0;i<30;i++){const sx=(i*137.5)%W,sy=(i*97.3)%H;fuCtx.beginPath();fuCtx.arc(sx,sy,0.5+Math.sin(Date.now()*0.001+i)*0.5,0,Math.PI*2);fuCtx.fillStyle='rgba(255,255,255,0.3)';fuCtx.fill();}const cx=W/2,cy=H/2,success=fuAnim.temp>50;if(fuAnim.phase===0){drawNucleus(fuCtx,cx-60,cy,22,'#00ff88','H-2',2);drawNucleus(fuCtx,cx+60,cy,26,'#00d4ff','H-3',3);for(let i=0;i<5;i++){const y=cy-15+i*8;fuCtx.beginPath();fuCtx.moveTo(cx-38,y);fuCtx.lineTo(cx+38,y);fuCtx.strokeStyle='rgba(255,100,100,0.3)';fuCtx.lineWidth=1;fuCtx.setLineDash([3,3]);fuCtx.stroke();fuCtx.setLineDash([]);}fuCtx.fillStyle='rgba(255,100,100,0.6)';fuCtx.font='11px Cairo';fuCtx.textAlign='center';fuCtx.fillText('قوة التنافر الكهربائي',cx,cy+50);fuCtx.fillStyle='#00ff88';fuCtx.fillText('ديوتيريوم',cx-60,cy+38);fuCtx.fillStyle='#00d4ff';fuCtx.fillText('تريتيوم',cx+60,cy+42);drawTempIndicator(fuCtx,W,H,fuAnim.temp);}else if(fuAnim.phase===1){const p=Math.min(fuAnim.t/80,1),e=p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2,dist=120*(1-e);drawNucleus(fuCtx,cx-dist/2,cy,22,'#00ff88','H-2',2);drawNucleus(fuCtx,cx+dist/2,cy,26,'#00d4ff','H-3',3);if(dist>30){for(let i=0;i<3;i++){const y=cy-10+i*10;fuCtx.beginPath();fuCtx.moveTo(cx-dist/2+22,y);fuCtx.lineTo(cx+dist/2-26,y);fuCtx.strokeStyle='rgba(255,100,100,'+(0.5*(dist/120))+')';fuCtx.lineWidth=1;fuCtx.setLineDash([3,3]);fuCtx.stroke();fuCtx.setLineDash([]);}}drawTempIndicator(fuCtx,W,H,fuAnim.temp);if(p>=1){fuAnim.phase=success?2:4;fuAnim.t=0;if(success) playExplosion(); else playClick();}}else if(fuAnim.phase===2){const flash=Math.max(0,1-fuAnim.t/30);if(flash>0){fuCtx.beginPath();fuCtx.arc(cx,cy,60+flash*50,0,Math.PI*2);fuCtx.fillStyle='rgba(255,255,200,'+flash*0.4+')';fuCtx.fill();for(let i=0;i<16;i++){const a=(i/16)*Math.PI*2+fuAnim.t*0.05;fuCtx.beginPath();fuCtx.moveTo(cx+Math.cos(a)*30,cy+Math.sin(a)*30);fuCtx.lineTo(cx+Math.cos(a)*(80+flash*60),cy+Math.sin(a)*(80+flash*60));fuCtx.strokeStyle='rgba(255,255,100,'+flash*0.6+')';fuCtx.lineWidth=3;fuCtx.stroke();}}drawNucleus(fuCtx,cx,cy,35,'#ffd600','He-4',4);const np=Math.min(fuAnim.t/60,1),ne=np<0.5?2*np*np:1-Math.pow(-2*np+2,2)/2,nx=cx+ne*150,ny=cy-ne*100;fuCtx.beginPath();fuCtx.arc(nx,ny,8,0,Math.PI*2);fuCtx.fillStyle='#00d4ff';fuCtx.fill();fuCtx.strokeStyle='rgba(0,212,255,0.5)';fuCtx.lineWidth=1;fuCtx.stroke();fuCtx.beginPath();fuCtx.moveTo(nx,ny);fuCtx.lineTo(nx-ne*40,ny+ne*27);fuCtx.strokeStyle='rgba(0,212,255,0.2)';fuCtx.lineWidth=4;fuCtx.stroke();fuCtx.fillStyle='rgba(255,255,255,0.9)';fuCtx.font='bold 12px Cairo';fuCtx.textAlign='center';fuCtx.fillText('H-2 + H-3 → He-4 + n + 17.6 MeV',cx,30);fuCtx.fillStyle='#ffd600';fuCtx.font='bold 14px Cairo';fuCtx.fillText('He-4',cx,cy+55);fuCtx.fillStyle='#00d4ff';fuCtx.font='12px Cairo';fuCtx.fillText('نيوترون',nx,ny+22);if(fuAnim.t>100){fuAnim.running=false;document.getElementById('fusionStatus').innerHTML='<span class="accent-text font-bold">اندماج ناجح!</span> نواتا الديوتيريوم والتريتيوم اندمجتا لتكوين He-4 ونيوترون مع تحرر 17.6 MeV';playSuccess();}}else if(fuAnim.phase===4){const p=Math.min(fuAnim.t/40,1),bounce=p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2,sep=30+bounce*100;drawNucleus(fuCtx,cx-sep/2,cy,22,'#00ff88','H-2',2);drawNucleus(fuCtx,cx+sep/2,cy,26,'#00d4ff','H-3',3);drawTempIndicator(fuCtx,W,H,fuAnim.temp);fuCtx.fillStyle='#ff6b6b';fuCtx.font='bold 16px Cairo';fuCtx.textAlign='center';fuCtx.fillText('الحرارة غير كافية!',cx,40);fuCtx.font='13px Cairo';fuCtx.fillStyle='rgba(255,100,100,0.8)';fuCtx.fillText('زِد درجة الحرارة وحاول مرة أخرى',cx,65);if(fuAnim.t>60){fuAnim.running=false;document.getElementById('fusionStatus').innerHTML='<span style="color:#ff6b6b;font-weight:bold">فشل الاندماج!</span> الحرارة غير كافية للتغلب على التنافر الكهربائي';}}if(fuAnim.running){fuAnim.t++;requestAnimationFrame(drawFusionScene);}}
-function startFusionAnim(){playClick();fuAnim={phase:1,t:0,running:true,temp:fuAnim.temp};document.getElementById('fusionStatus').textContent='النوى تتقارب...';drawFusionScene();}
-function resetFusionAnim(){fuAnim={phase:0,t:0,running:false,temp:fuAnim.temp};document.getElementById('fusionStatus').textContent='اضغط "اندماج!" مع ضبط الحرارة لمشاهدة الاندماج';drawFusionScene();}
-drawFusionScene();
+// ===== الاندماج =====
+var fuc=document.getElementById('fusionCanvas'),fux=fuc.getContext('2d'),fua={p:0,t:0,on:false,tmp:70};
+function drFu(){var W=fuc.width,H=fuc.height;fux.clearRect(0,0,W,H);for(var i=0;i<30;i++){fux.beginPath();fux.arc((i*137.5)%W,(i*97.3)%H,0.5+Math.sin(Date.now()*0.001+i)*0.5,0,Math.PI*2);fux.fillStyle='rgba(255,255,255,0.3)';fux.fill();}var cx=W/2,cy=H/2,ok=fua.tmp>50;if(fua.p===0){dn(fux,cx-60,cy,22,'#00ff88','H-2',2);dn(fux,cx+60,cy,26,'#00d4ff','H-3',3);for(var i=0;i<5;i++){fux.beginPath();fux.moveTo(cx-38,cy-15+i*8);fux.lineTo(cx+38,cy-15+i*8);fux.strokeStyle='rgba(255,100,100,0.3)';fux.lineWidth=1;fux.setLineDash([3,3]);fux.stroke();fux.setLineDash([]);}fux.fillStyle='rgba(255,100,100,0.6)';fux.font='11px Cairo';fux.textAlign='center';fux.fillText('قوة التنافر',cx,cy+50);fux.fillStyle='#00ff88';fux.fillText('ديوتيريوم',cx-60,cy+38);fux.fillStyle='#00d4ff';fux.fillText('تريتيوم',cx+60,cy+42);var bx=20,by=H-60,bw=120;fux.fillStyle='rgba(0,0,0,0.4)';fux.fillRect(bx-2,by-2,bw+4,16);var gr=fux.createLinearGradient(bx,0,bx+bw,0);gr.addColorStop(0,'#0066ff');gr.addColorStop(0.5,'#ff6b35');gr.addColorStop(1,'#ff0000');fux.fillStyle=gr;fux.fillRect(bx,by,bw*(fua.tmp/100),12);fux.fillStyle='#fff';fux.font='10px Cairo';fux.textAlign='center';fux.fillText('الحرارة',bx+bw/2,by-8);}else if(fua.p===1){var pr=Math.min(fua.t/80,1),e=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2,ds=120*(1-e);dn(fux,cx-ds/2,cy,22,'#00ff88','H-2',2);dn(fux,cx+ds/2,cy,26,'#00d4ff','H-3',3);if(pr>=1){fua.p=ok?2:4;fua.t=0;if(ok)boomSnd();else clickSnd();}}else if(fua.p===2){var fl=Math.max(0,1-fua.t/30);if(fl>0){fux.beginPath();fux.arc(cx,cy,60+fl*50,0,Math.PI*2);fux.fillStyle='rgba(255,255,200,'+fl*0.4+')';fux.fill();for(var i=0;i<16;i++){var a=(i/16)*Math.PI*2+fua.t*0.05;fux.beginPath();fux.moveTo(cx+Math.cos(a)*30,cy+Math.sin(a)*30);fux.lineTo(cx+Math.cos(a)*(80+fl*60),cy+Math.sin(a)*(80+fl*60));fux.strokeStyle='rgba(255,255,100,'+fl*0.6+')';fux.lineWidth=3;fux.stroke();}}dn(fux,cx,cy,35,'#ffd600','He-4',4);var np=Math.min(fua.t/60,1),ne=np<0.5?2*np*np:1-Math.pow(-2*np+2,2)/2,nx=cx+ne*150,ny=cy-ne*100;fux.beginPath();fux.arc(nx,ny,8,0,Math.PI*2);fux.fillStyle='#00d4ff';fux.fill();fux.fillStyle='rgba(255,255,255,0.9)';fux.font='bold 12px Cairo';fux.textAlign='center';fux.fillText('H-2 + H-3 → He-4 + n + 17.6 MeV',cx,30);if(fua.t>100){fua.on=false;document.getElementById('fusionMsg').innerHTML='<span class="accent-text font-bold">اندماج ناجح!</span> 17.6 MeV';okSnd();}}else if(fua.p===4){var pr=Math.min(fua.t/40,1),b=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2,sp=30+b*100;dn(fux,cx-sp/2,cy,22,'#00ff88','H-2',2);dn(fux,cx+sp/2,cy,26,'#00d4ff','H-3',3);fux.fillStyle='#ff6b6b';fux.font='bold 16px Cairo';fux.textAlign='center';fux.fillText('الحرارة غير كافية!',cx,40);if(fua.t>60){fua.on=false;document.getElementById('fusionMsg').innerHTML='<span style="color:#ff6b6b;font-weight:bold">فشل! زِد الحرارة</span>';}}if(fua.on){fua.t++;requestAnimationFrame(drFu);}}
+function startFusion(){clickSnd();fua={p:1,t:0,on:true,tmp:fua.tmp};document.getElementById('fusionMsg').textContent='النوى تتقارب...';drFu();}
+function resetFusion(){fua={p:0,t:0,on:false,tmp:fua.tmp};document.getElementById('fusionMsg').textContent='اضغط "اندماج!"';drFu();}
+drFu();
 
-// =================== المفاعل النووي PWR ===================
-const rtrCanvas=document.getElementById('reactorCanvas');
-const rtrCtx=rtrCanvas.getContext('2d');
-let rtrState={running:false,t:0,power:0,controlRodsIn:0.3};
+// ===== المفاعل PWR =====
+var rtc=document.getElementById('reactorCanvas'),rtx=rtc.getContext('2d'),rs={on:false,t:0,pw:0,cr:0.3};
+function dCT(c,x,y,w,h){c.beginPath();c.moveTo(x-w/2,y);c.quadraticCurveTo(x-w/2-5,y-h*0.3,x-w*0.35,y-h*0.7);c.quadraticCurveTo(x-w*0.15,y-h,x+w*0.15,y-h);c.quadraticCurveTo(x+w*0.35,y-h*0.7,x+w/2+5,y-h*0.3);c.lineTo(x+w/2,y);c.closePath();c.fillStyle='rgba(40,60,80,0.6)';c.fill();c.strokeStyle='rgba(0,212,255,0.3)';c.lineWidth=1.5;c.stroke();if(rs.pw>10){for(var i=0;i<3;i++){c.beginPath();c.arc(x+Math.sin(Date.now()*0.003+i*2)*5,y-h-Math.sin(Date.now()*0.002+i)*10-i*8,4+i*2,0,Math.PI*2);c.fillStyle='rgba(200,220,255,'+(0.1+rs.pw/300)+')';c.fill();}}}
+function drRt(){var W=rtc.width,H=rtc.height;rtx.clearRect(0,0,W,H);rtx.fillStyle='#050a12';rtx.fillRect(0,0,W,H);dCT(rtx,W-100,H-130,50,90);dCT(rtx,W-40,H-130,50,90);var rx=60,ry=50,rw=140,rh=210;rtx.strokeStyle='rgba(0,212,255,0.5)';rtx.lineWidth=3;rtx.fillStyle='rgba(0,30,60,0.8)';rtx.beginPath();rtx.moveTo(rx+10,ry);rtx.lineTo(rx+rw-10,ry);rtx.quadraticCurveTo(rx+rw,ry,rx+rw,ry+10);rtx.lineTo(rx+rw,ry+rh-10);rtx.quadraticCurveTo(rx+rw,ry+rh,rx+rw-10,ry+rh);rtx.lineTo(rx+10,ry+rh);rtx.quadraticCurveTo(rx,ry+rh,rx,ry+rh-10);rtx.lineTo(rx,ry+10);rtx.quadraticCurveTo(rx,ry,rx+10,ry);rtx.closePath();rtx.fill();rtx.stroke();rtx.fillStyle='#00d4ff';rtx.font='bold 11px Cairo';rtx.textAlign='center';rtx.fillText('قلب المفاعل',rx+rw/2,ry-8);var gl=rs.pw/100;for(var i=0;i<6;i++){var fx=rx+18+i*19;rtx.strokeStyle='rgba(255,107,53,'+(0.3+gl*0.5)+')';rtx.lineWidth=4;rtx.beginPath();rtx.moveTo(fx,ry+25);rtx.lineTo(fx,ry+rh-25);rtx.stroke();if(rs.pw>20){rtx.save();rtx.shadowColor='#ff6b35';rtx.shadowBlur=gl*15;rtx.strokeStyle='rgba(255,150,80,'+(gl*0.3)+')';rtx.lineWidth=8;rtx.beginPath();rtx.moveTo(fx,ry+25);rtx.lineTo(fx,ry+rh-25);rtx.stroke();rtx.restore();}}var re=ry+25+rs.cr*(rh-50);for(var i=0;i<3;i++){var crx=rx+35+i*38;rtx.strokeStyle='rgba(0,255,136,0.8)';rtx.lineWidth=5;rtx.beginPath();rtx.moveTo(crx,ry+8);rtx.lineTo(crx,re);rtx.stroke();rtx.fillStyle='#00ff88';rtx.fillRect(crx-6,ry+2,12,8);}var sx=rx+rw+60,sy=ry+30,sw=80,sh=150;rtx.strokeStyle='rgba(255,214,0,0.4)';rtx.lineWidth=2;rtx.fillStyle='rgba(40,35,10,0.6)';rtx.beginPath();rtx.moveTo(sx+10,sy);rtx.lineTo(sx+sw-10,sy);rtx.quadraticCurveTo(sx+sw,sy,sx+sw,sy+10);rtx.lineTo(sx+sw,sy+sh-10);rtx.quadraticCurveTo(sx+sw,sy+sh,sx+sw-10,sy+sh);rtx.lineTo(sx+10,sy+sh);rtx.quadraticCurveTo(sx,sy+sh,sx,sy+sh-10);rtx.lineTo(sx,sy+10);rtx.quadraticCurveTo(sx,sy,sx+10,sy);rtx.closePath();rtx.fill();rtx.stroke();rtx.fillStyle='#ffd600';rtx.font='bold 10px Cairo';rtx.textAlign='center';rtx.fillText('مولّد البخار',sx+sw/2,sy-6);rtx.strokeStyle='rgba(255,100,50,0.5)';rtx.lineWidth=3;rtx.beginPath();rtx.moveTo(rx+rw,ry+60);rtx.lineTo(sx,ry+60);rtx.stroke();rtx.beginPath();rtx.moveTo(sx,ry+sh-30);rtx.lineTo(rx+rw,ry+rh-30);rtx.stroke();if(rs.on){for(var i=0;i<4;i++){rtx.beginPath();rtx.arc(rx+rw+((rs.t*2+i*35)%(sx-rx-rw)),ry+60,3,0,Math.PI*2);rtx.fillStyle='rgba(255,150,80,0.6)';rtx.fill();}}var tx=sx+sw+50,ty=sy+40,tr=35;rtx.strokeStyle='rgba(0,255,136,0.4)';rtx.lineWidth=2;rtx.beginPath();rtx.arc(tx,ty,tr,0,Math.PI*2);rtx.stroke();rtx.fillStyle='rgba(0,40,30,0.5)';rtx.fill();var an=rs.on?rs.t*0.1:0;for(var i=0;i<6;i++){var a=an+(i/6)*Math.PI*2;rtx.beginPath();rtx.moveTo(tx,ty);rtx.lineTo(tx+Math.cos(a)*tr*0.8,ty+Math.sin(a)*tr*0.8);rtx.strokeStyle='rgba(0,255,136,0.6)';rtx.lineWidth=3;rtx.stroke();}rtx.fillStyle='#00ff88';rtx.font='bold 10px Cairo';rtx.textAlign='center';rtx.fillText('التوربين',tx,ty+tr+15);rtx.strokeStyle='rgba(200,200,255,0.4)';rtx.lineWidth=3;rtx.beginPath();rtx.moveTo(sx+sw,sy+50);rtx.lineTo(tx-tr,sy+50);rtx.stroke();if(rs.on){for(var i=0;i<3;i++){rtx.beginPath();rtx.arc(sx+sw+((rs.t*3+i*25)%(tx-tr-sx-sw)),sy+50,2,0,Math.PI*2);rtx.fillStyle='rgba(200,200,255,0.5)';rtx.fill();}}var gx=tx+60,gy=ty-5,gr=22;rtx.strokeStyle='rgba(255,214,0,0.5)';rtx.lineWidth=2;rtx.beginPath();rtx.arc(gx,gy,gr,0,Math.PI*2);rtx.stroke();rtx.fillStyle='rgba(40,35,10,0.5)';rtx.fill();rtx.fillStyle='#ffd600';rtx.font='bold 16px Cairo';rtx.textAlign='center';rtx.textBaseline='middle';rtx.fillText('\u26A1',gx,gy);rtx.textBaseline='alphabetic';rtx.font='bold 10px Cairo';rtx.fillText('المولّد',gx,gy+gr+12);rtx.strokeStyle='rgba(150,150,150,0.5)';rtx.lineWidth=4;rtx.beginPath();rtx.moveTo(tx+tr,ty);rtx.lineTo(gx-gr,gy);rtx.stroke();rtx.strokeStyle='rgba(255,214,0,0.3)';rtx.lineWidth=2;rtx.setLineDash([5,5]);rtx.beginPath();rtx.moveTo(gx+gr,gy-10);rtx.lineTo(W-10,gy-30);rtx.stroke();rtx.beginPath();rtx.moveTo(gx+gr,gy+10);rtx.lineTo(W-10,gy+10);rtx.stroke();rtx.setLineDash([]);rtx.strokeStyle='rgba(100,150,255,0.3)';rtx.lineWidth=2;rtx.beginPath();rtx.moveTo(tx,ty+tr);rtx.lineTo(tx,H-40);rtx.lineTo(W-100,H-40);rtx.stroke();rtx.fillStyle='rgba(255,255,255,0.4)';rtx.font='9px Cairo';rtx.textAlign='left';rtx.fillText('ماء ساخن →',rx+rw+5,ry+55);rtx.fillText('← ماء أبرد',rx+rw+5,ry+rh-25);rtx.fillText('بخار →',sx+sw+5,sy+45);if(rs.on){if(rs.cr<0.8)rs.pw=Math.min(rs.pw+0.3,100);else rs.pw=Math.max(rs.pw-0.5,5);document.getElementById('reactorPower').style.width=rs.pw+'%';document.getElementById('reactorPowerVal').textContent=Math.round(rs.pw);rs.t++;requestAnimationFrame(drRt);}}
+function startReactor(){clickSnd();rs.on=true;rs.t=0;drRt();}
+function resetReactor(){rs={on:false,t:0,pw:0,cr:0.3};document.getElementById('reactorPower').style.width='0%';document.getElementById('reactorPowerVal').textContent='0';drRt();}
+function toggleRods(){clickSnd();rs.cr=rs.cr<0.5?0.85:0.15;if(!rs.on)drRt();}
+drRt();
 
-function drawCoolingTower(ctx,x,y,w,h){ctx.beginPath();ctx.moveTo(x-w/2,y);ctx.quadraticCurveTo(x-w/2-5,y-h*0.3,x-w*0.35,y-h*0.7);ctx.quadraticCurveTo(x-w*0.15,y-h,x+w*0.15,y-h);ctx.quadraticCurveTo(x+w*0.35,y-h*0.7,x+w/2+5,y-h*0.3);ctx.lineTo(x+w/2,y);ctx.closePath();ctx.fillStyle='rgba(40,60,80,0.6)';ctx.fill();ctx.strokeStyle='rgba(0,212,255,0.3)';ctx.lineWidth=1.5;ctx.stroke();if(rtrState.power>10){for(let i=0;i<3;i++){const sy=y-h-Math.sin(Date.now()*0.002+i)*10-i*8,sx=x+Math.sin(Date.now()*0.003+i*2)*5;ctx.beginPath();ctx.arc(sx,sy,4+i*2,0,Math.PI*2);ctx.fillStyle='rgba(200,220,255,'+(0.1+rtrState.power/300)+')';ctx.fill();}}}
-
-function drawReactorScene(){const W=rtrCanvas.width,H=rtrCanvas.height;rtrCtx.clearRect(0,0,W,H);rtrCtx.fillStyle='#050a12';rtrCtx.fillRect(0,0,W,H);drawCoolingTower(rtrCtx,W-100,H-130,50,90);drawCoolingTower(rtrCtx,W-40,H-130,50,90);const rx=60,ry=50,rw=140,rh=210;rtrCtx.strokeStyle='rgba(0,212,255,0.5)';rtrCtx.lineWidth=3;rtrCtx.fillStyle='rgba(0,30,60,0.8)';rtrCtx.beginPath();rtrCtx.moveTo(rx+10,ry);rtrCtx.lineTo(rx+rw-10,ry);rtrCtx.quadraticCurveTo(rx+rw,ry,rx+rw,ry+10);rtrCtx.lineTo(rx+rw,ry+rh-10);rtrCtx.quadraticCurveTo(rx+rw,ry+rh,rx+rw-10,ry+rh);rtrCtx.lineTo(rx+10,ry+rh);rtrCtx.quadraticCurveTo(rx,ry+rh,rx,ry+rh-10);rtrCtx.lineTo(rx,ry+10);rtrCtx.quadraticCurveTo(rx,ry,rx+10,ry);rtrCtx.closePath();rtrCtx.fill();rtrCtx.stroke();rtrCtx.fillStyle='#00d4ff';rtrCtx.font='bold 11px Cairo';rtrCtx.textAlign='center';rtrCtx.fillText('قلب المفاعل',rx+rw/2,ry-8);const glow=rtrState.power/100;for(let i=0;i<6;i++){const fx=rx+18+i*19;rtrCtx.strokeStyle='rgba(255,107,53,'+(0.3+glow*0.5)+')';rtrCtx.lineWidth=4;rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+25);rtrCtx.lineTo(fx,ry+rh-25);rtrCtx.stroke();if(rtrState.power>20){rtrCtx.save();rtrCtx.shadowColor='#ff6b35';rtrCtx.shadowBlur=glow*15;rtrCtx.strokeStyle='rgba(255,150,80,'+(glow*0.3)+')';rtrCtx.lineWidth=8;rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+25);rtrCtx.lineTo(fx,ry+rh-25);rtrCtx.stroke();rtrCtx.restore();}}const rodEnd=ry+25+rtrState.controlRodsIn*(rh-50);for(let i=0;i<3;i++){const crx=rx+35+i*38;rtrCtx.strokeStyle='rgba(0,255,136,0.8)';rtrCtx.lineWidth=5;rtrCtx.beginPath();rtrCtx.moveTo(crx,ry+8);rtrCtx.lineTo(crx,rodEnd);rtrCtx.stroke();rtrCtx.fillStyle='#00ff88';rtrCtx.fillRect(crx-6,ry+2,12,8);}const sx=rx+rw+60,sy=ry+30,sw=80,sh=150;rtrCtx.strokeStyle='rgba(255,214,0,0.4)';rtrCtx.lineWidth=2;rtrCtx.fillStyle='rgba(40,35,10,0.6)';rtrCtx.beginPath();rtrCtx.moveTo(sx+10,sy);rtrCtx.lineTo(sx+sw-10,sy);rtrCtx.quadraticCurveTo(sx+sw,sy,sx+sw,sy+10);rtrCtx.lineTo(sx+sw,sy+sh-10);rtrCtx.quadraticCurveTo(sx+sw,sy+sh,sx+sw-10,sy+sh);rtrCtx.lineTo(sx+10,sy+sh);rtrCtx.quadraticCurveTo(sx,sy+sh,sx,sy+sh-10);rtrCtx.lineTo(sx,sy+10);rtrCtx.quadraticCurveTo(sx,sy,sx+10,sy);rtrCtx.closePath();rtrCtx.fill();rtrCtx.stroke();rtrCtx.fillStyle='#ffd600';rtrCtx.font='bold 10px Cairo';rtrCtx.textAlign='center';rtrCtx.fillText('مولّد البخار',sx+sw/2,sy-6);rtrCtx.strokeStyle='rgba(255,100,50,0.5)';rtrCtx.lineWidth=3;rtrCtx.beginPath();rtrCtx.moveTo(rx+rw,ry+60);rtrCtx.lineTo(sx,ry+60);rtrCtx.stroke();rtrCtx.beginPath();rtrCtx.moveTo(sx,ry+sh-30);rtrCtx.lineTo(rx+rw,ry+rh-30);rtrCtx.stroke();if(rtrState.running){for(let i=0;i<4;i++){const px=rx+rw+((rtrState.t*2+i*35)%(sx-rx-rw));rtrCtx.beginPath();rtrCtx.arc(px,ry+60,3,0,Math.PI*2);rtrCtx.fillStyle='rgba(255,150,80,0.6)';rtrCtx.fill();}for(let i=0;i<4;i++){const px=sx-((rtrState.t*2+i*35)%(sx-rx-rw));rtrCtx.beginPath();rtrCtx.arc(px,ry+rh-30,3,0,Math.PI*2);rtrCtx.fillStyle='rgba(255,100,50,0.4)';rtrCtx.fill();}}const tx=sx+sw+50,ty=sy+40,tr=35;rtrCtx.strokeStyle='rgba(0,255,136,0.4)';rtrCtx.lineWidth=2;rtrCtx.beginPath();rtrCtx.arc(tx,ty,tr,0,Math.PI*2);rtrCtx.stroke();rtrCtx.fillStyle='rgba(0,40,30,0.5)';rtrCtx.fill();const angle=rtrState.running?rtrState.t*0.1:0;for(let i=0;i<6;i++){const a=angle+(i/6)*Math.PI*2;rtrCtx.beginPath();rtrCtx.moveTo(tx,ty);rtrCtx.lineTo(tx+Math.cos(a)*tr*0.8,ty+Math.sin(a)*tr*0.8);rtrCtx.strokeStyle='rgba(0,255,136,0.6)';rtrCtx.lineWidth=3;rtrCtx.stroke();}rtrCtx.fillStyle='#00ff88';rtrCtx.font='bold 10px Cairo';rtrCtx.textAlign='center';rtrCtx.fillText('التوربين',tx,ty+tr+15);rtrCtx.strokeStyle='rgba(200,200,255,0.4)';rtrCtx.lineWidth=3;rtrCtx.beginPath();rtrCtx.moveTo(sx+sw,sy+50);rtrCtx.lineTo(tx-tr,sy+50);rtrCtx.stroke();if(rtrState.running){for(let i=0;i<3;i++){const px=sx+sw+((rtrState.t*3+i*25)%(tx-tr-sx-sw));rtrCtx.beginPath();rtrCtx.arc(px,sy+50,2,0,Math.PI*2);rtrCtx.fillStyle='rgba(200,200,255,0.5)';rtrCtx.fill();}}const gx=tx+60,gy=ty-5,gr=22;rtrCtx.strokeStyle='rgba(255,214,0,0.5)';rtrCtx.lineWidth=2;rtrCtx.beginPath();rtrCtx.arc(gx,gy,gr,0,Math.PI*2);rtrCtx.stroke();rtrCtx.fillStyle='rgba(40,35,10,0.5)';rtrCtx.fill();rtrCtx.fillStyle='#ffd600';rtrCtx.font='bold 16px Cairo';rtrCtx.textAlign='center';rtrCtx.textBaseline='middle';rtrCtx.fillText('\u26A1',gx,gy);rtrCtx.textBaseline='alphabetic';rtrCtx.font='bold 10px Cairo';rtrCtx.fillText('المولّد',gx,gy+gr+12);rtrCtx.strokeStyle='rgba(150,150,150,0.5)';rtrCtx.lineWidth=4;rtrCtx.beginPath();rtrCtx.moveTo(tx+tr,ty);rtrCtx.lineTo(gx-gr,gy);rtrCtx.stroke();rtrCtx.strokeStyle='rgba(255,214,0,0.3)';rtrCtx.lineWidth=2;rtrCtx.setLineDash([5,5]);rtrCtx.beginPath();rtrCtx.moveTo(gx+gr,gy-10);rtrCtx.lineTo(W-10,gy-30);rtrCtx.stroke();rtrCtx.beginPath();rtrCtx.moveTo(gx+gr,gy+10);rtrCtx.lineTo(W-10,gy+10);rtrCtx.stroke();rtrCtx.setLineDash([]);rtrCtx.strokeStyle='rgba(100,150,255,0.3)';rtrCtx.lineWidth=2;rtrCtx.beginPath();rtrCtx.moveTo(tx,ty+tr);rtrCtx.lineTo(tx,H-40);rtrCtx.lineTo(W-100,H-40);rtrCtx.stroke();if(rtrState.running){if(rtrState.controlRodsIn<0.8) rtrState.power=Math.min(rtrState.power+0.3,100);else rtrState.power=Math.max(rtrState.power-0.5,5);document.getElementById('reactorPower').style.width=rtrState.power+'%';document.getElementById('reactorPowerVal').textContent=Math.round(rtrState.power);}rtrCtx.fillStyle='rgba(255,255,255,0.4)';rtrCtx.font='9px Cairo';rtrCtx.textAlign='left';rtrCtx.fillText('ماء مضغوط ساخن →',rx+rw+5,ry+55);rtrCtx.fillText('← ماء مضغوط أبرد',rx+rw+5,ry+rh-25);rtrCtx.fillText('بخار →',sx+sw+5,sy+45);if(rtrState.running){rtrState.t++;requestAnimationFrame(drawReactorScene);}}
-
-function startReactorAnim(){playClick();rtrState.running=true;rtrState.t=0;drawReactorScene();}
-function resetReactorAnim(){rtrState={running:false,t:0,power:0,controlRodsIn:0.3};document.getElementById('reactorPower').style.width='0%';document.getElementById('reactorPowerVal').textContent='0';drawReactorScene();}
-function toggleControlRods(){playClick();rtrState.controlRodsIn=rtrState.controlRodsIn<0.5?0.85:0.15;if(!rtrState.running) drawReactorScene();}
-drawReactorScene();
-
-// =================== محاكاة التوكاماك ===================
-const tkCanvas=document.getElementById('tokamakCanvas');
-const tkCtx=tkCanvas.getContext('2d');
-let tkState={running:false,t:0};
-
-function drawTokamakScene(){const W=tkCanvas.width,H=tkCanvas.height;tkCtx.clearRect(0,0,W,H);tkCtx.fillStyle='#050a12';tkCtx.fillRect(0,0,W,H);const cx=W/2,cy=H/2;for(let i=0;i<12;i++){const a=(i/12)*Math.PI*2,mx=cx+Math.cos(a)*130,my=cy+Math.sin(a)*90;tkCtx.beginPath();tkCtx.arc(mx,my,14,0,Math.PI*2);tkCtx.fillStyle='rgba(100,60,180,0.6)';tkCtx.fill();tkCtx.strokeStyle='rgba(167,139,250,0.5)';tkCtx.lineWidth=2;tkCtx.stroke();if(tkState.running){tkCtx.beginPath();tkCtx.arc(mx,my,18+Math.sin(tkState.t*0.1+i)*3,0,Math.PI*2);tkCtx.strokeStyle='rgba(167,139,250,0.2)';tkCtx.lineWidth=1;tkCtx.stroke();}}tkCtx.beginPath();tkCtx.ellipse(cx,cy,90,60,0,0,Math.PI*2);tkCtx.fillStyle='rgba(20,10,40,0.8)';tkCtx.fill();tkCtx.strokeStyle='rgba(167,139,250,0.3)';tkCtx.lineWidth=2;tkCtx.stroke();if(tkState.running){const intensity=Math.min(tkState.t/60,1);tkCtx.save();tkCtx.beginPath();tkCtx.ellipse(cx,cy,80,50,0,0,Math.PI*2);tkCtx.clip();const pg=tkCtx.createRadialGradient(cx,cy,10,cx,cy,70);pg.addColorStop(0,'rgba(255,200,100,'+intensity*0.4+')');pg.addColorStop(0.5,'rgba(255,100,50,'+intensity*0.2+')');pg.addColorStop(1,'rgba(100,50,200,'+intensity*0.1+')');tkCtx.fillStyle=pg;tkCtx.fillRect(cx-90,cy-60,180,120);for(let i=0;i<40;i++){const angle=tkState.t*0.03+(i/40)*Math.PI*2,rx=30+Math.sin(i*3.7)*40,ry=20+Math.cos(i*2.3)*25,px=cx+Math.cos(angle)*rx,py=cy+Math.sin(angle)*ry,sz=1+Math.random()*2;tkCtx.beginPath();tkCtx.arc(px,py,sz,0,Math.PI*2);const cols=['rgba(255,200,100,','rgba(255,150,50,','rgba(200,100,255,','rgba(255,100,80,'];tkCtx.fillStyle=cols[i%4]+(0.5+Math.random()*0.5)+')';tkCtx.fill();}tkCtx.restore();tkCtx.beginPath();tkCtx.ellipse(cx,cy,95,65,0,0,Math.PI*2);tkCtx.strokeStyle='rgba(255,150,50,'+(intensity*0.3)+')';tkCtx.lineWidth=3;tkCtx.stroke();}else{tkCtx.fillStyle='rgba(50,30,80,0.3)';tkCtx.beginPath();tkCtx.ellipse(cx,cy,70,45,0,0,Math.PI*2);tkCtx.fill();}if(tkState.running){tkCtx.setLineDash([4,4]);for(let i=0;i<8;i++){const a=(i/8)*Math.PI*2+tkState.t*0.02;tkCtx.beginPath();tkCtx.moveTo(cx+Math.cos(a)*100,cy+Math.sin(a)*70);tkCtx.lineTo(cx+Math.cos(a)*130,cy+Math.sin(a)*90);tkCtx.strokeStyle='rgba(167,139,250,0.3)';tkCtx.lineWidth=1;tkCtx.stroke();}tkCtx.setLineDash([]);}tkCtx.fillStyle='#a78bfa';tkCtx.font='bold 11px Cairo';tkCtx.textAlign='center';tkCtx.fillText('المغناطيسات فائقة التوصيل',cx,H-50);tkCtx.fillStyle='rgba(255,200,100,0.8)';tkCtx.font='bold 11px Cairo';tkCtx.fillText('البلازما',cx,cy+5);tkCtx.fillStyle='rgba(255,255,255,0.5)';tkCtx.font='10px Cairo';tkCtx.textAlign='right';if(tkState.running){tkCtx.fillText('الحرارة: ~10⁸ K',W-15,25);tkCtx.fillText('البلازما محبوسة بالمجال المغناطيسي',W-15,42);}else{tkCtx.fillText('اضغط "تشغيل" لبدء التفاعل',W-15,25);}tkCtx.fillStyle='rgba(167,139,250,0.15)';tkCtx.font='bold 40px Cairo';tkCtx.textAlign='center';tkCtx.fillText('TOKAMAK',cx,H-15);if(tkState.running){tkState.t++;requestAnimationFrame(drawTokamakScene);}}
-
-function startTokamakAnim(){playClick();tkState={running:true,t:0};drawTokamakScene();document.getElementById('tokamakStatus').textContent='البلازما تتشكل داخل المجال المغناطيسي...';}
-function resetTokamakAnim(){tkState={running:false,t:0};drawTokamakScene();document.getElementById('tokamakStatus').textContent='اضغط "تشغيل" لرؤية البلازما داخل التوكاماك';}
-drawTokamakScene();
+// ===== التوكاماك =====
+var tkc=document.getElementById('tokamakCanvas'),tkx=tkc.getContext('2d'),ts={on:false,t:0};
+function drTk(){var W=tkc.width,H=tkc.height;tkx.clearRect(0,0,W,H);tkx.fillStyle='#050a12';tkx.fillRect(0,0,W,H);var cx=W/2,cy=H/2;for(var i=0;i<12;i++){var a=(i/12)*Math.PI*2,mx=cx+Math.cos(a)*130,my=cy+Math.sin(a)*90;tkx.beginPath();tkx.arc(mx,my,14,0,Math.PI*2);tkx.fillStyle='rgba(100,60,180,0.6)';tkx.fill();tkx.strokeStyle='rgba(167,139,250,0.5)';tkx.lineWidth=2;tkx.stroke();if(ts.on){tkx.beginPath();tkx.arc(mx,my,18+Math.sin(ts.t*0.1+i)*3,0,Math.PI*2);tkx.strokeStyle='rgba(167,139,250,0.2)';tkx.lineWidth=1;tkx.stroke();}}tkx.beginPath();tkx.ellipse(cx,cy,90,60,0,0,Math.PI*2);tkx.fillStyle='rgba(20,10,40,0.8)';tkx.fill();tkx.strokeStyle='rgba(167,139,250,0.3)';tkx.lineWidth=2;tkx.stroke();if(ts.on){var it=Math.min(ts.t/60,1);tkx.save();tkx.beginPath();tkx.ellipse(cx,cy,80,50,0,0,Math.PI*2);tkx.clip();var pg=tkx.createRadialGradient(cx,cy,10,cx,cy,70);pg.addColorStop(0,'rgba(255,200,100,'+it*0.4+')');pg.addColorStop(0.5,'rgba(255,100,50,'+it*0.2+')');pg.addColorStop(1,'rgba(100,50,200,'+it*0.1+')');tkx.fillStyle=pg;tkx.fillRect(cx-90,cy-60,180,120);for(var i=0;i<40;i++){var an=ts.t*0.03+(i/40)*Math.PI*2,rr=30+Math.sin(i*3.7)*40,ry=20+Math.cos(i*2.3)*25;tkx.beginPath();tkx.arc(cx+Math.cos(an)*rr,cy+Math.sin(an)*ry,1+Math.random()*2,0,Math.PI*2);tkx.fillStyle=['rgba(255,200,100,','rgba(255,150,50,','rgba(200,100,255,','rgba(255,100,80,'][i%4]+(0.5+Math.random()*0.5)+')';tkx.fill();}tkx.restore();tkx.beginPath();tkx.ellipse(cx,cy,95,65,0,0,Math.PI*2);tkx.strokeStyle='rgba(255,150,50,'+(it*0.3)+')';tkx.lineWidth=3;tkx.stroke();}else{tkx.fillStyle='rgba(50,30,80,0.3)';tkx.beginPath();tkx.ellipse(cx,cy,70,45,0,0,Math.PI*2);tkx.fill();}if(ts.on){tkx.setLineDash([4,4]);for(var i=0;i<8;i++){var a=(i/8)*Math.PI*2+ts.t*0.02;tkx.beginPath();tkx.moveTo(cx+Math.cos(a)*100,cy+Math.sin(a)*70);tkx.lineTo(cx+Math.cos(a)*130,cy+Math.sin(a)*90);tkx.strokeStyle='rgba(167,139,250,0.3)';tkx.lineWidth=1;tkx.stroke();}tkx.setLineDash([]);}tkx.fillStyle='#a78bfa';tkx.font='bold 11px Cairo';tkx.textAlign='center';tkx.fillText('المغناطيسات فائقة التوصيل',cx,H-50);tkx.fillStyle='rgba(255,200,100,0.8)';tkx.font='bold 11px Cairo';tkx.fillText('البلازما',cx,cy+5);tkx.fillStyle='rgba(255,255,255,0.5)';tkx.font='10px Cairo';tkx.textAlign='right';if(ts.on){tkx.fillText('الحرارة: ~10\u2078 K',W-15,25);tkx.fillText('البلازما محبوسة مغناطيسياً',W-15,42);}else tkx.fillText('اضغط "تشغيل"',W-15,25);tkx.fillStyle='rgba(167,139,250,0.15)';tkx.font='bold 40px Cairo';tkx.textAlign='center';tkx.fillText('TOKAMAK',cx,H-15);if(ts.on){ts.t++;requestAnimationFrame(drTk);}}
+function startTokamak(){clickSnd();ts={on:true,t:0};drTk();document.getElementById('tokamakMsg').textContent='البلازما تتشكل...';}
+function resetTokamak(){ts={on:false,t:0};drTk();document.getElementById('tokamakMsg').textContent='اضغط "تشغيل"';}
+drTk();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[theme]
+primaryColor = "#00ff88"
+backgroundColor = "#060b14"
+secondaryBackgroundColor = "#0c1220"
+textColor = "#e4e8f0"
+font = "Cairo"
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+gatherUsageStats = false

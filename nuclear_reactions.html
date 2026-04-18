@@ -1686,51 +1686,320 @@ function resetFusionAnim(){
 }
 drawFusionScene();
 
-// =================== رسم المفاعل النووي PWR ===================
-const rtrCanvas=document.getElementById('reactorCanvas');
-const rtrCtx=rtrCanvas.getContext('2d');
-let rtrAnim={running:false,t:0,power:0,controlRods:0.3,waterParticles:[],steamParticles:[]};
+// =================== رسم برج التبريد ===================
+function drawCoolingTower(ctx,x,y,w,h){
+    ctx.beginPath();
+    ctx.moveTo(x-w/2,y);
+    ctx.quadraticCurveTo(x-w/2-5,y-h*0.3,x-w*0.35,y-h*0.7);
+    ctx.quadraticCurveTo(x-w*0.15,y-h,x+w*0.15,y-h);
+    ctx.quadraticCurveTo(x+w*0.35,y-h*0.7,x+w/2+5,y-h*0.3);
+    ctx.lineTo(x+w/2,y);
+    ctx.closePath();
+    ctx.fillStyle='rgba(40,60,80,0.6)';ctx.fill();
+    ctx.strokeStyle='rgba(0,212,255,0.3)';ctx.lineWidth=1.5;ctx.stroke();
+    // بخار
+    if(rtrAnim.power>10){
+        for(let i=0;i<3;i++){
+            const sy=y-h-Math.sin(Date.now()*0.002+i)*10-i*8;
+            const sx=x+Math.sin(Date.now()*0.003+i*2)*5;
+            ctx.beginPath();ctx.arc(sx,sy,4+i*2,0,Math.PI*2);
+            ctx.fillStyle='rgba(200,220,255,'+(0.1+rtrAnim.power/300)+')';ctx.fill();
+        }
+    }
+}
 
-function drawReactorScene(){
+// =================== محاكاة المفاعل النووي PWR ===================
+let rtrAnim2={running:false,t:0,power:0,controlRodsIn:0.3};
+
+function drawReactorScene2(){
     const W=rtrCanvas.width,H=rtrCanvas.height;
     rtrCtx.clearRect(0,0,W,H);
-
-    // الخلفية
     rtrCtx.fillStyle='#050a12';rtrCtx.fillRect(0,0,W,H);
 
-    // أبراج التبريد (خلفية)
-    drawCoolingTower(rtrCtx,W-90,H-140,50,100);
-    drawCoolingTower(rtrCtx,W-35,H-140,50,100);
+    // أبراج التبريد
+    drawCoolingTower(rtrCtx,W-100,H-130,50,90);
+    drawCoolingTower(rtrCtx,W-40,H-130,50,90);
 
-    // قلب المفاعل (مستطيل كبير)
-    const rx=80,ry=60,rw=130,rh=200;
-    // هيكل
+    // قلب المفاعل
+    const rx=60,ry=50,rw=140,rh=210;
     rtrCtx.strokeStyle='rgba(0,212,255,0.5)';rtrCtx.lineWidth=3;
     rtrCtx.fillStyle='rgba(0,30,60,0.8)';
-    rtrCtx.beginPath();rtrCtx.roundRect(rx,ry,rw,rh,10);rtrCtx.fill();rtrCtx.stroke();
-    // تسمية
+    rtrCtx.beginPath();
+    rtrCtx.moveTo(rx+10,ry);rtrCtx.lineTo(rx+rw-10,ry);
+    rtrCtx.quadraticCurveTo(rx+rw,ry,rx+rw,ry+10);
+    rtrCtx.lineTo(rx+rw,ry+rh-10);
+    rtrCtx.quadraticCurveTo(rx+rw,ry+rh,rx+rw-10,ry+rh);
+    rtrCtx.lineTo(rx+10,ry+rh);
+    rtrCtx.quadraticCurveTo(rx,ry+rh,rx,ry+rh-10);
+    rtrCtx.lineTo(rx,ry+10);
+    rtrCtx.quadraticCurveTo(rx,ry,rx+10,ry);
+    rtrCtx.closePath();rtrCtx.fill();rtrCtx.stroke();
+
     rtrCtx.fillStyle='#00d4ff';rtrCtx.font='bold 11px Cairo';rtrCtx.textAlign='center';
     rtrCtx.fillText('قلب المفاعل',rx+rw/2,ry-8);
 
-    // قضبان الوقود (خطوط برتقالية)
+    // قضبان الوقود
+    const glow=rtrAnim2.power/100;
     for(let i=0;i<6;i++){
-        const fx=rx+15+i*18;
-        const glow=rtrAnim.power/100;
-        rtrCtx.strokeStyle='rgba(255,107,53,'+(0.3+glow*0.5)+')';
-        rtrCtx.lineWidth=4;
-        rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+20);rtrCtx.lineTo(fx,ry+rh-20);rtrCtx.stroke();
-        // توهج
-        if(rtrAnim.power>20){
-            rtrCtx.shadowColor='#ff6b35';rtrCtx.shadowBlur=glow*15;
+        const fx=rx+18+i*19;
+        rtrCtx.strokeStyle='rgba(255,107,53,'+(0.3+glow*0.5)+')';rtrCtx.lineWidth=4;
+        rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+25);rtrCtx.lineTo(fx,ry+rh-25);rtrCtx.stroke();
+        if(rtrAnim2.power>20){
+            rtrCtx.save();rtrCtx.shadowColor='#ff6b35';rtrCtx.shadowBlur=glow*15;
             rtrCtx.strokeStyle='rgba(255,150,80,'+(glow*0.3)+')';rtrCtx.lineWidth=8;
-            rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+20);rtrCtx.lineTo(fx,ry+rh-20);rtrCtx.stroke();
-            rtrCtx.shadowBlur=0;
+            rtrCtx.beginPath();rtrCtx.moveTo(fx,ry+25);rtrCtx.lineTo(fx,ry+rh-25);rtrCtx.stroke();
+            rtrCtx.restore();
         }
     }
 
-    // قضبان التحكم (خطوط خضراء متحركة)
-    const rodDepth=ry+20+rtrAnim.controlRods*(rh-40);
+    // قضبان التحكم
+    const rodEnd=ry+25+rtrAnim2.controlRodsIn*(rh-50);
     for(let i=0;i<3;i++){
-        const crx=rx+30+i*35;
-        rtrCtx.strokeStyle='rgba(0,255,136,0.8)';rtrCtx.lineWidth=6;
-        rtrCtx.beginPath();rtrCtx.moveTo(crx,ry+10);rtr
+        const crx=rx+35+i*38;
+        rtrCtx.strokeStyle='rgba(0,255,136,0.8)';rtrCtx.lineWidth=5;
+        rtrCtx.beginPath();rtrCtx.moveTo(crx,ry+8);rtrCtx.lineTo(crx,rodEnd);rtrCtx.stroke();
+        // مقبض
+        rtrCtx.fillStyle='#00ff88';
+        rtrCtx.fillRect(crx-6,ry+2,12,8);
+    }
+
+    // مولّد البخار
+    const sx=rx+rw+60,sy=ry+30,sw=80,sh=150;
+    rtrCtx.strokeStyle='rgba(255,214,0,0.4)';rtrCtx.lineWidth=2;
+    rtrCtx.fillStyle='rgba(40,35,10,0.6)';
+    rtrCtx.beginPath();
+    rtrCtx.moveTo(sx+10,sy);rtrCtx.lineTo(sx+sw-10,sy);
+    rtrCtx.quadraticCurveTo(sx+sw,sy,sx+sw,sy+10);
+    rtrCtx.lineTo(sx+sw,sy+sh-10);
+    rtrCtx.quadraticCurveTo(sx+sw,sy+sh,sx+sw-10,sy+sh);
+    rtrCtx.lineTo(sx+10,sy+sh);
+    rtrCtx.quadraticCurveTo(sx,sy+sh,sx,sy+sh-10);
+    rtrCtx.lineTo(sx,sy+10);
+    rtrCtx.quadraticCurveTo(sx,sy,sx+10,sy);
+    rtrCtx.closePath();rtrCtx.fill();rtrCtx.stroke();
+    rtrCtx.fillStyle='#ffd600';rtrCtx.font='bold 10px Cairo';rtrCtx.textAlign='center';
+    rtrCtx.fillText('مولّد البخار',sx+sw/2,sy-6);
+
+    // أنابيب الماء المضغوط (من المفاعل لمولد البخار)
+    rtrCtx.strokeStyle='rgba(255,100,50,0.5)';rtrCtx.lineWidth=3;
+    rtrCtx.beginPath();rtrCtx.moveTo(rx+rw,ry+60);rtrCtx.lineTo(sx,ry+60);rtrCtx.stroke();
+    rtrCtx.beginPath();rtrCtx.moveTo(sx,ry+sh-30);rtrCtx.lineTo(rx+rw,ry+rh-30);rtrCtx.stroke();
+    // حركة الماء
+    if(rtrAnim2.running){
+        for(let i=0;i<4;i++){
+            const px=rx+rw+((rtrAnim2.t*2+i*35)%(sx-rx-rw));
+            rtrCtx.beginPath();rtrCtx.arc(px,ry+60,3,0,Math.PI*2);
+            rtrCtx.fillStyle='rgba(255,150,80,0.6)';rtrCtx.fill();
+        }
+        for(let i=0;i<4;i++){
+            const px=sx-((rtrAnim2.t*2+i*35)%(sx-rx-rw));
+            rtrCtx.beginPath();rtrCtx.arc(px,ry+rh-30,3,0,Math.PI*2);
+            rtrCtx.fillStyle='rgba(255,100,50,0.4)';rtrCtx.fill();
+        }
+    }
+
+    // التوربين
+    const tx=sx+sw+50,ty=sy+40,tr=35;
+    rtrCtx.strokeStyle='rgba(0,255,136,0.4)';rtrCtx.lineWidth=2;
+    rtrCtx.beginPath();rtrCtx.arc(tx,ty,tr,0,Math.PI*2);rtrCtx.stroke();
+    rtrCtx.fillStyle='rgba(0,40,30,0.5)';rtrCtx.fill();
+    // ريش التوربين
+    const angle=rtrAnim2.running?rtrAnim2.t*0.1:0;
+    for(let i=0;i<6;i++){
+        const a=angle+(i/6)*Math.PI*2;
+        rtrCtx.beginPath();rtrCtx.moveTo(tx,ty);
+        rtrCtx.lineTo(tx+Math.cos(a)*tr*0.8,ty+Math.sin(a)*tr*0.8);
+        rtrCtx.strokeStyle='rgba(0,255,136,0.6)';rtrCtx.lineWidth=3;rtrCtx.stroke();
+    }
+    rtrCtx.fillStyle='#00ff88';rtrCtx.font='bold 10px Cairo';rtrCtx.textAlign='center';
+    rtrCtx.fillText('التوربين',tx,ty+tr+15);
+
+    // أنبوب بخار من مولد البخار للتوربين
+    rtrCtx.strokeStyle='rgba(200,200,255,0.4)';rtrCtx.lineWidth=3;
+    rtrCtx.beginPath();rtrCtx.moveTo(sx+sw,sy+50);rtrCtx.lineTo(tx-tr,sy+50);rtrCtx.stroke();
+    if(rtrAnim2.running){
+        for(let i=0;i<3;i++){
+            const px=sx+sw+((rtrAnim2.t*3+i*25)%(tx-tr-sx-sw));
+            rtrCtx.beginPath();rtrCtx.arc(px,sy+50,2,0,Math.PI*2);
+            rtrCtx.fillStyle='rgba(200,200,255,0.5)';rtrCtx.fill();
+        }
+    }
+
+    // المولّد الكهربائي
+    const gx=tx+60,gy=ty-5,gr=22;
+    rtrCtx.strokeStyle='rgba(255,214,0,0.5)';rtrCtx.lineWidth=2;
+    rtrCtx.beginPath();rtrCtx.arc(gx,gy,gr,0,Math.PI*2);rtrCtx.stroke();
+    rtrCtx.fillStyle='rgba(40,35,10,0.5)';rtrCtx.fill();
+    rtrCtx.fillStyle='#ffd600';rtrCtx.font='bold 16px Cairo';rtrCtx.textAlign='center';rtrCtx.textBaseline='middle';
+    rtrCtx.fillText('⚡',gx,gy);rtrCtx.textBaseline='alphabetic';
+    rtrCtx.font='bold 10px Cairo';rtrCtx.fillText('المولّد',gx,gy+gr+12);
+    // وصلة التوربين بالمولّد
+    rtrCtx.strokeStyle='rgba(150,150,150,0.5)';rtrCtx.lineWidth=4;
+    rtrCtx.beginPath();rtrCtx.moveTo(tx+tr,ty);rtrCtx.lineTo(gx-gr,gy);rtrCtx.stroke();
+
+    // خطوط نقل الكهرباء
+    rtrCtx.strokeStyle='rgba(255,214,0,0.3)';rtrCtx.lineWidth=2;
+    rtrCtx.setLineDash([5,5]);
+    rtrCtx.beginPath();rtrCtx.moveTo(gx+gr,gy-10);rtrCtx.lineTo(W-10,gy-30);rtrCtx.stroke();
+    rtrCtx.beginPath();rtrCtx.moveTo(gx+gr,gy+10);rtrCtx.lineTo(W-10,gy+10);rtrCtx.stroke();
+    rtrCtx.setLineDash([]);
+
+    // أنبوب التبريد من التوربين لأبراج التبريد
+    rtrCtx.strokeStyle='rgba(100,150,255,0.3)';rtrCtx.lineWidth=2;
+    rtrCtx.beginPath();rtrCtx.moveTo(tx,ty+tr);rtrCtx.lineTo(tx,H-40);rtrCtx.lineTo(W-100,H-40);rtrCtx.stroke();
+
+    // مؤشر الطاقة
+    if(rtrAnim2.running){
+        if(rtrAnim2.controlRodsIn<0.8){
+            rtrAnim2.power=Math.min(rtrAnim2.power+0.3,100);
+        }else{
+            rtrAnim2.power=Math.max(rtrAnim2.power-0.5,5);
+        }
+        document.getElementById('reactorPower').style.width=rtrAnim2.power+'%';
+        document.getElementById('reactorPowerVal').textContent=Math.round(rtrAnim2.power);
+    }
+
+    // تسميات إضافية
+    rtrCtx.fillStyle='rgba(255,255,255,0.4)';rtrCtx.font='9px Cairo';rtrCtx.textAlign='left';
+    rtrCtx.fillText('ماء مضغوط ساخن →',rx+rw+5,ry+55);
+    rtrCtx.fillText('← ماء مضغوط أبرد',rx+rw+5,ry+rh-25);
+    rtrCtx.fillText('بخار →',sx+sw+5,sy+45);
+
+    if(rtrAnim2.running){rtrAnim2.t++;requestAnimationFrame(drawReactorScene2);}
+}
+
+function startReactorAnim(){
+    playClick();rtrAnim2.running=true;rtrAnim2.t=0;drawReactorScene2();
+}
+function resetReactorAnim(){
+    rtrAnim2={running:false,t:0,power:0,controlRodsIn:0.3};
+    document.getElementById('reactorPower').style.width='0%';
+    document.getElementById('reactorPowerVal').textContent='0';
+    drawReactorScene2();
+}
+function toggleControlRods(){
+    playClick();
+    if(rtrAnim2.controlRodsIn<0.5){
+        rtrAnim2.controlRodsIn=0.85;
+    }else{
+        rtrAnim2.controlRodsIn=0.15;
+    }
+    if(!rtrAnim2.running){drawReactorScene2();}
+}
+drawReactorScene2();
+
+// =================== محاكاة التوكاماك ===================
+const tkCanvas=document.getElementById('tokamakCanvas');
+const tkCtx=tkCanvas.getContext('2d');
+let tkAnim={running:false,t:0,particles:[]};
+
+function drawTokamakScene(){
+    const W=tkCanvas.width,H=tkCanvas.height;
+    tkCtx.clearRect(0,0,W,H);
+    tkCtx.fillStyle='#050a12';tkCtx.fillRect(0,0,W,H);
+
+    const cx=W/2,cy=H/2;
+
+    // المغناطيس الخارجي (حلقات)
+    for(let i=0;i<12;i++){
+        const a=(i/12)*Math.PI*2;
+        const mx=cx+Math.cos(a)*130;
+        const my=cy+Math.sin(a)*90;
+        tkCtx.beginPath();tkCtx.arc(mx,my,14,0,Math.PI*2);
+        tkCtx.fillStyle='rgba(100,60,180,0.6)';tkCtx.fill();
+        tkCtx.strokeStyle='rgba(167,139,250,0.5)';tkCtx.lineWidth=2;tkCtx.stroke();
+        // حقل مغناطيسي
+        if(tkAnim.running){
+            tkCtx.beginPath();tkCtx.arc(mx,my,18+Math.sin(tkAnim.t*0.1+i)*3,0,Math.PI*2);
+            tkCtx.strokeStyle='rgba(167,139,250,0.2)';tkCtx.lineWidth=1;tkCtx.stroke();
+        }
+    }
+
+    // غرفة البلازما (شكل حلقي - torus من الأعلى)
+    tkCtx.beginPath();tkCtx.ellipse(cx,cy,90,60,0,0,Math.PI*2);
+    tkCtx.fillStyle='rgba(20,10,40,0.8)';tkCtx.fill();
+    tkCtx.strokeStyle='rgba(167,139,250,0.3)';tkCtx.lineWidth=2;tkCtx.stroke();
+
+    // البلازما داخل الغرفة
+    if(tkAnim.running){
+        // تأثير التوهج
+        const intensity=Math.min(tkAnim.t/60,1);
+        tkCtx.save();
+        tkCtx.beginPath();tkCtx.ellipse(cx,cy,80,50,0,0,Math.PI*2);tkCtx.clip();
+
+        // خلفية البلازما المتوهجة
+        const plasmaGrad=tkCtx.createRadialGradient(cx,cy,10,cx,cy,70);
+        plasmaGrad.addColorStop(0,'rgba(255,200,100,'+intensity*0.4+')');
+        plasmaGrad.addColorStop(0.5,'rgba(255,100,50,'+intensity*0.2+')');
+        plasmaGrad.addColorStop(1,'rgba(100,50,200,'+intensity*0.1+')');
+        tkCtx.fillStyle=plasmaGrad;
+        tkCtx.fillRect(cx-90,cy-60,180,120);
+
+        // جسيمات البلازما تدور
+        for(let i=0;i<40;i++){
+            const angle=tkAnim.t*0.03+(i/40)*Math.PI*2;
+            const rx=30+Math.sin(i*3.7)*40;
+            const ry=20+Math.cos(i*2.3)*25;
+            const px=cx+Math.cos(angle)*rx;
+            const py=cy+Math.sin(angle)*ry;
+            const size=1+Math.random()*2;
+            tkCtx.beginPath();tkCtx.arc(px,py,size,0,Math.PI*2);
+            const colors=['rgba(255,200,100,','rgba(255,150,50,','rgba(200,100,255,','rgba(255,100,80,'];
+            tkCtx.fillStyle=colors[i%4]+(0.5+Math.random()*0.5)+')';
+            tkCtx.fill();
+        }
+        tkCtx.restore();
+
+        // توهج خارجي
+        tkCtx.beginPath();tkCtx.ellipse(cx,cy,95,65,0,0,Math.PI*2);
+        tkCtx.strokeStyle='rgba(255,150,50,'+(intensity*0.3)+')';tkCtx.lineWidth=3;tkCtx.stroke();
+    }else{
+        // بلازما خاملة
+        tkCtx.fillStyle='rgba(50,30,80,0.3)';
+        tkCtx.beginPath();tkCtx.ellipse(cx,cy,70,45,0,0,Math.PI*2);tkCtx.fill();
+    }
+
+    // خطوط المجال المغناطيسي
+    if(tkAnim.running){
+        tkCtx.setLineDash([4,4]);
+        for(let i=0;i<8;i++){
+            const a=(i/8)*Math.PI*2+tkAnim.t*0.02;
+            tkCtx.beginPath();
+            tkCtx.moveTo(cx+Math.cos(a)*100,cy+Math.sin(a)*70);
+            tkCtx.lineTo(cx+Math.cos(a)*130,cy+Math.sin(a)*90);
+            tkCtx.strokeStyle='rgba(167,139,250,0.3)';tkCtx.lineWidth=1;tkCtx.stroke();
+        }
+        tkCtx.setLineDash([]);
+    }
+
+    // تسميات
+    tkCtx.fillStyle='#a78bfa';tkCtx.font='bold 11px Cairo';tkCtx.textAlign='center';
+    tkCtx.fillText('المغناطيسات فائقة التوصيل',cx,H-50);
+    tkCtx.fillStyle='rgba(255,200,100,0.8)';tkCtx.font='bold 11px Cairo';
+    tkCtx.fillText('البلازما',cx,cy+5);
+
+    // معلومات
+    tkCtx.fillStyle='rgba(255,255,255,0.5)';tkCtx.font='10px Cairo';tkCtx.textAlign='right';
+    if(tkAnim.running){
+        tkCtx.fillText('الحرارة: ~10⁸ K',W-15,25);
+        tkCtx.fillText('البلازما محبوسة بالمجال المغناطيسي',W-15,42);
+    }else{
+        tkCtx.fillText('اضغط "تشغيل" لبدء التفاعل',W-15,25);
+    }
+
+    // شعار التوكاماك
+    tkCtx.fillStyle='rgba(167,139,250,0.15)';tkCtx.font='bold 40px Cairo';tkCtx.textAlign='center';
+    tkCtx.fillText('TOKAMAK',cx,H-15);
+
+    if(tkAnim.running){tkAnim.t++;requestAnimationFrame(drawTokamakScene);}
+}
+
+function startTokamakAnim(){
+    playClick();tkAnim={running:true,t:0,particles:[]};drawTokamakScene();
+    document.getElementById('tokamakStatus').textContent='البلازما تتشكل داخل المجال المغناطيسي...';
+}
+function resetTokamakAnim(){
+    tkAnim={running:false,t:0,particles:[]};drawTokamakScene();
+    document.getElementById('tokamakStatus').textContent='اضغط "تشغيل" لرؤية البلازما داخل التوكاماك';
+}
+drawTokamakScene();
